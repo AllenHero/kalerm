@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,9 +56,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\BaseWindow.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ScanAndTestStandard.xaml.cs">
       <DependentUpon>ScanAndTestStandard.xaml</DependentUpon>
     </Compile>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,6 +157,12 @@
     <Resource Include="Image\WinRight.jpg" />
     <Resource Include="Image\WinTop.jpg" />
     <Resource Include="Image\WMS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kalerm-common\kalerm-common.csproj">
+      <Project>{9326AF29-9BBC-4325-A522-4BFFB6AB329D}</Project>
+      <Name>kalerm-common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
