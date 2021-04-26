@@ -54,8 +54,6 @@ namespace kalerm_common
                 //thread.IsBackground = true;
                 //thread.Start();
 
-
-
             }
             catch { }
         }
