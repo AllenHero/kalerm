@@ -21,19 +21,11 @@ namespace kalerm_operation_desk
     /// </summary>
     public partial class Login : Window
     {
-        public static string LineNO;
-        public static string PROCESS_NO;
-        public static string WeightCom;
-        public static string TemperatureCom;
-        public static string TotalPass;
 
         public Login()
         {
             InitializeComponent();
-            LineNO = ConfigurationManager.AppSettings["LineNO"] + "";
-            PROCESS_NO = ConfigurationManager.AppSettings["PROCESS_NO"] + "";
-            WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
-            TemperatureCom = ConfigurationManager.AppSettings["TemperatureCom"] + "";
+            
         }
 
         /// <summary>

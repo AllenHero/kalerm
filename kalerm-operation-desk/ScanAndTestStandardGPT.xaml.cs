@@ -1,4 +1,5 @@
 ﻿using kalerm_common;
+using kalerm_common.Ulitity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,65 +20,75 @@ using System.Windows.Shapes;
 namespace kalerm_operation_desk
 {
     /// <summary>
-    /// ScanAndTestStandard.xaml 的交互逻辑
+    /// ScanAndTestStandardGPT.xaml 的交互逻辑
     /// </summary>
-    public partial class ScanAndTestStandard : Page
+    public partial class ScanAndTestStandardGPT : Page, IDisposable
     {
-        DateTime dt = new DateTime();
-
-        //电子秤
-        BalanceWeight BalanceWeight = new BalanceWeight(MainWindow.WeightCom);
-
-        //温度仪
-        Thermometer Thermometer = new Thermometer(MainWindow.TemperatureCom);
-
-        //总测试数
-        int TotalPass = 0;
-
-        //时间测试
-        bool threadTimeRun = false;
-
-        //重量测试
-        bool threadWeightRun = false;
-
-        //重量测试
-        bool threadTempRun = false;
-
-        Thread thread;
-
-        //测试开始时间
-        DateTime StartTime = DateTime.Now;
-
-        //当前测试项目
-        int TestCount = 0;
-
         int Color = 0;
-
-        //是否扫码
-        bool isSCAN = true;
-
+        Thread thread;
+        //bool isTestEnd = false;
         //主条码
         string SCAN_BARCODE = "";
-
+        //是否扫码
+        bool isSCAN = true;
+        //当前测试项目
+        int TestCount = 0;
         //HAND测试
         bool HANDRUN = false;
-
+        //测试开始时间
+        DateTime StartTime = DateTime.Now;
+        //时间测试
+        bool threadTimeRun = false;
         bool TimeStart = false;
+        //电子秤
+        BalanceWeight BalanceWeight = new BalanceWeight(MainWindow.WeightCom);
+        //重量测试
+        bool threadWeightRun = false;
+        //温度仪
+        Thermometer Thermometer = new Thermometer(MainWindow.TemperatureCom);
+        //重量测试
+        bool threadTempRun = false;
+        //总测试数
+        int TotalPass = 0;
+        DateTime dt = new DateTime();
+        string CheckSCAN_BARCODE = "";
+        PortOperatorBase portOperatorBase;
+        string GPT9000 = "";
 
-        public ScanAndTestStandard()
+        public ScanAndTestStandardGPT()
         {
             InitializeComponent();
             this.Loaded += ScanAndTestStandard_Loaded;
+            btnSet.Click += BtnSet_Click;
+            btnCom.Click += BtnCom_Click;
+            //btnError.Click += BtnError_Click;
+            btnClear.Click += BtnClear_Click;
+            btnAG.Click += BtnAG_Click;
         }
 
+        //安规测试启动
+        private void BtnAG_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (!string.IsNullOrEmpty(GPT9000))
+                {
+
+                }
+            }
+            catch
+            { }
+            txtScan.Focus();
+        }
 
         public void Dispose()
         {
 
             BalanceWeight.ReadEnd();
             Thermometer.ReadEnd();
-            //if (portOperatorBase != null)
-            //    portOperatorBase.Close();
+            if (portOperatorBase != null)
+                portOperatorBase.Close();
             btnSet.Click -= BtnSet_Click;
             btnCom.Click -= BtnCom_Click;
             //btnError.Click -= BtnError_Click;
@@ -87,6 +98,24 @@ namespace kalerm_operation_desk
 
         private void ScanAndTestStandard_Loaded(object sender, RoutedEventArgs e)
         {
+
+            string[] content1 = PortUltility.FindAddresses(PortType.RS232);
+            string[] content2 = PortUltility.FindRS232Type(content1);
+            for (int i = 0; i < content2.Count(); i++)
+            {
+                if (content2[i] + "" == "COM8")
+                {
+                    GPT9000 = content1[i];
+                }
+                if (!string.IsNullOrEmpty(GPT9000))
+                {
+                    //lbAG.Content = "串口存在";
+                    //打开安规测试仪
+                    //portOperatorBase = new RS232PortOperator(GPT9000, 9600, SerialParity.None, SerialStopBitsMode.One, 8);
+                    //portOperatorBase.Open();
+                }
+            }
+
             dt = DateTime.Now;
             if (BalanceWeight.Open())
                 lbWT.Content = "打开串口成功";
@@ -108,8 +137,10 @@ namespace kalerm_operation_desk
             this.Loaded -= ScanAndTestStandard_Loaded;
             cbbLineNo.SelectedValue = LineNO;
             cbbPROCESS.SelectedValue = PROCESS_NO;
+
             txtScan.Focus();
         }
+
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
@@ -120,7 +151,6 @@ namespace kalerm_operation_desk
             page.ShowDialog();
             txtScan.Focus();
         }
-
         private void Page_ScanAndTestStandardSetEvent(object sender, EventArgs e)
         {
             string LineNO = MainWindow.LineNO + "";
@@ -128,6 +158,7 @@ namespace kalerm_operation_desk
             cbbLineNo.SelectedValue = LineNO;
             cbbPROCESS.SelectedValue = PROCESS_NO;
         }
+
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)
         {
@@ -340,7 +371,39 @@ namespace kalerm_operation_desk
 
         private void MEASure1(string str)
         {
+            //获取耐压接口
             decimal value = 0;
+            try
+            {
+                if (!string.IsNullOrEmpty(GPT9000))
+                {
+                    portOperatorBase = new RS232PortOperator(GPT9000, 9600, SerialParity.None, SerialStopBitsMode.One, 8);
+                    portOperatorBase.Open();
+                    string content = str;
+                    portOperatorBase.WriteLine(content);
+                    string result = portOperatorBase.ReadLine();
+
+                    string[] strdata = result.Split(',');
+
+                    if (strdata.Count() > 3)
+                    {
+                        string strdata3 = strdata[3].Substring(0, 5);
+                        if (!strdata3.Contains('.'))
+                            strdata3 = strdata3.Substring(0, 4);
+                        if (decimal.TryParse(strdata3, out value))
+                        {
+                            value = Math.Round(value, 2);
+                        }
+                        else
+                            value = 0;
+                    }
+                    else
+                        value = 0;
+                    portOperatorBase.Close();
+                }
+            }
+            catch
+            { }
             lbITEM_VALUE.Content = value + "";
             if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
             {
@@ -353,7 +416,42 @@ namespace kalerm_operation_desk
 
         private void MEASure(string str)
         {
+            //获取耐压接口
             decimal value = 0;
+            try
+            {
+
+                if (!string.IsNullOrEmpty(GPT9000))
+                {
+                    //打开安规仪器
+                    portOperatorBase = new RS232PortOperator(GPT9000, 9600, SerialParity.None, SerialStopBitsMode.One, 8);
+                    portOperatorBase.Open();
+
+
+                    string content = str;
+                    portOperatorBase.WriteLine(content);
+                    string result = portOperatorBase.ReadLine();
+
+                    string[] strdata = result.Split(',');
+
+                    if (strdata.Count() > 3)
+                    {
+                        if (decimal.TryParse(strdata[2].Substring(0, 5), out value))
+                        {
+                            if (strdata[2].Contains("kV"))
+                                value = value * 1000;
+                            value = Math.Round(value, 2);
+                        }
+                        else
+                            value = 0;
+                    }
+                    else
+                        value = 0;
+                    portOperatorBase.Close();
+                }
+            }
+            catch
+            { }
             lbITEM_VALUE.Content = value + "";
             if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
             {
@@ -362,6 +460,14 @@ namespace kalerm_operation_desk
                 else
                     lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
             }
+        }
+
+        private void TestError()//测试失败
+        {
+            StopThread();//停止数据采集
+            ScanAndTestStandardTestError page = new ScanAndTestStandardTestError();
+            page.ShowDialog();
+            txtScan.Focus();
         }
 
         //清除

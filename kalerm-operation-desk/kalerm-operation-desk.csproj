@@ -66,6 +66,18 @@
     <Compile Include="ScanAndTestStandard.xaml.cs">
       <DependentUpon>ScanAndTestStandard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScanAndTestStandardCom.xaml.cs">
+      <DependentUpon>ScanAndTestStandardCom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScanAndTestStandardGPT.xaml.cs">
+      <DependentUpon>ScanAndTestStandardGPT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScanAndTestStandardSet.xaml.cs">
+      <DependentUpon>ScanAndTestStandardSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScanAndTestStandardTestError.xaml.cs">
+      <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +95,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ScanAndTestStandard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScanAndTestStandardCom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScanAndTestStandardGPT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScanAndTestStandardSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScanAndTestStandardTestError.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
