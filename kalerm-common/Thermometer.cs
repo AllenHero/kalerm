@@ -62,7 +62,6 @@ namespace kalerm_common
 
         public void ReadTemp()
         {
-
             //CurTemp = 0;
             //try
             //{
@@ -81,8 +80,6 @@ namespace kalerm_common
             //}
             //catch { }
         }
-
-
 
         public void ReadEnd()
         {
@@ -104,21 +101,18 @@ namespace kalerm_common
             catch { }
         }
 
-
         private void ComDevice_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
                 if (!ComDevice.IsOpen)
                     ComDevice.Open();
-
                 byte[] ReDatas = new byte[ComDevice.BytesToRead];
                 ComDevice.Read(ReDatas, 0, ReDatas.Length);//读取数据
                 string str = new ASCIIEncoding().GetString(ReDatas);
                 content += str;
                 if (content.Contains("??"))
                 {
-
                     string strReplaced = content.Replace("??", "");
                     int Count = (content.Length - strReplaced.Length) / 2;
                     if (Count > 1)
@@ -131,14 +125,11 @@ namespace kalerm_common
                         content = "";
                     }
                 }
-
             }
             catch
             {
 
             }
         }
-
-
     }
 }

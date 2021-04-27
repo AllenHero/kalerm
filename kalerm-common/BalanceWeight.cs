@@ -53,7 +53,6 @@ namespace kalerm_common
                 //thread = new Thread(new ThreadStart(Read));
                 //thread.IsBackground = true;
                 //thread.Start();
-
             }
             catch { }
         }
@@ -78,8 +77,6 @@ namespace kalerm_common
             }
         }
 
-
-
         public void ReadEnd()
         {
             CurWeight = 0;
@@ -90,7 +87,6 @@ namespace kalerm_common
             }
             catch { }
         }
-
 
         private void ComDevice_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -106,7 +102,6 @@ namespace kalerm_common
                 content += str;
                 if (content.Contains("-"))
                     content = "";
-
                 if (content.Contains("+") && content.Contains("g"))
                 {
                     int first = content.IndexOf("+");
@@ -121,7 +116,6 @@ namespace kalerm_common
                     {
                         content = content.Substring(first, content.Length - first);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -129,7 +123,6 @@ namespace kalerm_common
 
             }
         }
-
 
     }
 }
