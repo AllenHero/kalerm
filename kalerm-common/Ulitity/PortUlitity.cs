@@ -1,4 +1,5 @@
 ﻿using Ivi.Visa;
+using NationalInstruments.Visa;
 using System;
 using System.Collections.Generic;
 using System.Linq;

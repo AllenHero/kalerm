@@ -1,4 +1,5 @@
-﻿using kalerm_common;
+﻿using Ivi.Visa;
+using kalerm_common;
 using kalerm_common.Ulitity;
 using System;
 using System.Collections.Generic;

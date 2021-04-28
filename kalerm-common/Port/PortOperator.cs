@@ -1,5 +1,6 @@
 ﻿using Ivi.Visa;
 using kalerm_common.Ulitity;
+using NationalInstruments.Visa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
