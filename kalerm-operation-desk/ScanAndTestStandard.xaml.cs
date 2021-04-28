@@ -68,6 +68,10 @@ namespace kalerm_operation_desk
         {
             InitializeComponent();
             this.Loaded += ScanAndTestStandard_Loaded;
+            btnSet.Click += BtnSet_Click;
+            btnCom.Click += BtnCom_Click;
+            //btnError.Click += BtnError_Click;
+            btnClear.Click += BtnClear_Click;
         }
 
 
