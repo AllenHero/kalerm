@@ -75,6 +75,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Port\PortOperator.cs" />
     <Compile Include="ScanAndTestStandard.xaml.cs">
       <DependentUpon>ScanAndTestStandard.xaml</DependentUpon>
     </Compile>
@@ -90,6 +91,7 @@
     <Compile Include="ScanAndTestStandardTestError.xaml.cs">
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ulitity\PortUlitity.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

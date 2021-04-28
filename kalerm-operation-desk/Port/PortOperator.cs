@@ -1,5 +1,5 @@
 ﻿using Ivi.Visa;
-using kalerm_common.Ulitity;
+using kalerm_operation_desk.Ulitity;
 using NationalInstruments.Visa;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kalerm_common.Port
+namespace kalerm_operation_desk.Port
 {
     class RS232PortOperator : PortOperatorBase, IPortType
     {

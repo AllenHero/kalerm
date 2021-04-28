@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kalerm_common.Ulitity
+namespace kalerm_operation_desk.Ulitity
 {
     public enum PortType
     {

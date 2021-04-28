@@ -1,6 +1,7 @@
 ﻿using Ivi.Visa;
 using kalerm_common;
-using kalerm_common.Ulitity;
+using kalerm_operation_desk.Port;
+using kalerm_operation_desk.Ulitity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
