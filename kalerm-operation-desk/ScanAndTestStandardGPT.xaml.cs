@@ -1,9 +1,11 @@
 ﻿using Ivi.Visa;
 using kalerm_common;
+using kalerm_model;
 using kalerm_operation_desk.Port;
 using kalerm_operation_desk.Ulitity;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -56,6 +58,9 @@ namespace kalerm_operation_desk
         string CheckSCAN_BARCODE = "";
         PortOperatorBase portOperatorBase;
         string GPT9000 = "";
+
+        //测试项目
+        ObservableCollection<base_wutest> base_wutest = new ObservableCollection<base_wutest>();
 
         public ScanAndTestStandardGPT()
         {
@@ -203,11 +208,11 @@ namespace kalerm_operation_desk
         {
             try
             {
-                dataGrid.ScrollIntoView(T_MES_TEST_STANDARD_ORDER[count]);
+                dataGrid.ScrollIntoView(base_wutest[count]);
                 //Thread.Sleep(100);//停顿100毫秒，进入下一个测试阶段。
                 lbITEM_VALUE.Content = "0";
-                lbITEM_NAME.Content = T_MES_TEST_STANDARD_ORDER[count].ITEM_NAME + "";
-                switch (T_MES_TEST_STANDARD_ORDER[count].ITEM_TYPE)
+                lbITEM_NAME.Content = base_wutest[count].testtype + "";
+                switch (base_wutest[count].testtype)
                 {
                     case "HAND":
                         HANDRUN = true;
@@ -292,9 +297,9 @@ namespace kalerm_operation_desk
                     try
                     {
                         lbITEM_VALUE.Content = Math.Round(Value, 1) + "";
-                        if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
+                        if (TestCount < base_wutest.Count)
                         {
-                            if (T_MES_TEST_STANDARD_ORDER[TestCount].MIN_VALUE < Value && Value < T_MES_TEST_STANDARD_ORDER[TestCount].MAX_VALUE)
+                            if (base_wutest[TestCount].minvalue < Value && Value < base_wutest[TestCount].maxvalue)
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
                             else
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
@@ -324,9 +329,9 @@ namespace kalerm_operation_desk
                     try
                     {
                         lbITEM_VALUE.Content = value + "";
-                        if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
+                        if (TestCount < base_wutest.Count)
                         {
-                            if (T_MES_TEST_STANDARD_ORDER[TestCount].MIN_VALUE < value && value < T_MES_TEST_STANDARD_ORDER[TestCount].MAX_VALUE)
+                            if (base_wutest[TestCount].minvalue < value && value < base_wutest[TestCount].maxvalue)
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
                             else
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
@@ -355,9 +360,9 @@ namespace kalerm_operation_desk
                     try
                     {
                         lbITEM_VALUE.Content = value + "";
-                        if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
+                        if (TestCount < base_wutest.Count)
                         {
-                            if (T_MES_TEST_STANDARD_ORDER[TestCount].MIN_VALUE < value && value < T_MES_TEST_STANDARD_ORDER[TestCount].MAX_VALUE)
+                            if (base_wutest[TestCount].minvalue < value && value < base_wutest[TestCount].maxvalue)
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
                             else
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
@@ -407,9 +412,9 @@ namespace kalerm_operation_desk
             catch
             { }
             lbITEM_VALUE.Content = value + "";
-            if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
+            if (TestCount < base_wutest.Count)
             {
-                if (T_MES_TEST_STANDARD_ORDER[TestCount].MIN_VALUE < value && value < T_MES_TEST_STANDARD_ORDER[TestCount].MAX_VALUE)
+                if (base_wutest[TestCount].minvalue < value && value < base_wutest[TestCount].maxvalue)
                     lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
                 else
                     lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
@@ -455,9 +460,9 @@ namespace kalerm_operation_desk
             catch
             { }
             lbITEM_VALUE.Content = value + "";
-            if (TestCount < T_MES_TEST_STANDARD_ORDER.Count)
+            if (TestCount < base_wutest.Count)
             {
-                if (T_MES_TEST_STANDARD_ORDER[TestCount].MIN_VALUE < value && value < T_MES_TEST_STANDARD_ORDER[TestCount].MAX_VALUE)
+                if (base_wutest[TestCount].minvalue < value && value < base_wutest[TestCount].maxvalue)
                     lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
                 else
                     lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);

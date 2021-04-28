@@ -209,6 +209,10 @@
       <Project>{9326AF29-9BBC-4325-A522-4BFFB6AB329D}</Project>
       <Name>kalerm-common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
+      <Project>{4e9bf30c-f13e-4e82-a2a8-77b163536687}</Project>
+      <Name>kalerm-model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="WMS.ico" />
