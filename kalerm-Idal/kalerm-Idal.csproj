@@ -41,8 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseDataAdapter.cs" />
+    <Compile Include="BaseDatabaseContext.Base.cs" />
+    <Compile Include="BaseDatabaseContext.cs" />
+    <Compile Include="BaseData\IBaseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
+      <Project>{4E9BF30C-F13E-4E82-A2A8-77B163536687}</Project>
+      <Name>kalerm-model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

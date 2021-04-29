@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseData\ReportBaseModel.cs" />
     <Compile Include="BaseData\UserInfo.cs" />
     <Compile Include="base_wutest.cs" />
+    <Compile Include="ConnectionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

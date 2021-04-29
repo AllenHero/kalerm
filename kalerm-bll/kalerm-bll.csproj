@@ -41,8 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="BaseData\BllBaseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kalerm-Idal\kalerm-Idal.csproj">
+      <Project>{EC4D17E8-37A8-44B5-ADED-937667E62EAB}</Project>
+      <Name>kalerm-Idal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
+      <Project>{4E9BF30C-F13E-4E82-A2A8-77B163536687}</Project>
+      <Name>kalerm-model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kalerm-sqldal\kalerm-sqldal.csproj">
+      <Project>{F946B22A-C681-4BFC-836F-286259126CC9}</Project>
+      <Name>kalerm-sqldal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

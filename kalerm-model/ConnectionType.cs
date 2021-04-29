@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kalerm_bll
+namespace kalerm_model
 {
-    public class Class1
+    public enum ConnectionType
     {
+        LeanSqlServer = 1,
+        LeanAccess = 2
     }
 }

@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseData\SqlBaseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLDatabaseContext.Base.cs" />
+    <Compile Include="SQLDatabaseContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kalerm-common\kalerm-common.csproj">
+      <Project>{9326AF29-9BBC-4325-A522-4BFFB6AB329D}</Project>
+      <Name>kalerm-common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kalerm-Idal\kalerm-Idal.csproj">
+      <Project>{EC4D17E8-37A8-44B5-ADED-937667E62EAB}</Project>
+      <Name>kalerm-Idal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
+      <Project>{4E9BF30C-F13E-4E82-A2A8-77B163536687}</Project>
+      <Name>kalerm-model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
