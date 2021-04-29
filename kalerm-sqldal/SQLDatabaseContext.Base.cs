@@ -30,10 +30,14 @@ namespace kalerm_sqldal
             switch (connectionType)
             {
                 default:
-                case ConnectionType.LeanSqlServer:
-                    return ConfigurationManager.ConnectionStrings["SqlServerConnection"].ToString();
-                case ConnectionType.LeanAccess:
-                    return ConfigurationManager.ConnectionStrings["AccessConnString"].ToString();
+                case ConnectionType.aps:
+                    return ConfigurationManager.ConnectionStrings["aps"].ToString();
+                case ConnectionType.mes:
+                    return ConfigurationManager.ConnectionStrings["mes"].ToString();
+                case ConnectionType.model:
+                    return ConfigurationManager.ConnectionStrings["model"].ToString();
+                case ConnectionType.business:
+                    return ConfigurationManager.ConnectionStrings["business"].ToString();
             }
         }
 
@@ -54,7 +58,7 @@ namespace kalerm_sqldal
         /// <returns></returns>
         public override DbConnection CreateConnection()
         {
-            SqlConnection conn = new SqlConnection(ConnectionString(ConnectionType.LeanSqlServer));
+            SqlConnection conn = new SqlConnection(ConnectionString(ConnectionType.aps));
             conn.Open();
             return conn;
         }

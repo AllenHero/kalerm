@@ -8,7 +8,9 @@ namespace kalerm_model
 {
     public enum ConnectionType
     {
-        LeanSqlServer = 1,
-        LeanAccess = 2
+        aps = 1,
+        mes = 2,
+        model = 3,
+        business = 4
     }
 }

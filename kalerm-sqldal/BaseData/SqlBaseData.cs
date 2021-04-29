@@ -20,8 +20,7 @@ namespace kalerm_sqldal.BaseData
         public List<ReportBaseModel> GetLineNo(bool IsQueryAll)
         {
             List<ReportBaseModel> list = new List<ReportBaseModel>();
-            string sql = string.Format(@"  select WORKCENTER_NO as [Key],WORKCENTER_NO as Value from MES_WORKCENTER");
-
+            string sql = string.Format(@"select CustomerCode as [Key],CustomerName as Value from sys_customer");
             try
             {
                 DataSet ds = new DataSet();
