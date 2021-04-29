@@ -55,7 +55,11 @@ namespace kalerm_operation_desk
 
             var UserCode = textPersonID.Text;
             var Password = textPassword.Password;
-            var TenantId = "000000";
+            var TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+            if (string.IsNullOrEmpty(TenantId))
+            {
+                ReMessageBox.Show("租户不能为空");
+            }
 
             var tokenId = "";
             if (tokenId == null || tokenId == "")
@@ -104,9 +108,7 @@ namespace kalerm_operation_desk
             }
             else
             {
-
                 ReMessageBox.Show("登录失败");
-               
             }
 
         }
