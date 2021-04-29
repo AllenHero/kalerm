@@ -35,9 +35,8 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            NavigationWindow window = new NavigationWindow();
-            window.Source = new Uri("ScanAndTestStandard.xaml", UriKind.Relative);
-            window.Show();
+            MainWindow MainWindow = new MainWindow();
+            MainWindow.Show();
             this.Close();
         }
 

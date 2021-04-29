@@ -30,12 +30,24 @@ namespace kalerm_operation_desk
         public MainWindow()
         {
             InitializeComponent();
-
             LineNO = ConfigurationManager.AppSettings["LineNO"] + "";
             PROCESS_NO = ConfigurationManager.AppSettings["PROCESS_NO"] + "";
             WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
             TemperatureCom = ConfigurationManager.AppSettings["TemperatureCom"] + "";
         }
 
+        private void btnScanAndTestStandard_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationWindow window = new NavigationWindow();
+            window.Source = new Uri("ScanAndTestStandard.xaml", UriKind.Relative);
+            window.Show();
+        }
+
+        private void btnScanAndTestStandardGPT_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationWindow window = new NavigationWindow();
+            window.Source = new Uri("ScanAndTestStandardGPT.xaml", UriKind.Relative);
+            window.Show();
+        }
     }
 }
