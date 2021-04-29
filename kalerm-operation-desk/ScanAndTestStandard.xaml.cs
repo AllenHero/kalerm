@@ -1,5 +1,7 @@
-﻿using kalerm_common;
+﻿using kalerm_bll.BaseData;
+using kalerm_common;
 using kalerm_model;
+using kalerm_model.BaseData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -69,6 +71,10 @@ namespace kalerm_operation_desk
         //测试项目
         ObservableCollection<base_wutest> base_wutest = new ObservableCollection<base_wutest>();
 
+        ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
+
+        private BllBaseData bllBaseData = new BllBaseData();
+
         public ScanAndTestStandard()
         {
             InitializeComponent();
@@ -77,6 +83,7 @@ namespace kalerm_operation_desk
             btnCom.Click += BtnCom_Click;
             //btnError.Click += BtnError_Click;
             btnClear.Click += BtnClear_Click;
+            BaseModel = new ObservableCollection<ReportBaseModel>(bllBaseData.GetLineNo(false));
         }
 
 
