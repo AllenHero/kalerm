@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kalerm_model.BaseData;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace kalerm_operation_desk
         public static string WeightCom;
         public static string TemperatureCom;
         public static string TotalPass;
+
+        public static UserInfo UserInfo;
 
         public MainWindow()
         {

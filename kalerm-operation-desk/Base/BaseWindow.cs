@@ -23,6 +23,7 @@ namespace kalerm_operation_desk.Base
     [TemplatePart(Name = TopRightResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = TopLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = BottomLeftResizerName, Type = typeof(Thumb))]
+
     public class BaseWindow : Window
     {
         IntPtr ActiveWindowHandle;  //定义活动窗体的句柄  
