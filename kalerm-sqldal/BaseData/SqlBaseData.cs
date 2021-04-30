@@ -21,7 +21,7 @@ namespace kalerm_sqldal.BaseData
         public List<ReportBaseModel> GetLineNo()
         {
             List<ReportBaseModel> list = new List<ReportBaseModel>();
-            string sql = string.Format(@"select a.CustomerCode as Code,a.CustomerName as Name from sys_customer a left join `kalerm-app-aps`.`worksheet` b on a.CustomerId=b.WorkSheetId");
+            string sql = string.Format(@"select a.CustomerCode as Code,a.CustomerName as Name from sys_customer a left join `kalerm-app-aps`.`worksheet` b on a.CustomerCode=b.CustomerCode");
             try
             {
                 DataSet ds = new DataSet();
