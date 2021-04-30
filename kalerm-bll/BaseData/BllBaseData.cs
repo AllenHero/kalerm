@@ -9,12 +9,12 @@ namespace kalerm_bll.BaseData
 {
     public class BllBaseData : BaseBusiness
     {
-        public List<ReportBaseModel> GetLineNo(bool IsQueryAll)
+        public List<ReportBaseModel> GetLineNo()
         {
             List<ReportBaseModel> reslut = new List<ReportBaseModel>();
             try
             {
-                reslut = Context.BaseData.GetLineNo(IsQueryAll);
+                reslut = Context.BaseData.GetLineNo();
             }
             catch (Exception ex)
             {

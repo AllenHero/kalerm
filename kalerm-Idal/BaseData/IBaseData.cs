@@ -9,6 +9,6 @@ namespace kalerm_Idal.BaseData
 {
     public interface IBaseData
     {
-        List<ReportBaseModel> GetLineNo(bool IsQueryAll);
+        List<ReportBaseModel> GetLineNo();
     }
 }

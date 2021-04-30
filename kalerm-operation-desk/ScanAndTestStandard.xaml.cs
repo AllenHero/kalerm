@@ -85,7 +85,7 @@ namespace kalerm_operation_desk
             btnCom.Click += BtnCom_Click;
             //btnError.Click += BtnError_Click;
             btnClear.Click += BtnClear_Click;
-            BaseModel = new ObservableCollection<ReportBaseModel>(bllBaseData.GetLineNo(false));
+            BaseModel = new ObservableCollection<ReportBaseModel>(bllBaseData.GetLineNo());
         }
 
 

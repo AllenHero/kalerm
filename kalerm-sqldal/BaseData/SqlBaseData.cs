@@ -18,7 +18,7 @@ namespace kalerm_sqldal.BaseData
     {
         public SQLBaseData(BaseDatabaseContext context) : base(context) { }
 
-        public List<ReportBaseModel> GetLineNo(bool IsQueryAll)
+        public List<ReportBaseModel> GetLineNo()
         {
             List<ReportBaseModel> list = new List<ReportBaseModel>();
             string sql = string.Format(@"select CustomerCode as Code,CustomerName as Name from sys_customer");
@@ -36,8 +36,6 @@ namespace kalerm_sqldal.BaseData
                 }
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                     list = Common.DataTableConvertList<ReportBaseModel>(ds.Tables[0]);
-                if (IsQueryAll)
-                    list.Insert(0, new ReportBaseModel { Name = "全部", Code = "" });
                 return list;
             }
             catch (Exception ex)
