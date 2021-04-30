@@ -18,7 +18,7 @@ namespace kalerm_bll.BaseData
             }
             catch (Exception ex)
             {
-                
+                throw new Exception(ex.Message);
             }
             return reslut;
         }
