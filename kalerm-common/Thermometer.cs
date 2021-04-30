@@ -60,27 +60,6 @@ namespace kalerm_common
             return result;
         }
 
-        public void ReadTemp()
-        {
-            //CurTemp = 0;
-            //try
-            //{
-            //    if (!ComDevice.IsOpen)
-            //        ComDevice.Open();
-            //    byte[] data = new byte[7];
-            //    data[0] = 0x3C;
-            //    data[1] = 0x03;
-            //    data[2] = 0x01;
-            //    data[3] = 0x66;
-            //    data[4] = 0x01;
-            //    data[5] = 0x59;
-            //    data[6] = 0x0D;
-            //    if (ComDevice.IsOpen)
-            //        ComDevice.Write(data, 0, data.Length);
-            //}
-            //catch { }
-        }
-
         public void ReadEnd()
         {
             CurTemp = 0;

@@ -50,9 +50,6 @@ namespace kalerm_common
             try
             {
                 threadRun = true;
-                //thread = new Thread(new ThreadStart(Read));
-                //thread.IsBackground = true;
-                //thread.Start();
             }
             catch { }
         }
@@ -123,6 +120,5 @@ namespace kalerm_common
 
             }
         }
-
     }
 }

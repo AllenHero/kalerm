@@ -9,6 +9,7 @@ namespace kalerm_model.BaseData
     public class ReportBaseModel
     {
         public string Code { get; set; }
+
         public string Name { get; set; }
     }
 }

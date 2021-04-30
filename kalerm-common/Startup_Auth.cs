@@ -27,7 +27,6 @@ namespace kalerm_common
                 api.url = leancAuthServer + "blade-auth/oauth/token";
                 api.method = "Post";
                 api.contentType = "application/x-www-form-urlencoded";
-
                 var requestdata = new
                 {
                     grant_type = "password",

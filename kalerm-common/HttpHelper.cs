@@ -18,32 +18,38 @@ namespace kalerm_common
             {
 
             }
+
             public ParamApi(string url)
             {
                 this.url = url;
             }
+
             public ParamApi(string url, string user, string password)
             {
                 this.url = url;
                 this.user = user;
                 this.password = password;
             }
+
             public ParamApi(string url, string method)
             {
                 this.url = url;
                 this.method = method;
             }
+
             public ParamApi(string url, dynamic data)
             {
                 this.url = url;
                 this.data = data;
             }
+
             public ParamApi(string url, string method, dynamic data)
             {
                 this.url = url;
                 this.method = method;
                 this.data = data;
             }
+
             public ParamApi(string url, string method, dynamic data, string user, string password)
             {
                 this.url = url;
@@ -52,6 +58,7 @@ namespace kalerm_common
                 this.user = user;
                 this.password = password;
             }
+
             public ParamApi(string url, string method, dynamic data, string contentType)
             {
                 this.url = url;
@@ -59,6 +66,7 @@ namespace kalerm_common
                 this.data = data;
                 this.contentType = contentType;
             }
+
             public ParamApi(string url, string method, dynamic data, string contentType, string user, string password)
             {
                 this.url = url;
@@ -68,6 +76,7 @@ namespace kalerm_common
                 this.password = password;
                 this.contentType = contentType;
             }
+
             public ParamApi(string url, string method, dynamic data, string contentType, int timeOut)
             {
                 this.url = url;
@@ -76,6 +85,7 @@ namespace kalerm_common
                 this.contentType = contentType;
                 this.timeOut = timeOut;
             }
+
             public ParamApi(string url, string method, dynamic data, string contentType, string user, string password, int timeOut)
             {
                 this.url = url;
@@ -86,30 +96,36 @@ namespace kalerm_common
                 this.password = password;
                 this.timeOut = timeOut;
             }
-            
-
-
 
             public string url { get; set; }
+
             /// <summary>
             /// 请求方法（默认为GET）,首字母大写
             /// </summary>
             public string method { get; set; }
+
             /// <summary>
             /// json格式参数 Get、Delete、Update没有此参数
             /// </summary>
             public dynamic data { get; set; }
+
             /// <summary>
             /// 传送方式有 例如：application/json、 multipart/form-data  
             /// </summary>
             public string contentType { get; set; }
+
             public string user { get; set; }
+
             public string password { get; set; }
+
             public int timeOut { get; set; }
 
             public string tokenid { get; set; }
+
             public string authorzation { get; set; }
+
             public string authorKey { get; set; }
+
             public string tenantid { get; set; }
         }
 
@@ -121,13 +137,10 @@ namespace kalerm_common
             {
                 return isCheck;
             }
-
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.ExpectContinue = false;
             //client.Timeout = DateTime.Now.AddSeconds(paramapi.timeOut) - DateTime.Now;
-
             string resultStr = "";
-
             HttpResponseMessage response;
             string jsonString = JsonConvert.SerializeObject(paramapi.data);  //convert to JSON
             Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);  //convert to key/value pairs
@@ -139,19 +152,15 @@ namespace kalerm_common
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("Basic", paramapi.tokenid);
             }
-
             if (!string.IsNullOrWhiteSpace(paramapi.tenantid))
             {
                 client.DefaultRequestHeaders.Add("Tenant-Id", paramapi.tenantid);
             }
-
             if (!string.IsNullOrWhiteSpace(paramapi.authorKey))
             {
                 // 设置HTTP头Http Basic认证
                 client.DefaultRequestHeaders.Add(paramapi.authorKey, paramapi.authorzation);
             }
-
-
             if (!string.IsNullOrWhiteSpace(paramapi.user) && !string.IsNullOrWhiteSpace(paramapi.password))
             {
                 // 设置HTTP头Http Basic认证
@@ -159,7 +168,6 @@ namespace kalerm_common
                     new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", paramapi.user, paramapi.password))));
             }
-
             try
             {
                 switch (paramapi.method)
