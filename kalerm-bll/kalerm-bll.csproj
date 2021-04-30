@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27591424-59BC-4F1B-97FB-5C5B5947E740}</ProjectGuid>
+    <ProjectGuid>{D86E3646-1019-4357-A716-5F4DD3A94C7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>kalerm_bll</RootNamespace>
@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kalerm-Idal\kalerm-Idal.csproj">
-      <Project>{EC4D17E8-37A8-44B5-ADED-937667E62EAB}</Project>
+      <Project>{07705256-87BC-4543-AB6C-3A3D76E4576D}</Project>
       <Name>kalerm-Idal</Name>
     </ProjectReference>
     <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
@@ -55,7 +55,7 @@
       <Name>kalerm-model</Name>
     </ProjectReference>
     <ProjectReference Include="..\kalerm-sqldal\kalerm-sqldal.csproj">
-      <Project>{F946B22A-C681-4BFC-836F-286259126CC9}</Project>
+      <Project>{A87EC5A4-5F7B-49DA-A79A-290044227756}</Project>
       <Name>kalerm-sqldal</Name>
     </ProjectReference>
   </ItemGroup>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EC4D17E8-37A8-44B5-ADED-937667E62EAB}</ProjectGuid>
+    <ProjectGuid>{07705256-87BC-4543-AB6C-3A3D76E4576D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>kalerm_Idal</RootNamespace>

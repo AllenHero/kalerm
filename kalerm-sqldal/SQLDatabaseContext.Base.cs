@@ -1,10 +1,10 @@
 ﻿using kalerm_Idal;
 using kalerm_model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +47,7 @@ namespace kalerm_sqldal
         /// <returns></returns>
         public override DbConnection CreateConnection(ConnectionType connectionType)
         {
-            SqlConnection conn = new SqlConnection(ConnectionString(connectionType));
+            MySqlConnection conn = new MySqlConnection(ConnectionString(connectionType));
             conn.Open();
             return conn;
         }
@@ -58,7 +58,7 @@ namespace kalerm_sqldal
         /// <returns></returns>
         public override DbConnection CreateConnection()
         {
-            SqlConnection conn = new SqlConnection(ConnectionString(ConnectionType.aps));
+            MySqlConnection conn = new MySqlConnection(ConnectionString(ConnectionType.model));
             conn.Open();
             return conn;
         }
@@ -81,7 +81,7 @@ namespace kalerm_sqldal
         /// <returns></returns>
         public override DbCommand CreateCommand(string cmdText, DbConnection conn)
         {
-            return new SqlCommand(cmdText, (SqlConnection)conn);
+            return new MySqlCommand(cmdText, (MySqlConnection)conn);
         }
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace kalerm_sqldal
         /// <returns></returns>
         public override DbCommand CreateCommand(DbConnection conn)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = (SqlConnection)conn;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = (MySqlConnection)conn;
             return cmd;
         }
 

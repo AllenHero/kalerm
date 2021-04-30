@@ -231,7 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kalerm-bll\kalerm-bll.csproj">
-      <Project>{27591424-59BC-4F1B-97FB-5C5B5947E740}</Project>
+      <Project>{D86E3646-1019-4357-A716-5F4DD3A94C7F}</Project>
       <Name>kalerm-bll</Name>
     </ProjectReference>
     <ProjectReference Include="..\kalerm-common\kalerm-common.csproj">
