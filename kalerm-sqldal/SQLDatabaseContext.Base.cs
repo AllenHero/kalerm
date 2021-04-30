@@ -13,7 +13,6 @@ namespace kalerm_sqldal
 {
     public partial class SQLDatabaseContext : BaseDatabaseContext
     {
-        #region General Define
         /// <summary>
         /// 获取数据源连接字符串。
         /// </summary>
@@ -22,6 +21,7 @@ namespace kalerm_sqldal
         {
             return string.Empty;
         }
+
         /// <summary>
         /// 获取数据源连接字符串。
         /// </summary>
@@ -48,17 +48,6 @@ namespace kalerm_sqldal
         public override DbConnection CreateConnection(ConnectionType connectionType)
         {
             MySqlConnection conn = new MySqlConnection(ConnectionString(connectionType));
-            conn.Open();
-            return conn;
-        }
-
-        /// <summary>
-        /// 获取一个新的数据库连接。
-        /// </summary>
-        /// <returns></returns>
-        public override DbConnection CreateConnection()
-        {
-            MySqlConnection conn = new MySqlConnection(ConnectionString(ConnectionType.model));
             conn.Open();
             return conn;
         }
@@ -95,7 +84,5 @@ namespace kalerm_sqldal
             cmd.Connection = (MySqlConnection)conn;
             return cmd;
         }
-
-        #endregion
     }
 }

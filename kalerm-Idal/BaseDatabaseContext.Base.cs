@@ -10,7 +10,6 @@ namespace kalerm_Idal
 {
     public abstract partial class BaseDatabaseContext
     {
-        #region General Define
         /// <summary>
         /// 获取数据源连接字符串。
         /// </summary>
@@ -20,11 +19,6 @@ namespace kalerm_Idal
         /// 获取数据源连接字符串。
         /// </summary>
         public abstract string ConnectionString(ConnectionType connectionType);
-
-        /// <summary>
-        /// 获取数据源连接字符串。
-        /// </summary>
-        public abstract DbConnection CreateConnection(ConnectionType connectionType);
 
         /// <summary>
         /// 获取指定的数据源字符串。
@@ -38,7 +32,7 @@ namespace kalerm_Idal
         /// </summary>
         /// <param name="connectionString">数据源连接字符串。</param>
         /// <returns></returns>
-        public abstract DbConnection CreateConnection();
+        public abstract DbConnection CreateConnection(ConnectionType connectionType);
 
         /// <summary>
         /// 创建 DbCommand 对象。
@@ -54,8 +48,5 @@ namespace kalerm_Idal
         /// <param name="conn"></param>
         /// <returns></returns>
         public abstract DbCommand CreateCommand(string cmdText, DbConnection conn);
-
-
-        #endregion
     }
 }

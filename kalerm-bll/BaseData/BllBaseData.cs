@@ -12,15 +12,13 @@ namespace kalerm_bll.BaseData
         public List<ReportBaseModel> GetLineNo(bool IsQueryAll)
         {
             List<ReportBaseModel> reslut = new List<ReportBaseModel>();
-            string message = "";
             try
             {
                 reslut = Context.BaseData.GetLineNo(IsQueryAll);
-
             }
             catch (Exception ex)
             {
-                //base.ExceptionLog("GetLineNo", EmergencyLevel.General, ex, out message);
+                
             }
             return reslut;
         }

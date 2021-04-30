@@ -1,6 +1,7 @@
 ﻿using kalerm_common.Extensions;
 using kalerm_Idal;
 using kalerm_Idal.BaseData;
+using kalerm_model;
 using kalerm_model.BaseData;
 using MySql.Data.MySqlClient;
 using System;
@@ -24,7 +25,7 @@ namespace kalerm_sqldal.BaseData
             try
             {
                 DataSet ds = new DataSet();
-                using (DbConnection dbConnection = base.Context.CreateConnection())
+                using (DbConnection dbConnection = base.Context.CreateConnection(ConnectionType.model))
                 {
                     MySqlCommand sqlCommand = (MySqlCommand)base.Context.CreateCommand(sql, dbConnection);
                     sqlCommand.CommandText = sql;
@@ -43,7 +44,6 @@ namespace kalerm_sqldal.BaseData
             {
                 throw new Exception(ex.Message);
             }
-
         }
     }
 }
