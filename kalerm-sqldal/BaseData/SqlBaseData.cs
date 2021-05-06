@@ -36,6 +36,24 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
+        public List<WorkSheet> GetWorkSheet()
+        {
+            List<WorkSheet> list = new List<WorkSheet>();
+            string sql = string.Format(@"select * from `kalerm-app-aps`.`worksheet`");
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.aps);
+                if (dt != null && dt.Rows.Count > 0)
+                    list = Common.DataTableConvertList<WorkSheet>(dt);
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #region sql语句
 
         /// <summary>

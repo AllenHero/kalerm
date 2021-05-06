@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\BaseWindow.cs" />
+    <Compile Include="Control\AutoCompleteEntry.cs" />
+    <Compile Include="Control\AutoCompleteTextBox.xaml.cs">
+      <DependentUpon>AutoCompleteTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -113,6 +117,10 @@
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ulitity\PortUlitity.cs" />
+    <Page Include="Control\AutoCompleteTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -246,5 +254,6 @@
   <ItemGroup>
     <Resource Include="WMS.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

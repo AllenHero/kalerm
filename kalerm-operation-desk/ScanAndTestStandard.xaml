@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kalerm_operation_desk"
+      xmlns:control="clr-namespace:kalerm_operation_desk.Control"     
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
       Title="ScanAndTestStandard">
@@ -27,10 +28,10 @@
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Content="产线：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox Grid.Column="1" Width="140" DisplayMemberPath="Key" SelectedValuePath="Value"  Name="cbbLineNo" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <Label Grid.Column="2"  Content="工序：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="PROCESS_NAME" SelectedValuePath="PROCESS_NO"  Name="cbbPROCESS" IsEnabled="False"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Label Grid.Column="0" Content="工单：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWrokSheetNo" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" />
+        <Label Grid.Column="2"  Content="工作单元：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="WorkUnit" SelectedValuePath="WorkUnit"  Name="cbbWorkUnit" IsEnabled="False"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Grid Grid.Column="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

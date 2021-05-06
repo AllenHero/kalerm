@@ -1,4 +1,5 @@
-﻿using kalerm_model.BaseData;
+﻿using kalerm_model;
+using kalerm_model.BaseData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace kalerm_Idal.BaseData
     public interface IBaseData
     {
         List<ReportBaseModel> GetLineNo();
+
+        List<WorkSheet> GetWorkSheet();
     }
 }

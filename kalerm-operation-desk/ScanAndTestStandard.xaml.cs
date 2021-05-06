@@ -3,6 +3,7 @@ using kalerm_bll.BaseData;
 using kalerm_common;
 using kalerm_model;
 using kalerm_model.BaseData;
+using kalerm_operation_desk.Control;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -75,6 +76,8 @@ namespace kalerm_operation_desk
 
         ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
 
+        ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
+
         private BllBaseData bllBaseData = new BllBaseData();
 
         public ScanAndTestStandard()
@@ -124,16 +127,22 @@ namespace kalerm_operation_desk
             lbTotal.Content = TotalPass + "";
 
             this.Loaded -= ScanAndTestStandard_Loaded;
-            cbbLineNo.SelectedValue = LineNO;
-            cbbPROCESS.SelectedValue = PROCESS_NO;
+            //cbbLineNo.SelectedValue = LineNO;
+            //cbbPROCESS.SelectedValue = PROCESS_NO;
             txtScan.Focus();
+
+            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
+            foreach (var row in WorkSheet)
+            {
+                textWrokSheetNo.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+            }
         }
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
             ScanAndTestStandardSet page = new ScanAndTestStandardSet();
-            page.LineNO = cbbLineNo.SelectedValue + "";
-            page.PROCESS_NO = cbbPROCESS.SelectedValue + "";
+            //page.LineNO = cbbLineNo.SelectedValue + "";
+            //page.PROCESS_NO = cbbPROCESS.SelectedValue + "";
             page.ScanAndTestStandardSetEvent += Page_ScanAndTestStandardSetEvent;
             page.ShowDialog();
             txtScan.Focus();
@@ -143,8 +152,8 @@ namespace kalerm_operation_desk
         {
             string LineNO = MainWindow.LineNO + "";
             string PROCESS_NO = MainWindow.PROCESS_NO + "";
-            cbbLineNo.SelectedValue = LineNO;
-            cbbPROCESS.SelectedValue = PROCESS_NO;
+            //cbbLineNo.SelectedValue = LineNO;
+            //cbbPROCESS.SelectedValue = PROCESS_NO;
         }
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using kalerm_model.BaseData;
+﻿using kalerm_model;
+using kalerm_model.BaseData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,21 @@ namespace kalerm_bll.BaseData
                 throw new Exception(ex.Message);
             }
             return reslut;
+        }
+
+        public List<WorkSheet> GetWorkSheet()
+        {
+            List<WorkSheet> result = new List<WorkSheet>();
+            try
+            {
+                result = Context.BaseData.GetWorkSheet();
+
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
         }
     }
 }
