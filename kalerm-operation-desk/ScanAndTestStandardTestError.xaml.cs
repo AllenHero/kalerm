@@ -61,6 +61,7 @@ namespace kalerm_operation_desk
                     UpdateTestErrorEvent(txtScan.Text + "", new EventArgs());
                 CanClose = true;
                 this.Close();
+
             }
         }
 

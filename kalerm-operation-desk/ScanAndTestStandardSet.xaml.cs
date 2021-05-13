@@ -1,5 +1,9 @@
-﻿using System;
+﻿using kalerm_bll.BaseData;
+using kalerm_model;
+using kalerm_operation_desk.Control;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -20,11 +24,15 @@ namespace kalerm_operation_desk
     /// </summary>
     public partial class ScanAndTestStandardSet : Window
     {
-        public string LineNO = "";
+        private BllBaseData bllBaseData = new BllBaseData();
 
-        public string PROCESS_NO = "";
+        ObservableCollection<base_wu> base_wu = new ObservableCollection<base_wu>();
 
         public event EventHandler ScanAndTestStandardSetEvent = null;
+
+        ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
+
+
 
         public ScanAndTestStandardSet()
         {
@@ -43,39 +51,51 @@ namespace kalerm_operation_desk
 
         private void ScanAndTestStandardSet_Loaded(object sender, RoutedEventArgs e)
         {
-            //ReportBaseModel = new ObservableCollection<ReportBaseModel>(bllBaseData.GetLineNo(false));
-            //cbbLINE_ON.ItemsSource = ReportBaseModel;
-            if (string.IsNullOrEmpty(LineNO))
-                cbbLINE_ON.SelectedIndex = 0;
-            else
-                cbbLINE_ON.SelectedValue = LineNO;
 
+            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
+            foreach (var row in WorkSheet)
+            {
+                textWrokSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
+            }
 
-            //MES_PROCESSES = new ObservableCollection<MES_PROCESSES>(bllBaseData.GetMES_PROCESSES());
-            //cbbPROCESS_NO.ItemsSource = MES_PROCESSES;
-            if (string.IsNullOrEmpty(PROCESS_NO))
-                cbbPROCESS_NO.SelectedIndex = 0;
-            else
-                cbbPROCESS_NO.SelectedValue = PROCESS_NO;
         }
 
         void btnOk_Click(object sender, RoutedEventArgs e)
         {
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            cfa.AppSettings.Settings["LineNO"].Value = cbbLINE_ON.SelectedValue + "";
-            cfa.AppSettings.Settings["PROCESS_NO"].Value = cbbPROCESS_NO.SelectedValue + "";
+            cfa.AppSettings.Settings["LineNO"].Value = textWrokSheet.Text + "";
+            cfa.AppSettings.Settings["PROCESS_NO"].Value = cbbWorkUnit.SelectedValue + "";
             cfa.Save();
 
-            MainWindow.LineNO = cbbLINE_ON.SelectedValue + "";
-            MainWindow.PROCESS_NO = cbbPROCESS_NO.SelectedValue + "";
+            MainWindow.LineNO = textWrokSheet.Text + "";
+            MainWindow.PROCESS_NO = cbbWorkUnit.SelectedValue + "";
             if (ScanAndTestStandardSetEvent != null)
                 ScanAndTestStandardSetEvent(this, new EventArgs());
+
             this.Close();
         }
 
         void btnCel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void textWrokSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //根据工单获取工作单元
+            string str1 = textWrokSheet.Text + "";
+            string ProductCode = "";
+
+            if (str1.Contains('|'))
+            {
+                string[] sArray = str1.Split('|');
+                ProductCode = sArray[1];
+            }
+
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWu(ProductCode));
+            cbbWorkUnit.ItemsSource = base_wu;
+            cbbWorkUnit.DisplayMemberPath = "wuname";
+            cbbWorkUnit.SelectedValuePath = "wuid";
         }
     }
 }

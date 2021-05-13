@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:kalerm_operation_desk"
+        xmlns:control="clr-namespace:kalerm_operation_desk.Control"
         mc:Ignorable="d"
         Title="设置参数" Height="160" Width="340"  WindowStartupLocation="CenterScreen">
     <Grid>
@@ -18,10 +18,10 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="线体：" Margin="6,10,0,0"/>
-        <ComboBox Grid.ColumnSpan="2" Name="cbbLINE_ON" DisplayMemberPath="Key" SelectedValuePath="Value" Grid.Column="1"  Text="" VerticalAlignment="Center" Margin="6,0,10,0"/>
-        <TextBlock Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="工序：" Margin="6,0,0,0"/>
-        <ComboBox Grid.ColumnSpan="2" Grid.Row="1" Name="cbbPROCESS_NO" DisplayMemberPath="PROCESS_NAME" SelectedValuePath="PROCESS_NO" Grid.Column="1" VerticalAlignment="Center" Text="" Margin="6,0,10,0"/>
+        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="工单：" Margin="6,10,0,0"/>
+        <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWrokSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeftButtonUp="textWrokSheet_MouseLeftButtonUp"/>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="工作单元：" Margin="6,0,0,0"/>
+        <ComboBox Grid.ColumnSpan="2" Grid.Row="1" Name="cbbWorkUnit" DisplayMemberPath="wuname" SelectedValuePath="wuid" Grid.Column="1" VerticalAlignment="Center" Text="" Margin="6,0,10,0" ItemsSource="{Binding}"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center"  Grid.ColumnSpan="4" VerticalAlignment="Top">
             <Button Style="{StaticResource ButtonStlye}" Name="btnOk" Height="22" Margin="0,8,0,8" MinWidth="50" Content="确定"/>
