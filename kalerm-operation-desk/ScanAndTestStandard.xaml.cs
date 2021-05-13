@@ -163,8 +163,8 @@ namespace kalerm_operation_desk
             else
                 lbTP.Content = "打开串口失败";
 
-            string LineNO = MainWindow.LineNO + "";
-            string PROCESS_NO = MainWindow.PROCESS_NO + "";
+            string WorkSheetNo = MainWindow.WorkSheetNo + "";
+            string WorkUnitId = MainWindow.WorkUnitId + "";
             TotalPass = Convert.ToInt32(MainWindow.TotalPass);
             lbWTCOM.Content = MainWindow.WeightCom + "";
             lbTPCOM.Content = MainWindow.TemperatureCom + "";
@@ -174,7 +174,7 @@ namespace kalerm_operation_desk
             WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
             foreach (var row in WorkSheet)
             {
-                textWrokSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
+                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
 
             txtScan.Focus();
@@ -185,8 +185,8 @@ namespace kalerm_operation_desk
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
             ScanAndTestStandardSet page = new ScanAndTestStandardSet();
-            //page.LineNO = cbbLineNo.SelectedValue + "";
-            //page.PROCESS_NO = cbbPROCESS.SelectedValue + "";
+            page.WorkSheetNo = textWorkSheet.Text + "";
+            page.WorkUnitId = cbbWorkUnit.SelectedValue + "";
             page.ScanAndTestStandardSetEvent += Page_ScanAndTestStandardSetEvent;
             page.ShowDialog();
             txtScan.Focus();
@@ -194,10 +194,10 @@ namespace kalerm_operation_desk
 
         private void Page_ScanAndTestStandardSetEvent(object sender, EventArgs e)
         {
-            string LineNO = MainWindow.LineNO + "";
-            string PROCESS_NO = MainWindow.PROCESS_NO + "";
-            //cbbLineNo.SelectedValue = LineNO;
-            //cbbPROCESS.SelectedValue = PROCESS_NO;
+            string WorkSheetNo = MainWindow.WorkSheetNo + "";
+            string WorkUnitId = MainWindow.WorkUnitId + "";
+            textWorkSheet.Text= WorkSheetNo;
+            cbbWorkUnit.SelectedValue = WorkUnitId;
         }
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)
@@ -587,10 +587,10 @@ namespace kalerm_operation_desk
             }
         }
 
-        private void textWrokSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void textWorkSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             //根据工单获取工作单元
-            string str1 = textWrokSheet.Text + "";
+            string str1 = textWorkSheet.Text + "";
             string ProductCode = "";
 
             if (str1.Contains('|'))

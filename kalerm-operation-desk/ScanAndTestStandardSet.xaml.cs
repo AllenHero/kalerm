@@ -32,6 +32,9 @@ namespace kalerm_operation_desk
 
         ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
 
+        public string WorkSheetNo = "";
+
+        public string WorkUnitId = "";
 
 
         public ScanAndTestStandardSet()
@@ -55,7 +58,7 @@ namespace kalerm_operation_desk
             WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
             foreach (var row in WorkSheet)
             {
-                textWrokSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
+                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
 
         }
@@ -63,12 +66,12 @@ namespace kalerm_operation_desk
         void btnOk_Click(object sender, RoutedEventArgs e)
         {
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            cfa.AppSettings.Settings["LineNO"].Value = textWrokSheet.Text + "";
-            cfa.AppSettings.Settings["PROCESS_NO"].Value = cbbWorkUnit.SelectedValue + "";
+            cfa.AppSettings.Settings["WorkSheetNo"].Value = textWorkSheet.Text + "";
+            cfa.AppSettings.Settings["WorkUnitId"].Value = cbbWorkUnit.SelectedValue + "";
             cfa.Save();
 
-            MainWindow.LineNO = textWrokSheet.Text + "";
-            MainWindow.PROCESS_NO = cbbWorkUnit.SelectedValue + "";
+            MainWindow.WorkSheetNo = textWorkSheet.Text + "";
+            MainWindow.WorkUnitId = cbbWorkUnit.SelectedValue + "";
             if (ScanAndTestStandardSetEvent != null)
                 ScanAndTestStandardSetEvent(this, new EventArgs());
 
@@ -80,10 +83,10 @@ namespace kalerm_operation_desk
             this.Close();
         }
 
-        private void textWrokSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void textWorkSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             //根据工单获取工作单元
-            string str1 = textWrokSheet.Text + "";
+            string str1 = textWorkSheet.Text + "";
             string ProductCode = "";
 
             if (str1.Contains('|'))

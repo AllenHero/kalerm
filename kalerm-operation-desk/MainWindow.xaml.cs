@@ -22,8 +22,8 @@ namespace kalerm_operation_desk
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string LineNO;
-        public static string PROCESS_NO;
+        public static string WorkSheetNo;
+        public static string WorkUnitId;
         public static string WeightCom;
         public static string TemperatureCom;
         public static string TotalPass;
@@ -33,8 +33,8 @@ namespace kalerm_operation_desk
         public MainWindow()
         {
             InitializeComponent();
-            LineNO = ConfigurationManager.AppSettings["LineNO"] + "";
-            PROCESS_NO = ConfigurationManager.AppSettings["PROCESS_NO"] + "";
+            WorkSheetNo = ConfigurationManager.AppSettings["WorkSheetNo"] + "";
+            WorkUnitId = ConfigurationManager.AppSettings["WorkUnitId"] + "";
             WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
             TemperatureCom = ConfigurationManager.AppSettings["TemperatureCom"] + "";
         }
