@@ -22,6 +22,7 @@ namespace kalerm_model
         public string updateuser { get; set; }
         public decimal maxvalue { get; set; }
         public decimal minvalue { get; set; }
+        public string value { get; set; }
 
     }
 }
