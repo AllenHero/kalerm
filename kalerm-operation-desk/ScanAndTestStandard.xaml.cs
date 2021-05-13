@@ -78,6 +78,8 @@ namespace kalerm_operation_desk
 
         ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
 
+        ObservableCollection<base_wu> basewu = new ObservableCollection<base_wu>();
+
         private BllBaseData bllBaseData = new BllBaseData();
 
         public ScanAndTestStandard()
@@ -134,9 +136,11 @@ namespace kalerm_operation_desk
             WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
             foreach (var row in WorkSheet)
             {
-                textWrokSheetNo.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+                textWrokSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
+            
         }
+
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
@@ -419,6 +423,24 @@ namespace kalerm_operation_desk
                 Color = 0;
                 grid.Background = new SolidColorBrush(Colors.White);
             }
+        }
+
+        private void textWrokSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //MessageBox.Show(textWrokSheet.Text);
+            string str1 = textWrokSheet.Text + "";
+            string ProductCode = "";
+
+            if (str1.Contains('|'))
+            {
+                string[] sArray = str1.Split('|');
+                ProductCode = sArray[1];
+            }
+
+            basewu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWu(ProductCode));
+            cbbWorkUnit.ItemsSource = basewu;
+            cbbWorkUnit.DisplayMemberPath = "wuname";
+            cbbWorkUnit.SelectedValuePath = "wuid";
         }
 
     }

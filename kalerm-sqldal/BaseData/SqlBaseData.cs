@@ -54,6 +54,24 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
+        public List<base_wu> GetBaseWu(string ProductCode)
+        {
+            List<base_wu> list = new List<base_wu>();
+            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid where a.productcode='" + ProductCode + "'");
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.aps);
+                if (dt != null && dt.Rows.Count > 0)
+                    list = Common.DataTableConvertList<base_wu>(dt);
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #region sql语句
 
         /// <summary>

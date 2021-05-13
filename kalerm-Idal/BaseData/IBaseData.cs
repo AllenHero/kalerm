@@ -13,5 +13,7 @@ namespace kalerm_Idal.BaseData
         List<ReportBaseModel> GetLineNo();
 
         List<WorkSheet> GetWorkSheet();
+
+        List<base_wu> GetBaseWu(string ProductCode);
     }
 }

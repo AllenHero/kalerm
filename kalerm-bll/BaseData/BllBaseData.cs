@@ -38,5 +38,20 @@ namespace kalerm_bll.BaseData
             }
             return result;
         }
+
+        public List<base_wu> GetBaseWu(string ProductCode)
+        {
+            List<base_wu> result = new List<base_wu>();
+            try
+            {
+                result = Context.BaseData.GetBaseWu(ProductCode);
+
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }
