@@ -80,10 +80,14 @@
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="220*"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="506*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2"/>
+            <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,2"/>
         </Grid>
         <Grid Grid.ColumnSpan="8" Grid.Row="4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>

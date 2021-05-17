@@ -30,7 +30,6 @@ namespace kalerm_bll.BaseData
             try
             {
                 result = Context.BaseData.GetWorkSheet();
-
             }
             catch (System.Exception ex)
             {
@@ -45,7 +44,6 @@ namespace kalerm_bll.BaseData
             try
             {
                 result = Context.BaseData.GetBaseWu(ProductCode);
-
             }
             catch (System.Exception ex)
             {

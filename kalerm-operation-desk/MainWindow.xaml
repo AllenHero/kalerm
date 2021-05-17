@@ -9,7 +9,7 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center"  Grid.ColumnSpan="4" VerticalAlignment="Top">
-            <Button Style="{StaticResource ButtonStlye}" Name="btnScanAndTestStandard" Height="22" Margin="0,8,0,8" MinWidth="50" Content="流程扫描" Click="btnScanAndTestStandard_Click"/>
+            <Button Style="{StaticResource ButtonStlye}" Name="btnScanAndTestStandard" Height="22" Margin="6,8,0,8" MinWidth="50" Content="流程扫描" Click="btnScanAndTestStandard_Click"/>
             <Button Style="{StaticResource ButtonStlye}" Name="btnScanAndTestStandardGPT" Height="22" Margin="6,8,0,8" MinWidth="50" Content="安规测试扫描" Click="btnScanAndTestStandardGPT_Click"/>
         </StackPanel>
     </Grid>

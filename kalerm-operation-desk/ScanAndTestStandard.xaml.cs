@@ -233,6 +233,7 @@ namespace kalerm_operation_desk
             try
             {
                 //TODO:
+                MessageBox.Show(txtScan.Text);
             }
             catch (Exception ex)
             {
@@ -601,8 +602,8 @@ namespace kalerm_operation_desk
 
             basewu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWu(ProductCode));
             cbbWorkUnit.ItemsSource = basewu;
-            cbbWorkUnit.DisplayMemberPath = "wuname";
-            cbbWorkUnit.SelectedValuePath = "wuid";
+            //cbbWorkUnit.DisplayMemberPath = "wuname";
+            //cbbWorkUnit.SelectedValuePath = "wuid";
         }
 
     }
