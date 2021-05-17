@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kalerm_operation_desk"
-        mc:Ignorable="d" Height="450" Width="800">
+        mc:Ignorable="d" Height="300" Width="460">
     <Window.Resources>
         <Style x:Key="NoResize_window" TargetType="{x:Type Window}">
             <Setter Property="AllowsTransparency" Value="true"/>
@@ -519,13 +519,13 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/kalerm-operation-desk;component/Image/LandWindow_1.jpg" />
             </Grid.Background>
-            <Label Content="登录名" Margin="121,157,0,0"/>
-            <TextBox Margin="250,160,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPersonID" Text=""/>
-            <Label Content="密   码" Margin="121,184,0,0"/>
-            <PasswordBox Margin="250,187,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPassword" Password=""/>
+            <Label Content="登录名" Margin="100,130,0,0"/>
+            <TextBox Margin="200,130,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPersonID" Text=""/>
+            <Label Content="密   码" Margin="100,160,0,0"/>
+            <PasswordBox Margin="200,160,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPassword" Password=""/>
 
-            <Button Style="{StaticResource ButtonStlye}"  Margin="170,248,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnLogin"  Content="登录" Click="btnLogin_Click" />
-            <Button Style="{StaticResource ButtonStlye}" Margin="294,248,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnExit"  Content="退出" Click="btnExit_Click"  />
+            <Button Style="{StaticResource ButtonStlye}"  Margin="130,220,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnLogin"  Content="登录" Click="btnLogin_Click" />
+            <Button Style="{StaticResource ButtonStlye}" Margin="230,220,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnExit"  Content="退出" Click="btnExit_Click"  />
         </Grid>
 
 
