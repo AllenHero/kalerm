@@ -235,7 +235,7 @@ namespace kalerm_operation_desk
             try
             {
                 //TODO:
-                MessageBox.Show(txtScan.Text);
+                //MessageBox.Show(txtScan.Text);
             }
             catch (Exception ex)
             {
