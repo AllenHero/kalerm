@@ -51,5 +51,19 @@ namespace kalerm_bll.BaseData
             }
             return result;
         }
+
+        public List<base_wutest> GetBaseWuTest(string WuId)
+        {
+            List<base_wutest> result = new List<base_wutest>();
+            try
+            {
+                result = Context.BaseData.GetBaseWuTest(WuId);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }

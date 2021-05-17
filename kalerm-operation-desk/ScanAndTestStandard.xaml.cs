@@ -72,7 +72,7 @@ namespace kalerm_operation_desk
         bool TimeStart = false;
 
         //测试项目
-        ObservableCollection<base_wutest> base_wutest = new ObservableCollection<base_wutest>();
+        List<base_wutest> base_wutest = new List<base_wutest>();
 
         ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
 
@@ -94,6 +94,8 @@ namespace kalerm_operation_desk
             //btnError.Click += BtnError_Click;
             btnClear.Click += BtnClear_Click;
             dataGrid.LoadingRow += DataGrid_LoadingRow;
+
+            cbbWorkUnit.SelectionChanged += new SelectionChangedEventHandler(cbbWorkUnit_SelectionChanged);
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -606,5 +608,16 @@ namespace kalerm_operation_desk
             //cbbWorkUnit.SelectedValuePath = "wuid";
         }
 
+
+        private void cbbWorkUnit_SelectionChanged(object sender, SelectionChangedEventArgs e) 
+        {
+            if (cbbWorkUnit.Text != "")
+            {
+                //MessageBox.Show(Convert.ToString(cbbWorkUnit.SelectedValue));
+                string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                base_wutest = bllBaseData.GetBaseWuTest(WuId);
+                dataGrid.ItemsSource = base_wutest;
+            }
+        }
     }
 }
