@@ -71,11 +71,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="条码：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="1" Name="lbSCAN_BARCODE" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="2" Content="工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Name="lbSCAN_BARCODE" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Label Grid.Column="1" Content="工单号：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,2" Width="178"/>
             <Label Grid.Column="3" Name="lbORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="4" Content="工艺路线：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" Content="工艺路线：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,2" Width="222"/>
             <Label Grid.Column="5" Name="lbROUTING_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="5" Content="指令单：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2" Width="176"/>
+            <Label Grid.Column="7" Name="lbWorkSheetMain_No" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -85,6 +87,8 @@
                 <ColumnDefinition Width="12*"/>
                 <ColumnDefinition Width="21*"/>
                 <ColumnDefinition Width="506*"/>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2"/>
             <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,2"/>
