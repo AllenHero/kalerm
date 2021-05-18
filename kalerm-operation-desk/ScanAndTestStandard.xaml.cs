@@ -91,7 +91,6 @@ namespace kalerm_operation_desk
             txtScan.KeyUp += TxtScan_KeyUp;
             btnSet.Click += BtnSet_Click;
             btnCom.Click += BtnCom_Click;
-            //btnError.Click += BtnError_Click;
             btnClear.Click += BtnClear_Click;
             dataGrid.LoadingRow += DataGrid_LoadingRow;
         }
@@ -125,12 +124,9 @@ namespace kalerm_operation_desk
         {
             BalanceWeight.ReadEnd();
             Thermometer.ReadEnd();
-            //if (portOperatorBase != null)
-            //    portOperatorBase.Close();
             txtScan.KeyUp -= TxtScan_KeyUp;
             btnSet.Click -= BtnSet_Click;
             btnCom.Click -= BtnCom_Click;
-            //btnError.Click -= BtnError_Click;
             btnClear.Click -= BtnClear_Click;
             dataGrid.LoadingRow -= DataGrid_LoadingRow;
             System.GC.Collect();
@@ -684,6 +680,7 @@ namespace kalerm_operation_desk
             if (result)//测试成功
             {
                 isSCAN = true;
+                string MachineName = Environment.MachineName;
                 //TODO:
                 lbMessage.Content = "成功过站";
                 lbMessage.Foreground = new SolidColorBrush(Colors.Black);
@@ -743,7 +740,8 @@ namespace kalerm_operation_desk
                 {
                     mes_testdata item = new mes_testdata();
                     item.Id = row.wutestid;
-                    item.WorkSheetNo = row.testno;
+                    item.OrderNo = Convert.ToString(lbORDER_NO.Content);//制令单
+                    item.WorkSheetNo = Convert.ToString(lbWorkSheet_NO);//工单
                     item.WuId = row.wuid;
                     item.BarCode = SCAN_BARCODE;
                     item.TesItemName = row.testitemname;
