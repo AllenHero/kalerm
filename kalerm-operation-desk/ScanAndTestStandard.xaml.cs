@@ -76,7 +76,7 @@ namespace kalerm_operation_desk
 
         ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
 
-        ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
+        ObservableCollection<worksheet> WorkSheet = new ObservableCollection<worksheet>();
 
         ObservableCollection<base_wu> basewu = new ObservableCollection<base_wu>();
 
@@ -173,7 +173,7 @@ namespace kalerm_operation_desk
             lbTotal.Content = TotalPass + "";
 
             this.Loaded -= ScanAndTestStandard_Loaded;
-            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheetList());
+            WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
@@ -294,7 +294,7 @@ namespace kalerm_operation_desk
                     //工单
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
 
-                    WorkSheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    worksheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
 
                     string ProcessId = "";
                     if (worksheet !=null)

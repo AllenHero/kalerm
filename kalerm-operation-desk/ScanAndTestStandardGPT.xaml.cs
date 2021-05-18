@@ -85,7 +85,7 @@ namespace kalerm_operation_desk
 
         ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
 
-        ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
+        ObservableCollection<worksheet> WorkSheet = new ObservableCollection<worksheet>();
 
         private BllBaseData bllBaseData = new BllBaseData();
 
@@ -210,7 +210,7 @@ namespace kalerm_operation_desk
 
             this.Loaded -= ScanAndTestStandard_Loaded;
 
-            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheetList());
+            WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));

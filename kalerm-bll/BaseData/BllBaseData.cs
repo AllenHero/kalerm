@@ -10,9 +10,9 @@ namespace kalerm_bll.BaseData
 {
     public class BllBaseData : BaseBusiness
     {
-        public List<WorkSheet> GetWorkSheetList()
+        public List<worksheet> GetWorkSheetList()
         {
-            List<WorkSheet> result = new List<WorkSheet>();
+            List<worksheet> result = new List<worksheet>();
             try
             {
                 result = Context.BaseData.GetWorkSheetList();
@@ -53,9 +53,9 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public WorkSheet GetWorkSheet(string WorkSheetNo)
+        public worksheet GetWorkSheet(string WorkSheetNo)
         {
-            WorkSheet result = new WorkSheet();
+            worksheet result = new worksheet();
             try
             {
                 result = Context.BaseData.GetWorkSheet(WorkSheetNo);

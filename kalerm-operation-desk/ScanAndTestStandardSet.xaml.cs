@@ -30,7 +30,7 @@ namespace kalerm_operation_desk
 
         public event EventHandler ScanAndTestStandardSetEvent = null;
 
-        ObservableCollection<WorkSheet> WorkSheet = new ObservableCollection<WorkSheet>();
+        ObservableCollection<worksheet> WorkSheet = new ObservableCollection<worksheet>();
 
         public string WorkSheetNo = "";
 
@@ -55,7 +55,7 @@ namespace kalerm_operation_desk
         private void ScanAndTestStandardSet_Loaded(object sender, RoutedEventArgs e)
         {
 
-            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheetList());
+            WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));

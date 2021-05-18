@@ -10,13 +10,13 @@ namespace kalerm_Idal.BaseData
 {
     public interface IBaseData
     {
-        List<WorkSheet> GetWorkSheetList();
+        List<worksheet> GetWorkSheetList();
 
         List<base_wu> GetBaseWuList(string ProductCode);
 
         List<base_wutest> GetBaseWuTestList(string WuId, out bool isOK);
 
-        WorkSheet GetWorkSheet(string WorkSheetNo);
+        worksheet GetWorkSheet(string WorkSheetNo);
 
         base_productionprocess GetProductionProcess(string ProcessId);
     }

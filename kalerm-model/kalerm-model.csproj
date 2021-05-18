@@ -49,7 +49,7 @@
     <Compile Include="ConnectionType.cs" />
     <Compile Include="mes_testdata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkSheet.cs" />
+    <Compile Include="worksheet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

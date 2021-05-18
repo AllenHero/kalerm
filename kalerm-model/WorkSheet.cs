@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kalerm_model
 {
-    public class WorkSheet 
+    public class worksheet 
     {
         public string WorkSheetId { get; set; }
         public string OrderNo { get; set; }

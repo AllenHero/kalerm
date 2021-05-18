@@ -18,16 +18,16 @@ namespace kalerm_sqldal.BaseData
     {
         public SQLBaseData(BaseDatabaseContext context) : base(context) { }
 
-        public List<WorkSheet> GetWorkSheetList()
+        public List<worksheet> GetWorkSheetList()
         {
-            List<WorkSheet> list = new List<WorkSheet>();
+            List<worksheet> list = new List<worksheet>();
             string sql = string.Format(@"select * from `kalerm-app-aps`.`worksheet`");
             try
             {
                 DataTable dt = new DataTable();
                 dt = GetDataTable(sql, ConnectionType.aps);
                 if (dt != null && dt.Rows.Count > 0)
-                    list = Common.DataTableConvertList<WorkSheet>(dt);
+                    list = Common.DataTableConvertList<worksheet>(dt);
                 return list;
             }
             catch (Exception ex)
@@ -75,16 +75,16 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public WorkSheet GetWorkSheet(string WorkSheetNo)
+        public worksheet GetWorkSheet(string WorkSheetNo)
         {
-            WorkSheet model = new WorkSheet();
+            worksheet model = new worksheet();
             string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a  where a.WorkSheetNo='" + WorkSheetNo + "'");
             try
             {
                 DataTable dt = new DataTable();
                 dt = GetDataTable(sql, ConnectionType.aps);
                 if (dt != null && dt.Rows.Count > 0)
-                    model = Common.DataTableToModel<WorkSheet>(dt);
+                    model = Common.DataTableToModel<worksheet>(dt);
                 return model;
 
             }
