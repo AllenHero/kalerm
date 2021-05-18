@@ -76,7 +76,7 @@
             <Label Grid.Column="2" Name="lbWorkSheet_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="5.5,2,0,2" Width="105"/>
             <Label Grid.Column="3" Content="工艺路线：" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,2,18,2" Width="235"/>
             <Label Grid.Column="3" Name="lbROUTING_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="165.5,2,0,2" Width="161"/>
-            <Label Grid.Column="4" Content="指令单：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,106,2" Width="121" RenderTransformOrigin="-0.172,0.68" Grid.ColumnSpan="2"/>
+            <Label Grid.Column="4" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,106,2" Width="121" RenderTransformOrigin="-0.172,0.68" Grid.ColumnSpan="2"/>
             <Label Grid.Column="5" Name="lbORDER_NO" Content="" VerticalAlignment="Center" Margin="107.5,2,72,2" RenderTransformOrigin="0.932,0.5"/>
         </Grid>
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
