@@ -292,7 +292,7 @@ namespace kalerm_operation_desk
                     }
 
                     //工单
-                    lbORDER_NO.Content = WorkSheetNo + "";
+                    lbWorkSheet_NO.Content = WorkSheetNo + "";
 
                     WorkSheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
 
@@ -300,7 +300,7 @@ namespace kalerm_operation_desk
                     if (worksheet !=null)
                     {
                         //指令单
-                        lbWorkSheetMain_No.Content = worksheet.OrderNo + "";
+                        lbORDER_NO.Content = worksheet.OrderNo + "";
                         ProcessId = worksheet.ProcessId;
                     }
 
