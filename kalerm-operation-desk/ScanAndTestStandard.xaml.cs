@@ -173,7 +173,7 @@ namespace kalerm_operation_desk
             lbTotal.Content = TotalPass + "";
 
             this.Loaded -= ScanAndTestStandard_Loaded;
-            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
+            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheetList());
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
@@ -278,6 +278,41 @@ namespace kalerm_operation_desk
                         return;
                     }
 
+                    //条码
+                    lbSCAN_BARCODE.Content = txtScan.Text + "";
+                    
+
+                    string str1 = textWorkSheet.Text + "";
+                    string WorkSheetNo = "";
+
+                    if (str1.Contains('|'))
+                    {
+                        string[] sArray = str1.Split('|');
+                        WorkSheetNo = sArray[0];
+                    }
+
+                    //工单
+                    lbORDER_NO.Content = WorkSheetNo + "";
+
+                    WorkSheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+
+                    string ProcessId = "";
+                    if (worksheet !=null)
+                    {
+                        //指令单
+                        lbWorkSheetMain_No.Content = worksheet.OrderNo + "";
+                        ProcessId = worksheet.ProcessId;
+                    }
+
+                    string processname = "";
+                    base_productionprocess productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    if (productionprocess!=null)
+                    {
+                        processname = productionprocess.processname;
+                    }
+
+                    //工艺路线
+                    lbROUTING_NO.Content = processname + "";
 
                     lbMessage.Content = "";
                     lbMessage.Foreground = new SolidColorBrush(Colors.Black);
@@ -299,8 +334,9 @@ namespace kalerm_operation_desk
                         {
                             lbMessage.Content = "请选择工作单元";
                             return;
-                        }
-                        base_wutest = bllBaseData.GetBaseWuTest(WuId, out isOK);
+                        }   
+
+                        base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
 
                         if (!isOK)
                         {
@@ -804,7 +840,7 @@ namespace kalerm_operation_desk
                 ProductCode = sArray[1];
             }
 
-            basewu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWu(ProductCode));
+            basewu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
             cbbWorkUnit.ItemsSource = basewu;
             //cbbWorkUnit.DisplayMemberPath = "wuname";
             //cbbWorkUnit.SelectedValuePath = "wuid";

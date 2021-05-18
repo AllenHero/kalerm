@@ -10,26 +10,12 @@ namespace kalerm_bll.BaseData
 {
     public class BllBaseData : BaseBusiness
     {
-        public List<ReportBaseModel> GetLineNo()
-        {
-            List<ReportBaseModel> reslut = new List<ReportBaseModel>();
-            try
-            {
-                reslut = Context.BaseData.GetLineNo();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return reslut;
-        }
-
-        public List<WorkSheet> GetWorkSheet()
+        public List<WorkSheet> GetWorkSheetList()
         {
             List<WorkSheet> result = new List<WorkSheet>();
             try
             {
-                result = Context.BaseData.GetWorkSheet();
+                result = Context.BaseData.GetWorkSheetList();
             }
             catch (System.Exception ex)
             {
@@ -38,12 +24,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wu> GetBaseWu(string ProductCode)
+        public List<base_wu> GetBaseWuList(string ProductCode)
         {
             List<base_wu> result = new List<base_wu>();
             try
             {
-                result = Context.BaseData.GetBaseWu(ProductCode);
+                result = Context.BaseData.GetBaseWuList(ProductCode);
             }
             catch (System.Exception ex)
             {
@@ -52,13 +38,41 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wutest> GetBaseWuTest(string WuId, out bool isOK)
+        public List<base_wutest> GetBaseWuTestList(string WuId, out bool isOK)
         {
             isOK = false;
             List<base_wutest> result = new List<base_wutest>();
             try
             {
-                result = Context.BaseData.GetBaseWuTest(WuId, out isOK);
+                result = Context.BaseData.GetBaseWuTestList(WuId, out isOK);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public WorkSheet GetWorkSheet(string WorkSheetNo)
+        {
+            WorkSheet result = new WorkSheet();
+            try
+            {
+                result = Context.BaseData.GetWorkSheet(WorkSheetNo);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public base_productionprocess GetProductionProcess(string ProcessId)
+        {
+            base_productionprocess result = new base_productionprocess();
+            try
+            {
+                result = Context.BaseData.GetProductionProcess(ProcessId);
             }
             catch (System.Exception ex)
             {

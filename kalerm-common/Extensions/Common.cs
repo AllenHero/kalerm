@@ -207,6 +207,7 @@ namespace kalerm_common.Extensions
             ds.Tables.Add(dt);
             return ds;
         }
+
         /// <summary>
         /// 根据实体类得到表结构
         /// </summary>
@@ -277,7 +278,43 @@ namespace kalerm_common.Extensions
             }
         }
 
+        public static T DataTableToModel<T>(DataTable dt) where T : new()
+        {
+            try
+            {
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    return default(T);
+                }
 
+                T t = new T();
+                // 获取行数据
+                DataRow dr = dt.Rows[0];
+                // 获取栏目
+                DataColumnCollection columns = dt.Columns;
+                // 获得此模型的公共属性
+                PropertyInfo[] propertys = t.GetType().GetProperties();
+                foreach (PropertyInfo pi in propertys)
+                {
+                    string name = pi.Name;
+                    // 检查DataTable是否包含此列    
+                    if (columns.Contains(name))
+                    {
+                        if (!pi.CanWrite) continue;
 
+                        object value = dr[name];
+                        if (value != DBNull.Value)
+                        {
+                            pi.SetValue(t, value, null);
+                        }
+                    }
+                }
+                return t;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

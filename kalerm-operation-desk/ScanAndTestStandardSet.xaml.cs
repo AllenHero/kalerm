@@ -55,7 +55,7 @@ namespace kalerm_operation_desk
         private void ScanAndTestStandardSet_Loaded(object sender, RoutedEventArgs e)
         {
 
-            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheet());
+            WorkSheet = new ObservableCollection<WorkSheet>(bllBaseData.GetWorkSheetList());
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
@@ -95,7 +95,7 @@ namespace kalerm_operation_desk
                 ProductCode = sArray[1];
             }
 
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWu(ProductCode));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
             cbbWorkUnit.ItemsSource = base_wu;
             cbbWorkUnit.DisplayMemberPath = "wuname";
             cbbWorkUnit.SelectedValuePath = "wuid";

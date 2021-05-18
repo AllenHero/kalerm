@@ -18,25 +18,7 @@ namespace kalerm_sqldal.BaseData
     {
         public SQLBaseData(BaseDatabaseContext context) : base(context) { }
 
-        public List<ReportBaseModel> GetLineNo()
-        {
-            List<ReportBaseModel> list = new List<ReportBaseModel>();
-            string sql = string.Format(@"select a.CustomerCode as Code,a.CustomerName as Name from sys_customer a left join `kalerm-app-aps`.`worksheet` b on a.CustomerCode=b.CustomerCode");
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = GetDataTable(sql, ConnectionType.model);
-                if (dt != null && dt.Rows.Count > 0)
-                    list = Common.DataTableConvertList<ReportBaseModel>(dt);
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<WorkSheet> GetWorkSheet()
+        public List<WorkSheet> GetWorkSheetList()
         {
             List<WorkSheet> list = new List<WorkSheet>();
             string sql = string.Format(@"select * from `kalerm-app-aps`.`worksheet`");
@@ -54,7 +36,7 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wu> GetBaseWu(string ProductCode)
+        public List<base_wu> GetBaseWuList(string ProductCode)
         {
             List<base_wu> list = new List<base_wu>();
             string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid where a.productcode='" + ProductCode + "'");
@@ -72,7 +54,7 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wutest> GetBaseWuTest(string WuId, out bool isOK)
+        public List<base_wutest> GetBaseWuTestList(string WuId, out bool isOK)
         {
             isOK = false;
             List<base_wutest> list = new List<base_wutest>();
@@ -86,6 +68,44 @@ namespace kalerm_sqldal.BaseData
                 isOK = true;
                 return list;
                 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public WorkSheet GetWorkSheet(string WorkSheetNo)
+        {
+            WorkSheet model = new WorkSheet();
+            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a  where a.WorkSheetNo='" + WorkSheetNo + "'");
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.aps);
+                if (dt != null && dt.Rows.Count > 0)
+                    model = Common.DataTableToModel<WorkSheet>(dt);
+                return model;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public base_productionprocess GetProductionProcess(string ProcessId)
+        {
+            base_productionprocess model = new base_productionprocess();
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_productionprocess` a  where a.processid='" + ProcessId + "'");
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.model);
+                if (dt != null && dt.Rows.Count > 0)
+                    model = Common.DataTableToModel<base_productionprocess>(dt);
+                return model;
+
             }
             catch (Exception ex)
             {
