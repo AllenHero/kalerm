@@ -760,6 +760,7 @@ namespace kalerm_operation_desk
                     item.MinValue = row.minvalue;
                     item.MaxValue = row.maxvalue;
                     item.CreateUser = MainWindow.UserInfo.realName;
+                    item.TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
                     if (string.IsNullOrEmpty(row.value))//
                     {
                         row.value = "0";
