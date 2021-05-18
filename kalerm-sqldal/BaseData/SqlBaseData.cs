@@ -84,7 +84,7 @@ namespace kalerm_sqldal.BaseData
                 DataTable dt = new DataTable();
                 dt = GetDataTable(sql, ConnectionType.aps);
                 if (dt != null && dt.Rows.Count > 0)
-                    model = Common.DataTableToModel<worksheet>(dt);
+                    model = Common.DataTableConvertModel<worksheet>(dt);
                 return model;
 
             }
@@ -103,7 +103,7 @@ namespace kalerm_sqldal.BaseData
                 DataTable dt = new DataTable();
                 dt = GetDataTable(sql, ConnectionType.model);
                 if (dt != null && dt.Rows.Count > 0)
-                    model = Common.DataTableToModel<base_productionprocess>(dt);
+                    model = Common.DataTableConvertModel<base_productionprocess>(dt);
                 return model;
 
             }

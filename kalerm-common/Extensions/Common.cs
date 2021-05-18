@@ -278,7 +278,7 @@ namespace kalerm_common.Extensions
             }
         }
 
-        public static T DataTableToModel<T>(DataTable dt) where T : new()
+        public static T DataTableConvertModel<T>(DataTable dt) where T : new()
         {
             try
             {
