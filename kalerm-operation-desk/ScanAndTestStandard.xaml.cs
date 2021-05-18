@@ -78,7 +78,7 @@ namespace kalerm_operation_desk
 
         ObservableCollection<worksheet> WorkSheet = new ObservableCollection<worksheet>();
 
-        ObservableCollection<base_wu> basewu = new ObservableCollection<base_wu>();
+        ObservableCollection<base_wu> base_wu = new ObservableCollection<base_wu>();
 
         private BllBaseData bllBaseData = new BllBaseData();
 
@@ -94,8 +94,6 @@ namespace kalerm_operation_desk
             //btnError.Click += BtnError_Click;
             btnClear.Click += BtnClear_Click;
             dataGrid.LoadingRow += DataGrid_LoadingRow;
-
-            cbbWorkUnit.SelectionChanged += new SelectionChangedEventHandler(cbbWorkUnit_SelectionChanged);
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -123,10 +121,8 @@ namespace kalerm_operation_desk
             }
         }
 
-
         public void Dispose()
         {
-
             BalanceWeight.ReadEnd();
             Thermometer.ReadEnd();
             //if (portOperatorBase != null)
@@ -142,18 +138,6 @@ namespace kalerm_operation_desk
 
         private void ScanAndTestStandard_Loaded(object sender, RoutedEventArgs e)
         {
-            //string[] content1 = PortUltility.FindAddresses(PortType.RS232);
-            //string[] content2 = PortUltility.FindRS232Type(content1);
-            //for (int i = 0; i < content2.Count(); i++)
-            //{
-            //    if (content2[i] + "" == "COM8")
-            //    {
-            //        GPT9000 = content1[i];
-            //    }
-            //    if (!string.IsNullOrEmpty(GPT9000))
-            //        lbAG.Content = "串口存在";
-            //}
-
             dt = DateTime.Now;
             if (BalanceWeight.Open())
                 lbWT.Content = "打开串口成功";
@@ -182,7 +166,6 @@ namespace kalerm_operation_desk
             txtScan.Focus();
 
         }
-
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
@@ -273,7 +256,7 @@ namespace kalerm_operation_desk
                     if (txtScan.Text + "" == "Y")//扫通过条码
                     {
                         lbITEM_VALUE.Content = "Y";
-                        TrstOK();
+                        TestOK();
                         txtScan.Text = "";
                         return;
                     }
@@ -281,7 +264,6 @@ namespace kalerm_operation_desk
                     //条码
                     lbSCAN_BARCODE.Content = txtScan.Text + "";
                     
-
                     string str1 = textWorkSheet.Text + "";
                     string WorkSheetNo = "";
 
@@ -337,6 +319,12 @@ namespace kalerm_operation_desk
                         }   
 
                         base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
+                        int index = 0;
+                        foreach (var item in base_wutest)
+                        {
+                            index = index + 1;
+                            item.testno =Convert.ToString(index);
+                        }
 
                         if (!isOK)
                         {
@@ -398,7 +386,6 @@ namespace kalerm_operation_desk
                             txtScan.Text = "";
                             return;
                         }
-
 
                         if (TestCount < base_wutest.Count)//还有测试项目未完成
                         {
@@ -724,7 +711,7 @@ namespace kalerm_operation_desk
         }
 
         //TODO:
-        private void TrstOK()
+        private void TestOK()
         {
             StopThread();
             if (isSCAN)
@@ -833,28 +820,13 @@ namespace kalerm_operation_desk
             //根据工单获取工作单元
             string str1 = textWorkSheet.Text + "";
             string ProductCode = "";
-
             if (str1.Contains('|'))
             {
                 string[] sArray = str1.Split('|');
                 ProductCode = sArray[1];
             }
-
-            basewu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
-            cbbWorkUnit.ItemsSource = basewu;
-            //cbbWorkUnit.DisplayMemberPath = "wuname";
-            //cbbWorkUnit.SelectedValuePath = "wuid";
-        }
-
-        private void cbbWorkUnit_SelectionChanged(object sender, SelectionChangedEventArgs e) 
-        {
-            if (cbbWorkUnit.Text != "")
-            {
-                //MessageBox.Show(Convert.ToString(cbbWorkUnit.SelectedValue));
-                //string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
-                //base_wutest = bllBaseData.GetBaseWuTest(WuId);
-                //dataGrid.ItemsSource = base_wutest;
-            }
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
+            cbbWorkUnit.ItemsSource = base_wu;
         }
     }
 }

@@ -31,7 +31,7 @@
         <Label Grid.Column="0" Content="工单：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWorkSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeftButtonUp="textWorkSheet_MouseLeftButtonUp"/>
         <Label Grid.Column="2"  Content="工作单元：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="wuname" SelectedValuePath="wuid"  Name="cbbWorkUnit" IsEnabled="True"  VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding}" SelectionChanged="cbbWorkUnit_SelectionChanged"/>
+        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="wuname" SelectedValuePath="wuid"  Name="cbbWorkUnit" IsEnabled="True"  VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding}"/>
         <Grid Grid.Column="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
