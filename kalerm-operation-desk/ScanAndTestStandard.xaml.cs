@@ -301,8 +301,7 @@ namespace kalerm_operation_desk
                         txtScan.IsEnabled = false;
                         if (txtScan.Text + "" == "")
                         {
-                            //ReMessageBox.Show("条码号不能为空");
-                            lbMessage.Content = "";
+                            lbMessage.Content = "条码号不能为空";
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             txtScan.IsEnabled = true;
                             return;

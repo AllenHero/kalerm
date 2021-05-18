@@ -61,7 +61,7 @@
         <Button Grid.Row="1" Grid.Column="4" Style="{StaticResource ButtonStlye}"   Name="btnClear" Content="清除" Width="50" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
         <Label Name="lbTotal" Grid.Row="1" Grid.Column="5" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Name="lbTest" Grid.Row="1" Grid.Column="6" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Grid Grid.ColumnSpan="7" Grid.Row="2" Margin="0,0,2,0">
+        <Grid Grid.ColumnSpan="8" Grid.Row="2" Margin="0,0,2,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
@@ -82,27 +82,10 @@
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="46*"/>
-                <ColumnDefinition Width="182*"/>
-                <ColumnDefinition Width="21*"/>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="166*"/>
-                <ColumnDefinition Width="153*"/>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="24*"/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="12*"/>
-                <ColumnDefinition Width="46*"/>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="19*"/>
-                <ColumnDefinition Width="44*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2" Height="26" Width="70"/>
-            <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,2" Height="26" Width="10"/>
+            <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" />
         </Grid>
         <Grid Grid.ColumnSpan="8" Grid.Row="4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
