@@ -752,7 +752,7 @@ namespace kalerm_operation_desk
                 foreach (var row in base_wutest)
                 {
                     mes_testdata item = new mes_testdata();
-                    item.Id = row.wutestid;
+                    item.Id = Guid.NewGuid().ToString();
                     item.OrderNo = Convert.ToString(lbORDER_NO.Content);//制令单
                     item.WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);//工单
                     item.WuId = row.wuid;
