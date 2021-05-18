@@ -119,16 +119,22 @@ namespace kalerm_sqldal.BaseData
             if (mes_testdata.Count < 1)
                 return 0;
             mes_testdata item = mes_testdata[0];
-            string sql = string.Format(@"update  `kalerm-app-mes`.`mes_testdata` set IsEnd='{0}' where WorkSheetNo='{1}' and WuId='{2}'; ",0, item.WorkSheetNo, item.WuId);
+            string sql = string.Format(@"update  `kalerm-app-mes`.`mes_testdata` set IsEnd='{0}' where BarCode='{1}' and WuId='{2}'; ", 0, item.BarCode, item.WuId);
             DateTime dt = DateTime.Now;
             foreach (var row in mes_testdata)
             {
-                sql += string.Format(@"
-    insert into `kalerm-app-mes`.`mes_testdata` (Id, OrderNo,WorkSheetNo, WuId, BarCode, TesItemName, Value,MaxValue,MinValue,CreateUser,CreateTime,TenantId,IsPass,IsEnd) 
-	VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');",
-    row.Id, row.OrderNo, row.WorkSheetNo, row.WuId, row.BarCode, row.TesItemName, row.Value, row.MaxValue, row.MinValue, row.CreateUser, dt, ISPASS,1);
+                sql += string.Format(@"insert into `kalerm-app-mes`.`mes_testdata` (Id, OrderNo,WorkSheetNo, WuId, BarCode, TesItemName, `Value`,`MaxValue`,`MinValue`,CreateUser,CreateTime,TenantId,IsPass,IsEnd) VALUES 
+                  ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}','{11}', '{12}', '{13}');",
+                  row.Id, row.OrderNo, row.WorkSheetNo, row.WuId, row.BarCode, row.TesItemName, row.Value, row.MaxValue, row.MinValue, row.CreateUser, dt, row.TenantId, ISPASS, 1);
+            }
+            try
+            {
                 result = ExecuteNonQuery(sql, ConnectionType.mes);
             }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }           
             return result;
         }
 

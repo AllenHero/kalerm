@@ -257,9 +257,6 @@ namespace kalerm_operation_desk
                         return;
                     }
 
-                    //条码
-                    lbSCAN_BARCODE.Content = txtScan.Text + "";
-                    
                     string str1 = textWorkSheet.Text + "";
                     string WorkSheetNo = "";
 
@@ -296,6 +293,11 @@ namespace kalerm_operation_desk
                     lbMessage.Foreground = new SolidColorBrush(Colors.Black);
                     if (isSCAN)//扫条码
                     {
+                        //条码
+                        lbSCAN_BARCODE.Content = txtScan.Text + "";
+
+                        SCAN_BARCODE = txtScan.Text + "";
+
                         txtScan.IsEnabled = false;
                         if (txtScan.Text + "" == "")
                         {
@@ -752,7 +754,7 @@ namespace kalerm_operation_desk
                     mes_testdata item = new mes_testdata();
                     item.Id = row.wutestid;
                     item.OrderNo = Convert.ToString(lbORDER_NO.Content);//制令单
-                    item.WorkSheetNo = Convert.ToString(lbWorkSheet_NO);//工单
+                    item.WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);//工单
                     item.WuId = row.wuid;
                     item.BarCode = SCAN_BARCODE;
                     item.TesItemName = row.testitemname;
