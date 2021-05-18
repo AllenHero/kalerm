@@ -97,7 +97,7 @@ namespace kalerm_operation_desk
             UserInfo.accessToken = accessToken;
             UserInfo.roleId = roleId;
             UserInfo.deptId = deptId;
-            if (tokenObject!=null && Convert.ToString(tokenObject.Claims.FirstOrDefault(x => x.Type == "user_id").Value)!=null)
+            if (tokenObject != null && Convert.ToString(tokenObject.Claims.FirstOrDefault(x => x.Type == "user_id").Value) != null)
             {
                 MainWindow.UserInfo = UserInfo;
                 MainWindow aChild = new MainWindow();
@@ -110,7 +110,6 @@ namespace kalerm_operation_desk
             {
                 ReMessageBox.Show("登录失败");
             }
-
         }
 
         /// <summary>

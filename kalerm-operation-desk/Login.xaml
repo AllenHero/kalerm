@@ -523,11 +523,8 @@
             <TextBox Margin="200,130,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPersonID" Text=""/>
             <Label Content="密   码" Margin="100,160,0,0"/>
             <PasswordBox Margin="200,160,0,0" Width="130" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Name="textPassword" Password=""/>
-
-            <Button Style="{StaticResource ButtonStlye}"  Margin="130,220,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnLogin"  Content="登录" Click="btnLogin_Click" />
+            <Button Style="{StaticResource ButtonStlye}"  Margin="130,220,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnLogin"  Content="登录" Click="btnLogin_Click" IsDefault="True"/>
             <Button Style="{StaticResource ButtonStlye}" Margin="230,220,0,0" Width="49" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnExit"  Content="退出" Click="btnExit_Click"  />
         </Grid>
-
-
     </Grid>
 </Window>
