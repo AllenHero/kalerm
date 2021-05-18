@@ -72,8 +72,9 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wutest> GetBaseWuTest(string WuId)
+        public List<base_wutest> GetBaseWuTest(string WuId, out bool isOK)
         {
+            isOK = false;
             List<base_wutest> list = new List<base_wutest>();
             string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wutest` a  where a.wuid='" + WuId + "'");
             try
@@ -82,7 +83,9 @@ namespace kalerm_sqldal.BaseData
                 dt = GetDataTable(sql, ConnectionType.model);
                 if (dt != null && dt.Rows.Count > 0)
                     list = Common.DataTableConvertList<base_wutest>(dt);
+                isOK = true;
                 return list;
+                
             }
             catch (Exception ex)
             {

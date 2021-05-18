@@ -52,12 +52,13 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wutest> GetBaseWuTest(string WuId)
+        public List<base_wutest> GetBaseWuTest(string WuId, out bool isOK)
         {
+            isOK = false;
             List<base_wutest> result = new List<base_wutest>();
             try
             {
-                result = Context.BaseData.GetBaseWuTest(WuId);
+                result = Context.BaseData.GetBaseWuTest(WuId, out isOK);
             }
             catch (System.Exception ex)
             {

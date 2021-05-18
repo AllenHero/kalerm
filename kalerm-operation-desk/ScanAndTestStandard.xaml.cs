@@ -234,8 +234,210 @@ namespace kalerm_operation_desk
         {
             try
             {
-                //TODO:
-                //MessageBox.Show(txtScan.Text);
+                if (HANDRUN)
+                {
+                    decimal value = 0;
+                    try
+                    {
+                        value = Math.Round(Convert.ToDecimal(txtScan.Text), 2);
+                        lbITEM_VALUE.Content = value + "";
+                        if (base_wutest[TestCount].minvalue <= value && value <= base_wutest[TestCount].maxvalue)
+                            lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Green);
+                        else
+                            lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
+                        dataGrid.ItemsSource = base_wutest;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+                if (e.Key == Key.Enter)
+                {
+                    if ((DateTime.Now - dt).TotalSeconds < 1)
+                    {
+                        return;
+                    }
+                    dt = DateTime.Now;
+                    string str = (txtScan.Text + "").ToUpper();//转大写
+                    txtScan.Text = str;
+
+                    if (txtScan.Text + "" == "N")//扫不良条码
+                    {
+                        lbITEM_VALUE.Content = "NG";
+                        TestError();
+                        txtScan.Text = "";
+                        return;
+                    }
+                    if (txtScan.Text + "" == "Y")//扫通过条码
+                    {
+                        lbITEM_VALUE.Content = "Y";
+                        TrstOK();
+                        txtScan.Text = "";
+                        return;
+                    }
+
+
+                    lbMessage.Content = "";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Black);
+                    if (isSCAN)//扫条码
+                    {
+                        txtScan.IsEnabled = false;
+                        if (txtScan.Text + "" == "")
+                        {
+                            //ReMessageBox.Show("条码号不能为空");
+                            lbMessage.Content = "";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                            return;
+                        }
+
+                        bool isOK = false;//获取测试项目
+                        string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                        if (string.IsNullOrEmpty(WuId))
+                        {
+                            lbMessage.Content = "请选择工作单元";
+                            return;
+                        }
+                        base_wutest = bllBaseData.GetBaseWuTest(WuId, out isOK);
+
+                        if (!isOK)
+                        {
+                            lbMessage.Content = "获取测试项目失败，请重新刷卡";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                            return;
+                        }
+                        txtScan.IsEnabled = true;
+                        isSCAN = false;
+                        //isTestEnd = false;
+                        TestCount = 0;
+                        lbTest.Content = TestCount;
+                        txtScan.Focus();
+
+                        dataGrid.ItemsSource = base_wutest;
+                        if (base_wutest.Count == 0)//没有测试项目直接过站
+                        {
+                            isSCAN = true;
+                            string MachineName = Environment.MachineName;
+                            lbMessage.Content = "成功过站";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Black);
+                            //过站数量+1
+                            TotalPass += 1;
+                            SetTotalPass(TotalPass);
+
+                        }
+                        else//有测试项目，开始测试
+                        {
+                            lbITEM_NAME.Content = base_wutest[0].testitemname + "";
+                            dataGrid.ScrollIntoView(base_wutest[0]);
+                            TestStandard(0);//开始测试
+                        }
+
+                        txtScan.Text = "";
+
+                    }
+                    else//测试项目
+                    {
+
+                        if (txtScan.Text == "000")//000测试回退
+                        {
+                            if (TestCount == 0)//测试没开始，不需要回退
+                                return;
+
+                            StopThread();
+                            TestCount = TestCount - 1;
+                            base_wutest[TestCount].value = "";
+                            txtScan.Text = "";
+                            TestStandard(TestCount);//开始上一项测试
+                            dataGrid.ItemsSource = null;
+                            dataGrid.ItemsSource = base_wutest;
+                            return;
+                        }
+
+                        if (TimeStart)
+                        {
+                            TimeStartThread();
+                            txtScan.Text = "";
+                            return;
+                        }
+
+
+                        if (TestCount < base_wutest.Count)//还有测试项目未完成
+                        {
+                            switch (base_wutest[TestCount].testtype)//当前测试项目
+                            {
+                                case "HAND":
+                                    StopThread();
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    txtScan.Text = "";
+                                    break;
+                                case "TIME":
+                                    StopThread();
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "TP":
+                                    StopThread();
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "WT":
+                                    StopThread();
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure1":
+                                    StopThread();
+                                    MEASure("MEASure1?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure2":
+                                    StopThread();
+                                    MEASure("MEASure2?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure3":
+                                    StopThread();
+                                    MEASure("MEASure3?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure11":
+                                    StopThread();
+                                    MEASure1("MEASure1?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure21":
+                                    StopThread();
+                                    MEASure1("MEASure2?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                                case "MEASure31":
+                                    StopThread();
+                                    MEASure1("MEASure3?");
+                                    base_wutest[TestCount].value = lbITEM_VALUE.Content + "";
+                                    break;
+                            }
+                            dataGrid.ItemsSource = null;
+                            dataGrid.ItemsSource = base_wutest;
+                            TestCount += 1;
+                            lbTest.Content = TestCount;
+
+                            if (TestCount < base_wutest.Count)//还有测试项目未完成
+                            {
+                                TestStandard(TestCount);//开始下一项测试
+                            }
+                            else//全部测试完成
+                            {
+                                StopThread();
+                            }
+                        }
+                        else
+                        {
+                            TestCount += 1;
+                            lbTest.Content = TestCount;
+                            StopThread();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -608,15 +810,14 @@ namespace kalerm_operation_desk
             //cbbWorkUnit.SelectedValuePath = "wuid";
         }
 
-
         private void cbbWorkUnit_SelectionChanged(object sender, SelectionChangedEventArgs e) 
         {
             if (cbbWorkUnit.Text != "")
             {
                 //MessageBox.Show(Convert.ToString(cbbWorkUnit.SelectedValue));
-                string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
-                base_wutest = bllBaseData.GetBaseWuTest(WuId);
-                dataGrid.ItemsSource = base_wutest;
+                //string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                //base_wutest = bllBaseData.GetBaseWuTest(WuId);
+                //dataGrid.ItemsSource = base_wutest;
             }
         }
     }

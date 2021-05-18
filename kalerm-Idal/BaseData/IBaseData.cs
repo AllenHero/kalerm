@@ -16,6 +16,6 @@ namespace kalerm_Idal.BaseData
 
         List<base_wu> GetBaseWu(string ProductCode);
 
-        List<base_wutest> GetBaseWuTest(string WuId);
+        List<base_wutest> GetBaseWuTest(string WuId, out bool isOK);
     }
 }
