@@ -80,5 +80,21 @@ namespace kalerm_bll.BaseData
             }
             return result;
         }
+
+        public int SaveTestdata(List<mes_testdata> mes_testdata, int ISPASS)
+        {
+            int result = -2;
+            if (mes_testdata.Count < 1)//没有测试数据
+                return 0;
+            try
+            {
+                result = Context.BaseData.SaveTestdata(mes_testdata, ISPASS);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }

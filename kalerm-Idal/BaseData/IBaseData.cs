@@ -19,5 +19,7 @@ namespace kalerm_Idal.BaseData
         worksheet GetWorkSheet(string WorkSheetNo);
 
         base_productionprocess GetProductionProcess(string ProcessId);
+
+        int SaveTestdata(List<mes_testdata> mes_testdata, int ISPASS);
     }
 }

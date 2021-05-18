@@ -717,6 +717,17 @@ namespace kalerm_operation_desk
             if (isPass)
             {
                 //TODO:
+                int savecount = bllBaseData.SaveTestdata(mes_testdata, 1);
+                if (savecount < 1)
+                {
+                    lbMessage.Content = mes_testdata.Count + "|" + mes_testdata.Count + "|" + savecount + "保存测试数据失败，请重新扫Y保存过站";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                    return;
+                }//测试数据保存
+                lbITEM_VALUE.Content = "OK";
+                //isTestEnd = false;
+                isSCAN = true;
+                string MachineName = Environment.MachineName;
                 lbMessage.Content = "成功过站";
                 lbMessage.Foreground = new SolidColorBrush(Colors.Black);
                 //过站数量+1
