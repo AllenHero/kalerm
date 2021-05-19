@@ -39,7 +39,11 @@ namespace kalerm_sqldal.BaseData
         public List<base_wu> GetBaseWuList(string ProductCode)
         {
             List<base_wu> list = new List<base_wu>();
-            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid where a.productcode='" + ProductCode + "'");
+            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid ");
+            if (!string.IsNullOrEmpty(ProductCode))
+            {
+                sql += " where a.productcode='" + ProductCode + "'";
+            }
             try
             {
                 DataTable dt = new DataTable();
@@ -58,7 +62,11 @@ namespace kalerm_sqldal.BaseData
         {
             isOK = false;
             List<base_wutest> list = new List<base_wutest>();
-            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wutest` a  where a.wuid='" + WuId + "'");
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wutest` a ");
+            if (!string.IsNullOrEmpty(WuId))
+            {
+                sql += " where a.wuid='" + WuId + "'";
+            }
             try
             {
                 DataTable dt = new DataTable();
@@ -77,7 +85,11 @@ namespace kalerm_sqldal.BaseData
         public worksheet GetWorkSheet(string WorkSheetNo)
         {
             worksheet model = new worksheet();
-            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a  where a.WorkSheetNo='" + WorkSheetNo + "'");
+            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a ");
+            if (!string.IsNullOrEmpty(WorkSheetNo))
+            {
+                sql += " where a.WorkSheetNo='" + WorkSheetNo + "'";
+            }
             try
             {
                 DataTable dt = new DataTable();
@@ -95,7 +107,11 @@ namespace kalerm_sqldal.BaseData
         public base_productionprocess GetProductionProcess(string ProcessId)
         {
             base_productionprocess model = new base_productionprocess();
-            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_productionprocess` a  where a.processid='" + ProcessId + "'");
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_productionprocess` a ");
+            if (!string.IsNullOrEmpty(ProcessId))
+            {
+                sql += " where a.processid='" + ProcessId + "'";
+            }
             try
             {
                 DataTable dt = new DataTable();

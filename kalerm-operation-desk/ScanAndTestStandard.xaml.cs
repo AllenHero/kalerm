@@ -155,6 +155,9 @@ namespace kalerm_operation_desk
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(""));
+            cbbWorkUnit.ItemsSource = base_wu;
+            cbbWorkUnit.SelectedValue = WorkUnitId;
             txtScan.Focus();
         }
 
