@@ -551,7 +551,7 @@ namespace kalerm_operation_desk
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 

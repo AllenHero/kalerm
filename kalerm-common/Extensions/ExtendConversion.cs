@@ -30,6 +30,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = defaultValue[0];
+                    throw new Exception(ex.Message);
                 }
             }
             else
@@ -41,6 +42,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = 0;
+                    throw new Exception(ex.Message);
                 }
             }
             return revalue;
@@ -66,6 +68,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = defaultValue[0];
+                    throw new Exception(ex.Message);
                 }
             }
             else
@@ -77,6 +80,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = 0;
+                    throw new Exception(ex.Message);
                 }
             }
             return revalue;
@@ -102,6 +106,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = defaultValue[0];
+                    throw new Exception(ex.Message);
                 }
             }
             else
@@ -113,6 +118,7 @@ namespace kalerm_common.Extensions
                 catch (Exception ex)
                 {
                     revalue = 0;
+                    throw new Exception(ex.Message);
                 }
             }
             return revalue;
@@ -142,6 +148,7 @@ namespace kalerm_common.Extensions
                 if (defaultValue.Length > 0)
                 {
                     revalue = defaultValue[0];
+                    throw new Exception(ex.Message);
                 }
             }
             return revalue;
@@ -171,6 +178,7 @@ namespace kalerm_common.Extensions
                 if (defaultValue.Length > 0)
                 {
                     revalue = defaultValue[0];
+                    throw new Exception(ex.Message);
                 }
             }
             return revalue;
@@ -211,6 +219,7 @@ namespace kalerm_common.Extensions
             catch (Exception ex)
             {
                 revalue = false;
+                throw new Exception(ex.Message);
             }
             return revalue;
         }
@@ -233,6 +242,7 @@ namespace kalerm_common.Extensions
             catch (Exception ex)
             {
                 return string.Empty;
+                throw new Exception(ex.Message);
             }
         }
 
