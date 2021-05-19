@@ -207,6 +207,7 @@ namespace kalerm_operation_desk
         {
             try
             {
+                //Logger.Info(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,txtScan.Text);
                 if (HANDRUN)
                 {
                     decimal value = 0;
