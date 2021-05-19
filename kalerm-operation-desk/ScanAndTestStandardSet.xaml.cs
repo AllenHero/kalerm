@@ -83,7 +83,7 @@ namespace kalerm_operation_desk
             this.Close();
         }
 
-        private void textWorkSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e)
         {
             //根据工单获取工作单元
             string str1 = textWorkSheet.Text + "";
@@ -94,11 +94,8 @@ namespace kalerm_operation_desk
                 string[] sArray = str1.Split('|');
                 ProductCode = sArray[1];
             }
-
             base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
             cbbWorkUnit.ItemsSource = base_wu;
-            cbbWorkUnit.DisplayMemberPath = "wuname";
-            cbbWorkUnit.SelectedValuePath = "wuid";
         }
     }
 }

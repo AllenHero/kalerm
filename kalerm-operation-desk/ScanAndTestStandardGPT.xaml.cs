@@ -909,8 +909,6 @@ namespace kalerm_operation_desk
             }
             base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
             cbbWorkUnit.ItemsSource = base_wu;
-            cbbWorkUnit.DisplayMemberPath = "wuname";
-            cbbWorkUnit.SelectedValuePath = "wuid";
         }
     }
 }
