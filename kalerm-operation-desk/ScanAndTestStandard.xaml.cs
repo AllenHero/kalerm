@@ -791,7 +791,7 @@ namespace kalerm_operation_desk
             }
         }
 
-        private void textWorkSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e) 
         {
             //根据工单获取工作单元
             string str1 = textWorkSheet.Text + "";
