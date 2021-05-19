@@ -43,7 +43,6 @@ namespace kalerm_operation_desk.Ulitity
                     else throw ex;
                 }
             }
-
             return result.ToArray().Where(n => !n.Contains("//")).ToArray();
         }
 

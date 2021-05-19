@@ -8,7 +8,6 @@ namespace kalerm_model.BaseData
 {
     public class UserInfo
     {
-
         public string tenantId { get; set; }
 
         public string userId { get; set; }

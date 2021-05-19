@@ -12,6 +12,7 @@ namespace kalerm_common.Extensions
     public static class ExtendXML
     {
         #region 转换成DataSet
+
         /// <summary>
         ///  将Xml内容字符串转换成DataSet对象
         ///  需要捕捉异常
@@ -85,9 +86,11 @@ namespace kalerm_common.Extensions
             }
             return ds;
         }
+
         #endregion
 
         #region 转换成DataTable
+
         /// <summary>
         /// 将Xml字符串转换成DataTable对象，获取指定tableIndex 
         /// </summary>
@@ -110,7 +113,6 @@ namespace kalerm_common.Extensions
             return xmlStr.ToDataSet().Tables[tablename];
         }
 
-
         /// <summary>
         /// 根据路径读取Xml文件信息,并转换成DataTable对象，获取指定tableIndex
         /// </summary>
@@ -132,6 +134,7 @@ namespace kalerm_common.Extensions
         {
             return xmlFilePath.ToDataSetForPath().Tables[tablename];
         }
+
         #endregion
     }
 }

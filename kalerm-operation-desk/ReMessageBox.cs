@@ -11,6 +11,7 @@ namespace kalerm_operation_desk
     public class ReMessageBox
     {
         private ReMessageBox() { }
+
         public static System.Windows.Threading.Dispatcher Dispatcher = null;
 
 
@@ -24,11 +25,11 @@ namespace kalerm_operation_desk
                 ShowDelegate d = new ShowDelegate(mbx.ShowDialog);
                 return (MessageWindowResult)owner.Dispatcher.Invoke(d, owner);
             }
-
             return mbx.ShowDialog(owner);
         }
 
         #region "overloads of Show ..."
+
         /// <summary>
         ///  显示自定义的消息框, 指定owner
         /// </summary>
@@ -65,6 +66,7 @@ namespace kalerm_operation_desk
                 return Show(owner, mbx);
             }
         }
+
         /// <summary>
         /// 显示自定义的消息框
         /// </summary>
@@ -74,6 +76,7 @@ namespace kalerm_operation_desk
         {
             return Show(null, msg, "提示", MessageWindowButtons.OK, MessageWindowIcons.Info);
         }
+
         /// <summary>
         /// 显示自定义的消息框
         /// </summary>
@@ -84,6 +87,7 @@ namespace kalerm_operation_desk
         {
             return Show(null, msg, caption, MessageWindowButtons.OK, MessageWindowIcons.Info);
         }
+
         /// <summary>
         /// 显示自定义的消息框
         /// </summary>
@@ -94,6 +98,7 @@ namespace kalerm_operation_desk
         {
             return Show(owner, msg, "", MessageWindowButtons.OK, MessageWindowIcons.Info);
         }
+
         /// <summary>
         /// 显示自定义的消息框
         /// </summary>
@@ -105,6 +110,7 @@ namespace kalerm_operation_desk
         {
             return Show(owner, msg, caption, MessageWindowButtons.OK, MessageWindowIcons.Info);
         }
+
         /// <summary>
         ///  显示自定义的消息框
         /// </summary>
@@ -116,6 +122,7 @@ namespace kalerm_operation_desk
         {
             return Show(null, msg, caption, btns, MessageWindowIcons.Info);
         }
+
         /// <summary>
         ///  显示自定义的消息框, 指定owner
         /// </summary>
@@ -127,6 +134,7 @@ namespace kalerm_operation_desk
         {
             return Show(onwer, msg, caption, btns, MessageWindowIcons.Info);
         }
+
         /// <summary>
         ///  显示自定义的消息框, 指定owner
         /// </summary>
@@ -139,169 +147,6 @@ namespace kalerm_operation_desk
         {
             return Show(null, msg, caption, btns, icon);
         }
-
-
-
-
-        ///// <summary>
-        ///// 重载0.0: 显示自定义的消息框, 指定owner
-        ///// </summary>
-        ///// <param name="owner">宿主窗体</param>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <param name="btns">要在界面上显示的按钮组合</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(
-        //        Window owner,
-        //        string msg, string caption,
-        //        MessageWindowButtons btns, MessageWindowIcons icon)
-        //{
-        //    using (MessageWindow mbx = new MessageWindow())
-        //    {
-        //        mbx.SetIcon(icon);
-        //        mbx.SetCaption(caption);
-        //        mbx.SetMsg(msg);
-        //        mbx.SetButton(btns);
-        //        MessageWindow.DoBeep(icon);
-
-        //        return Show(owner, mbx);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 重载0.1: 显示自定义的消息框, 不指定owner
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <param name="btns">要在界面上显示的按钮组合</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(
-        //        string msg, string caption,
-        //        MessageWindowButtons btns, MessageWindowIcons icon)
-        //{
-        //    return Show(null, msg, caption, btns, icon);
-        //}
-
-        ///// <summary>
-        ///// 重载1.1: 使用默认的OK按钮, 指定owner
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(Window owner,
-        //    string msg, string caption, MessageWindowIcons icon)
-        //{
-        //    return Show(owner, msg, caption, MessageWindowButtons.OK, icon);
-        //}
-        ///// <summary>
-        ///// 重载1.2: 使用默认的OK按钮
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(
-        //    string msg, string caption, MessageWindowIcons icon)
-        //{
-        //    return Show(null, msg, caption, MessageWindowButtons.OK, icon);
-        //}
-
-        ///// <summary>
-        ///// 重载2.1: 使用默认的消息标题, 指定owner
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="btns">要在界面上显示的按钮组合</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(Window owner,
-        //    string msg, MessageWindowButtons btns, MessageWindowIcons icon)
-        //{
-        //    return Show(owner, msg, "保存", btns, icon);
-        //}
-        ///// <summary>
-        ///// 重载2.2: 使用默认的消息标题
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="btns">要在界面上显示的按钮组合</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(
-        //    string msg, MessageWindowButtons btns, MessageWindowIcons icon)
-        //{
-        //    return Show(null, msg, "提示", btns, icon);
-        //}
-
-        ///// <summary>
-        ///// 重载3.1: 使用默认的OK按钮, 默认的图标, 指定owner
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(Window owner,
-        //    string msg, string caption)
-        //{
-        //    return Show(owner, msg, caption, MessageWindowIcons.Info);
-        //}
-        ///// <summary>
-        ///// 重载3.2: 使用默认的OK按钮, 默认的图标
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="caption">消息标题</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(string msg, string caption)
-        //{
-        //    return Show(null, msg, caption, MessageWindowIcons.Info);
-        //}
-
-        ///// <summary>
-        ///// 重载4.1: 使用默认的OK按钮, 默认的消息标题, 指定owner
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(Window owner,
-        //    string msg, MessageWindowIcons icon)
-        //{
-        //    return Show(owner, msg, "提示", icon);
-        //}
-        ///// <summary>
-        ///// 重载4.2: 使用默认的OK按钮, 默认的消息标题
-        ///// </summary>
-        ///// <param name="msg">消息文本</param>
-        ///// <param name="icon">要在界面上显示的图标</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(string msg, MessageWindowIcons icon)
-        //{
-        //    return Show(null, msg, "提示", icon);
-        //}
-
-        ///// <summary>
-        ///// 重载5.1: 使用默认的OK按钮, 默认的消息标题, 默认的图标, 指定owner
-        ///// </summary>
-        ///// <param name="fmt">格式串或字符串</param>
-        ///// <param name="args">参数</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(Window owner,
-        //    string fmt, params object[] args)
-        //{
-        //    string msg = string.Format(fmt, args);
-        //    return Show(owner, msg, MessageWindowIcons.Info);
-        //}
-        ///// <summary>
-        ///// 重载5.2: 使用默认的OK按钮, 默认的消息标题, 默认的图标
-        ///// </summary>
-        ///// <param name="fmt">格式串或字符串</param>
-        ///// <param name="args">参数</param>
-        ///// <returns></returns>
-        //public static MessageWindowResult Show(string fmt, params object[] args)
-        //{
-        //    string msg = string.Format(fmt, args);
-        //    // NOTE: here may cause the misunderstandings, if without the cast
-        //    return Show((Window)null, msg, MessageWindowIcons.Info);
-        //}
 
         #endregion
     }

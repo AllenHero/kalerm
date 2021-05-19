@@ -9,6 +9,7 @@ namespace kalerm_common.Extensions
     public static class ExtendConversion
     {
         #region 转换Int16,Int32,Int64
+
         /// <summary>
         /// 转换int16
         /// 出错返回默认值
@@ -20,7 +21,6 @@ namespace kalerm_common.Extensions
         public static Int16 ToInt16(this object value, params Int16[] defaultValue)
         {
             Int16 revalue = 0;
-
             if (defaultValue.Length > 0)
             {
                 try
@@ -57,7 +57,6 @@ namespace kalerm_common.Extensions
         public static Int32 ToInt32(this object value, params Int32[] defaultValue)
         {
             Int32 revalue = 0;
-
             if (defaultValue.Length > 0)
             {
                 try
@@ -94,7 +93,6 @@ namespace kalerm_common.Extensions
         public static Int64 ToInt64(this object value, params Int64[] defaultValue)
         {
             Int64 revalue = 0;
-
             if (defaultValue.Length > 0)
             {
                 try
@@ -119,36 +117,11 @@ namespace kalerm_common.Extensions
             }
             return revalue;
         }
-        #endregion
 
-        #region 转换DateTime
-        /// <summary>
-        /// 转换DateTime
-        /// 出错返回默认值
-        /// 默认值默认为当前时间
-        /// </summary>
-        /// <param name="value">要转换值</param>
-        /// <param name="defaultValue">默认值,出错返回默认值</param>
-        /// <returns></returns>
-        //public static DateTime ToDateTime(this object value, params DateTime[] defaultValue)
-        //{
-        //    DateTime revalue = DateTime.Now;
-        //    try
-        //    {
-        //        revalue = System.Convert.ToDateTime(value);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        if (defaultValue.Length > 0)
-        //        {
-        //            revalue = defaultValue[0];
-        //        }
-        //    }
-        //    return revalue;
-        //}
         #endregion
 
         #region 转换Double
+
         /// <summary>
         /// 转换Double
         /// 出错返回默认值
@@ -173,9 +146,11 @@ namespace kalerm_common.Extensions
             }
             return revalue;
         }
+
         #endregion
 
         #region 转换Decimal
+
         /// <summary>
         /// 转换Decimal
         /// 出错返回默认值
@@ -200,9 +175,11 @@ namespace kalerm_common.Extensions
             }
             return revalue;
         }
+
         #endregion
 
         #region 转换Boolean
+
         /// <summary>
         /// 转换Boolean
         /// 要转换值为1，结果为true ;  要转换值为0，结果为false ; 
@@ -237,9 +214,11 @@ namespace kalerm_common.Extensions
             }
             return revalue;
         }
+
         #endregion
 
         #region 转换Base64数字编码
+
         /// <summary>
         /// 转换Base64数字编码
         /// </summary>
@@ -256,6 +235,7 @@ namespace kalerm_common.Extensions
                 return string.Empty;
             }
         }
+
         #endregion
     }
 }

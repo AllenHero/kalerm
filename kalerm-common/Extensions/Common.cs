@@ -168,8 +168,6 @@ namespace kalerm_common.Extensions
                     json += "]";
                     if (i != ds.Tables.Count - 1)
                         json += ",";
-
-
                 }
                 json += "}";
             }
@@ -250,9 +248,7 @@ namespace kalerm_common.Extensions
             {
                 List<T> mList = new List<T>();
                 var mT = default(T);
-
                 string mTempName = string.Empty;
-
                 foreach (DataRow mRow in mTable.Rows)
                 {
                     mT = Activator.CreateInstance<T>();
@@ -266,7 +262,6 @@ namespace kalerm_common.Extensions
                             if (mValue != DBNull.Value)
                                 mPro.SetValue(mT, mValue, null);
                         }
-
                     }
                     mList.Add(mT);
                 }
@@ -286,7 +281,6 @@ namespace kalerm_common.Extensions
                 {
                     return default(T);
                 }
-
                 T t = new T();
                 // 获取行数据
                 DataRow dr = dt.Rows[0];

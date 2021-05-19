@@ -8,6 +8,7 @@ namespace kalerm_operation_desk.Control
     public class AutoCompleteEntry
     {
         private string[] keywordStrings;
+
         private string displayString;
 
         public string[] KeywordStrings

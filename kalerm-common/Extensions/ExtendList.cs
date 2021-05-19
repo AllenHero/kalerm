@@ -88,7 +88,6 @@ namespace kalerm_common.Extensions
                         }
                     }
                 }
-
                 for (int i = 0; i < list.Count; i++)
                 {
                     ArrayList tempList = new ArrayList();

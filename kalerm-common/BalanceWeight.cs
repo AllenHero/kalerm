@@ -87,7 +87,6 @@ namespace kalerm_common
 
         private void ComDevice_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            //Thread.Sleep(400);
             try
             {
                 if (!ComDevice.IsOpen)

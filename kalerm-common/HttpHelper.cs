@@ -219,7 +219,6 @@ namespace kalerm_common
             }
             param.timeOut = param.timeOut == null ? 5 : param.timeOut;
             param.timeOut = param.timeOut <= 0 ? 5 : param.timeOut;
-
             return new ResponseObject(true);
         }
     }

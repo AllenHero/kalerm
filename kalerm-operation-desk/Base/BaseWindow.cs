@@ -54,8 +54,8 @@ namespace kalerm_operation_desk.Base
 
         #endregion
 
-
         #region Dependency Properties
+
         public static readonly DependencyProperty ShowDefaultHeaderProperty = DependencyProperty.Register("ShowDefaultHeader", typeof(bool), typeof(BaseWindow), new FrameworkPropertyMetadata(true));
         public static readonly DependencyProperty ShowResizeGripProperty = DependencyProperty.Register("ShowResizeGrip", typeof(bool), typeof(BaseWindow), new FrameworkPropertyMetadata(false));
         public static readonly DependencyProperty CanResizeProperty = DependencyProperty.Register("CanResize", typeof(bool), typeof(BaseWindow), new FrameworkPropertyMetadata(true));
@@ -118,7 +118,6 @@ namespace kalerm_operation_desk.Base
 
         #endregion
 
-
         #region Private Fields
 
         private FrameworkElement headerContainer;
@@ -143,16 +142,19 @@ namespace kalerm_operation_desk.Base
                 this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             return base.ShowDialog();
         }
+
         public new void Show()
         {
             SetStartLocation();
             base.Show();
         }
+
         public new bool? ShowDialog()
         {
             SetStartLocation();
             return base.ShowDialog();
         }
+
         /// <summary>
         /// 设置程序的起始位置
         /// 使子窗体居于父窗体中间
@@ -207,7 +209,6 @@ namespace kalerm_operation_desk.Base
             topLeftResizer.DragDelta += new DragDeltaEventHandler(ResizeTopLeft);
             bottomLeftResizer = GetTemplateChild<Thumb>(BottomLeftResizerName);
             bottomLeftResizer.DragDelta += new DragDeltaEventHandler(ResizeBottomLeft);
-
             if (!CanResize)
             {
                 restoreButton.Visibility = System.Windows.Visibility.Hidden;
@@ -257,7 +258,9 @@ namespace kalerm_operation_desk.Base
         {
             return Left < SystemParameters.PrimaryScreenWidth && Top < SystemParameters.PrimaryScreenHeight;
         }
+
         #region 最大化、最小化、关闭按钮
+
         private void WindowButton_MouseEnter(object sender, MouseEventArgs e)
         {
             try
@@ -270,8 +273,10 @@ namespace kalerm_operation_desk.Base
             }
             catch
             {
+
             }
         }
+
         private void WindowButton_MouseLeave(object sender, MouseEventArgs e)
         {
             try
@@ -284,8 +289,10 @@ namespace kalerm_operation_desk.Base
             }
             catch
             {
+
             }
         }
+
         private void WindowButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -319,8 +326,10 @@ namespace kalerm_operation_desk.Base
             }
             catch
             {
+
             }
         }
+
         #endregion
 
         #region Resize

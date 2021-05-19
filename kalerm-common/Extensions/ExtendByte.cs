@@ -40,6 +40,7 @@ namespace kalerm_common.Extensions
         {
             return Hash(value, null);
         }
+
         #endregion
 
         /// <summary>
