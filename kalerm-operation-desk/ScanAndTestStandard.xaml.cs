@@ -293,6 +293,7 @@ namespace kalerm_operation_desk
                         if (string.IsNullOrEmpty(WuId))
                         {
                             lbMessage.Content = "请选择工作单元";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             return;
                         }   
                         base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
