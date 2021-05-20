@@ -10,6 +10,7 @@
       Title="ScanAndTestStandard">
 
     <Grid Name="grid" Background="White" Margin="6">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="60" />
@@ -32,6 +33,7 @@
         <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWorkSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeave="textWorkSheet_MouseLeave"/>
         <Label Grid.Column="2"  Content="工作单元：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="wuname" SelectedValuePath="wuid"  Name="cbbWorkUnit" IsEnabled="True"  VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding}"/>
+        
         <Grid Grid.Column="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -53,6 +55,7 @@
             <Label Grid.Row="2" Grid.Column="1" Content="COM8"  FontSize="8" HorizontalAlignment="Right" />
             <Label Grid.Row="2" Grid.Column="2" Name="lbAG" Content="打开失败" FontSize="8" HorizontalAlignment="Left" />
         </Grid>
+        
         <Button Style="{StaticResource ButtonStlye}" Grid.Column="4"  Name="btnSet" Content="设置工序" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
         <Button Style="{StaticResource ButtonStlye}" Grid.Column="4" Grid.ColumnSpan="3"   Name="btnCom" Content="设置串口" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
 
@@ -61,6 +64,7 @@
         <Button Grid.Row="1" Grid.Column="4" Style="{StaticResource ButtonStlye}"   Name="btnClear" Content="清除" Width="50" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
         <Label Name="lbTotal" Grid.Row="1" Grid.Column="5" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Name="lbTest" Grid.Row="1" Grid.Column="6" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
         <Grid Grid.ColumnSpan="8" Grid.Row="2" Margin="0,0,2,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
@@ -79,6 +83,7 @@
             <Label Grid.Column="4" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,106,2" Width="121" RenderTransformOrigin="-0.172,0.68" Grid.ColumnSpan="2"/>
             <Label Grid.Column="5" Name="lbORDER_NO" Content="" VerticalAlignment="Center" Margin="107.5,2,72,2" RenderTransformOrigin="0.932,0.5"/>
         </Grid>
+        
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
@@ -87,6 +92,7 @@
             <Label Grid.Column="0" Content="信息提示：" HorizontalAlignment="Right" VerticalAlignment="Center" />
             <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" />
         </Grid>
+        
         <Grid Grid.ColumnSpan="8" Grid.Row="4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
@@ -116,6 +122,7 @@
                 </DataGrid>
             </Border>
         </Grid>
+        
         <Button Style="{StaticResource ButtonStlye}" Grid.Row="5" Name="btnError" Content="其他" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" Visibility="Collapsed"/>
     </Grid>
 </Page>
