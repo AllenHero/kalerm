@@ -52,5 +52,12 @@ namespace kalerm_operation_desk
             window.Source = new Uri("ScanAndTestStandardGPT.xaml", UriKind.Relative);
             window.Show();
         }
+
+        private void btnGrindBean_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationWindow window = new NavigationWindow();
+            window.Source = new Uri("GrindBean.xaml", UriKind.Relative);
+            window.Show();
+        }
     }
 }
