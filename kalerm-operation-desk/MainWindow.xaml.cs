@@ -56,7 +56,8 @@ namespace kalerm_operation_desk
         private void btnGrindBean_Click(object sender, RoutedEventArgs e)
         {
             NavigationWindow window = new NavigationWindow();
-            window.Source = new Uri("GrindBean.xaml", UriKind.Relative);
+            //window.Source = new Uri("GrindBean.xaml", UriKind.Relative);
+            window.Source = new Uri("Test.xaml", UriKind.Relative);
             window.Show();
         }
     }

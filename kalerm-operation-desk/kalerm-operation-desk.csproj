@@ -119,6 +119,9 @@
     <Compile Include="ScanAndTestStandardTestError.xaml.cs">
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ulitity\PortUlitity.cs" />
     <Page Include="Control\AutoCompleteTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScanAndTestStandardTestError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
