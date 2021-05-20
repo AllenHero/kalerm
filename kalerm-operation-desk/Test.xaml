@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:kalerm_operation_desk"
       xmlns:control="clr-namespace:kalerm_operation_desk.Control"     
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1800"
+      d:DesignHeight="600" d:DesignWidth="1800"
       Title="Test">
 
     <Grid Name="grid" Background="White" Margin="6">
@@ -107,32 +107,32 @@
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="84,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"  Grid.RowSpan="2"/>
                     <Label Content="粉重第一杯" HorizontalAlignment="Left" Margin="144,40,0,0" VerticalAlignment="Top" Width="70" Height="33" Grid.RowSpan="2" Foreground="Green"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Grid.RowSpan="2"/>
-                    <Label Content="粉重第二杯" HorizontalAlignment="Left" Margin="-1,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" Height="26" Foreground="Green"></Label>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,37,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="粉重第三杯" HorizontalAlignment="Left" Margin="143,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="71" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,37,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="粉重最小值" HorizontalAlignment="Left" Margin="-2,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,77,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="150,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,77,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="测试后重量" HorizontalAlignment="Left" Margin="-4,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,122,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="粉重" HorizontalAlignment="Left" Margin="148,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="26" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,122,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="比率" HorizontalAlignment="Left" Margin="2,165,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Height="23" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,165,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="0.3筛网重" HorizontalAlignment="Left" Margin="150,165,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="30" Margin="225,165,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="测试后重量" HorizontalAlignment="Left" Margin="0,212,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" Height="29" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,212,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="粉重" HorizontalAlignment="Left" Margin="155,212,0,0" Grid.Row="1" VerticalAlignment="Top" Width="44" Height="26" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="223,212,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="比率" HorizontalAlignment="Left" Margin="0,257,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,257,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="总比率" HorizontalAlignment="Left" Margin="156,257,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="26" Width="54" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="224,257,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="A" HorizontalAlignment="Left" Margin="89,300,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="60" FontSize="30" Height="50"/>
-                    <Label Content="11.9" HorizontalAlignment="Left" Margin="228,300,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" FontSize="30" Height="50"/>
+                    <Label Content="粉重第二杯" HorizontalAlignment="Left" Margin="-1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" Height="29" Foreground="Green"></Label>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="粉重第三杯" HorizontalAlignment="Left" Margin="143,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="71" Height="28" Foreground="Green"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="粉重最小值" HorizontalAlignment="Left" Margin="-2,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="28" Foreground="Green"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="150,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Foreground="Orange"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="测试后重量" HorizontalAlignment="Left" Margin="-4,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="粉重" HorizontalAlignment="Left" Margin="148,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="26" Foreground="Orange"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="比率" HorizontalAlignment="Left" Margin="2,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Height="23" Foreground="Orange"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="0.3筛网重" HorizontalAlignment="Left" Margin="150,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Foreground="Blue"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="测试后重量" HorizontalAlignment="Left" Margin="0,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" Height="29" Foreground="Blue"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="粉重" HorizontalAlignment="Left" Margin="155,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="44" Height="26" Foreground="Blue"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="223,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="比率" HorizontalAlignment="Left" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Foreground="Blue"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="总比率" HorizontalAlignment="Left" Margin="156,160,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="26" Width="54" Foreground="Blue"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="224,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50"/>
+                    <Label Content="11.9" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50"/>
                 </Grid>
             </Border>
             <Border Grid.Column="1" BorderThickness="2" BorderBrush="Black">
