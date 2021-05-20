@@ -57,9 +57,7 @@ namespace kalerm_common
             {
                 File.Create(logFileName).Close();
             }
-            string logFormat = string.Format("[ {0} ] {1}  {2}  {3}",
-                                           DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                                           className, infoLevel, info);
+            string logFormat = string.Format("[ {0} ] {1}  {2}  {3}",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),className, infoLevel, info);
             StreamWriter sw = File.AppendText(logFileName);
             sw.WriteLine(logFormat);
             sw.Flush();
