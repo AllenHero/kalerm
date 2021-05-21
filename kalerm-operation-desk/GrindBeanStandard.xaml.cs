@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,10 +41,22 @@ namespace kalerm_operation_desk
 
         ObservableCollection<base_wu> base_wu = new ObservableCollection<base_wu>();
 
+        List<dynamic> typeList = new List<dynamic>();
+
+        //当前测试项目
+        int TestCount = 0;
+
+        //是否扫码
+        bool isSCAN = true;
+
+        //主条码
+        string SCAN_BARCODE = "";
+
         public GrindBeanStandard()
         {
             InitializeComponent();
             this.Loaded += GrindBeanStandard_Loaded;
+            txtScan.KeyUp += TxtScan_KeyUp;
         }
 
         private void GrindBeanStandard_Loaded(object sender, RoutedEventArgs e)
@@ -68,6 +81,14 @@ namespace kalerm_operation_desk
             cbbWorkUnit.ItemsSource = base_wu;
             cbbWorkUnit.SelectedValue = WorkUnitId;
             txtScan.Focus();
+
+            string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03" };
+            foreach (var item in arr)
+            {
+                dynamic obj = new ExpandoObject();
+                obj.type = item;
+                typeList.Add(obj);
+            }
         }
 
         private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e)
@@ -124,7 +145,110 @@ namespace kalerm_operation_desk
         {
             try
             {
-                
+                //Logger.Info(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,txtScan.Text);
+                if (e.Key == Key.Enter)
+                {
+                    if ((DateTime.Now - dt).TotalSeconds < 1)
+                    {
+                        return;
+                    }
+                    dt = DateTime.Now;
+                    string str = (txtScan.Text + "").ToUpper();//转大写
+                    txtScan.Text = str;
+                    string str1 = textWorkSheet.Text + "";
+                    string WorkSheetNo = "";
+                    if (str1.Contains('|'))
+                    {
+                        string[] sArray = str1.Split('|');
+                        WorkSheetNo = sArray[0];
+                    }
+                    //工单
+                    worksheet worksheet = null;
+                    lbWorkSheet_NO.Content = WorkSheetNo + "";
+                    if (!string.IsNullOrEmpty(WorkSheetNo))
+                    {
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    }
+                    string ProcessId = "";
+                    if (worksheet != null)
+                    {
+                        //指令单
+                        lbORDER_NO.Content = worksheet.OrderNo + "";
+                        ProcessId = worksheet.ProcessId;
+                    }
+                    string processname = "";
+                    base_productionprocess productionprocess = null;
+                    if (!string.IsNullOrEmpty(ProcessId))
+                    {
+                        productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    }
+                    if (productionprocess != null)
+                    {
+                        processname = productionprocess.processname;
+                    }
+                    //工艺路线
+                    lbROUTING_NO.Content = processname + "";
+                    lbMessage.Content = "";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Black);
+                    if (isSCAN)//扫条码
+                    {
+                        //条码
+                        lbSCAN_BARCODE.Content = txtScan.Text + "";
+                        SCAN_BARCODE = txtScan.Text + "";
+                        txtScan.IsEnabled = false;
+                        if (txtScan.Text + "" == "")
+                        {
+                            lbMessage.Content = "条码号不能为空";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                            return;
+                        }
+                        string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                        if (string.IsNullOrEmpty(WuId))
+                        {
+                            lbMessage.Content = "请选择工作单元";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            return;
+                        }
+                        txtScan.IsEnabled = true;
+                        isSCAN = false;
+                        TestCount = 0;
+                        lbTest.Content = TestCount;
+                        txtScan.Focus();
+                        txtScan.Text = "";
+                    }
+
+                    else//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
+                    {
+                        if (TestCount < typeList.Count)//还有测试项目未完成
+                        {
+                            switch (typeList[TestCount].type)//当前测试项目
+                            {
+                                case "txtKMGL":
+                                    txtKMGL.Text = txtScan.Text;
+                                    txtScan.Clear();
+                                    break;
+                                case "txtGL":
+                                    txtGL.Text = txtScan.Text;
+                                    txtScan.Clear();
+                                    break;
+                                case "txtDW":
+                                    txtDW.Text = txtScan.Text;
+                                    txtScan.Clear();
+                                    break;
+                                case "txtSWZ_071":
+                                    txtSWZ_071.Text = txtScan.Text;
+                                    txtScan.Clear();
+                                    break;
+                                case "txtSWZ_03":
+                                    txtSWZ_03.Text = txtScan.Text;
+                                    txtScan.Clear();
+                                    break;
+                            }
+                            TestCount += 1;
+                        }       
+                    }
+                }
             }
             catch (Exception ex)
             {
