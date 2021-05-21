@@ -771,7 +771,7 @@ namespace kalerm_operation_desk
         private void Page_UpdateTestErrorEvent(object sender, EventArgs e)
         {
             //TODO:
-            bllBaseData.SaveTestdata(mes_testdata, 0);//测试数据保存
+            bllBaseData.SaveTestData(mes_testdata, 0);//测试数据保存
             lbMessage.Content = "进入测试站";
             lbMessage.Foreground = new SolidColorBrush(Colors.Black);
         }
