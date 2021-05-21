@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace kalerm_operation_desk
 {
     /// <summary>
-    /// Test.xaml 的交互逻辑
+    /// GrindBeanStandard.xaml 的交互逻辑
     /// </summary>
-    public partial class Test : Page
+    public partial class GrindBeanStandard : Page
     {
-        public Test()
+        public GrindBeanStandard()
         {
             InitializeComponent();
         }

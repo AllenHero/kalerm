@@ -96,6 +96,9 @@
     <Compile Include="GrindBean.xaml.cs">
       <DependentUpon>GrindBean.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GrindBeanStandard.xaml.cs">
+      <DependentUpon>GrindBeanStandard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -119,15 +122,16 @@
     <Compile Include="ScanAndTestStandardTestError.xaml.cs">
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Ulitity\PortUlitity.cs" />
     <Page Include="Control\AutoCompleteTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GrindBean.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GrindBeanStandard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,10 +172,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScanAndTestStandardTestError.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

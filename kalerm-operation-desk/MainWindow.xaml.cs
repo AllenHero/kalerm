@@ -57,7 +57,7 @@ namespace kalerm_operation_desk
         {
             NavigationWindow window = new NavigationWindow();
             //window.Source = new Uri("GrindBean.xaml", UriKind.Relative);
-            window.Source = new Uri("Test.xaml", UriKind.Relative);
+            window.Source = new Uri("GrindBeanStandard.xaml", UriKind.Relative);
             window.Show();
         }
     }

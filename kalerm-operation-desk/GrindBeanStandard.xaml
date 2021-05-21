@@ -1,4 +1,4 @@
-﻿<Page x:Class="kalerm_operation_desk.Test"
+﻿<Page x:Class="kalerm_operation_desk.GrindBeanStandard"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       xmlns:control="clr-namespace:kalerm_operation_desk.Control"     
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1800"
-      Title="Test">
+      Title="GrindBeanStandard">
 
     <Grid Name="grid" Background="White" Margin="6">
 
