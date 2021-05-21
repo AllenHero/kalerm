@@ -52,6 +52,11 @@ namespace kalerm_operation_desk
         //主条码
         string SCAN_BARCODE = "";
 
+        //组件编码
+        string ComponentNumber = "";
+
+        List<mes_grindbeandata> mes_grindbeandata = new List<mes_grindbeandata>();
+
         public GrindBeanStandard()
         {
             InitializeComponent();
@@ -157,6 +162,8 @@ namespace kalerm_operation_desk
                     txtScan.Text = str;
                     if (txtScan.Text + "" == "OK")//完成
                     {
+                        CheckData();
+                        SavaData();
                         txtScan.Text = "";
                         return;
                     }
@@ -274,6 +281,85 @@ namespace kalerm_operation_desk
             MainWindow.TotalPass = TotalPass + "";
             cfa.Save();
             lbTotal.Content = TotalPass + "";
+        }
+
+        private bool CheckData()
+        {
+            bool isPass = true;
+            mes_grindbeandata = new List<mes_grindbeandata>();
+            mes_grindbeandata grindbeandata = new mes_grindbeandata();
+            TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtSWZ_071, txtCSHZL_071, txtFZ_071, txtRate_071, txtSWZ_03, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
+            for (int i = 0; i < txt.Length; i++)
+            {
+                if (txt[i].Text.Trim() == "")
+                {
+                    lbMessage.Content = "有数据为空,不能保存";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                    txt[i].Focus();
+                    isPass = false;
+                }
+            }
+            if (isPass)
+            {
+                grindbeandata.Id = Guid.NewGuid().ToString();
+                grindbeandata.OrderNo = Convert.ToString(lbORDER_NO.Content);//制令单
+                grindbeandata.WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);//工单
+                grindbeandata.WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                grindbeandata.BarCode = SCAN_BARCODE;
+                grindbeandata.ComponentNumber = ComponentNumber;
+                grindbeandata.KMGL = Convert.ToDecimal(txtKMGL.Text);
+                grindbeandata.GL = Convert.ToDecimal(txtGL.Text);
+                grindbeandata.DW = Convert.ToDecimal(txtDW.Text);
+                grindbeandata.First = Convert.ToDecimal(txtFirst.Text);
+                grindbeandata.Second = Convert.ToDecimal(txtSecond.Text);
+                grindbeandata.Third = Convert.ToDecimal(txtThird.Text);
+                grindbeandata.FZMin = Convert.ToDecimal(txtFZMin.Text);
+                grindbeandata.BZ = Convert.ToDecimal(txtBZ.Text);
+                grindbeandata.SWZ_071 = Convert.ToDecimal(txtSWZ_071.Text);
+                grindbeandata.CSHZL_071 = Convert.ToDecimal(txtCSHZL_071.Text);
+                grindbeandata.FZ_071 = Convert.ToDecimal(txtFZ_071.Text);
+                grindbeandata.Rate_071 = Convert.ToDecimal(txtRate_071.Text);
+                grindbeandata.SWZ_03 = Convert.ToDecimal(txtSWZ_03.Text);
+                grindbeandata.CSHZL_03 = Convert.ToDecimal(txtCSHZL_03.Text);
+                grindbeandata.FZ_03 = Convert.ToDecimal(txtFZ_03.Text);
+                grindbeandata.Rate_03 = Convert.ToDecimal(txtRate_03.Text);
+                grindbeandata.SumRate = Convert.ToDecimal(txtSumRate.Text);
+                grindbeandata.CreateUser = MainWindow.UserInfo.userId;
+                grindbeandata.CreateTime = DateTime.Now;
+                grindbeandata.TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+                mes_grindbeandata.Add(grindbeandata);
+            }
+            return isPass;
+        }
+
+        private void SavaData()
+        {
+            if (isSCAN)
+                return;
+            bool isPass = CheckData();//检测测试数据
+            if (isPass)
+            {
+                //TODO:
+                int savecount = bllBaseData.SaveGrindBeanData(mes_grindbeandata);
+                if (savecount < 1)
+                {
+                    lbMessage.Content = "保存失败";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                    return;
+                }//测试数据保存
+                isSCAN = true;
+                string MachineName = Environment.MachineName;
+                lbMessage.Content = "成功过站";
+                lbMessage.Foreground = new SolidColorBrush(Colors.Black);
+                //过站数量+1
+                TotalPass += 1;
+                SetTotalPass(TotalPass);
+            }
+            else
+            {
+                lbMessage.Content = "有数据为空,不能保存";
+                lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+            }
         }
     }
 }

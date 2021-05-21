@@ -81,14 +81,28 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public int SaveTestdata(List<mes_testdata> mes_testdata, int ISPASS)
+        public int SaveTestData(List<mes_testdata> mes_testdata, int ISPASS)
         {
             int result = -2;
             if (mes_testdata.Count < 1)//没有测试数据
                 return 0;
             try
             {
-                result = Context.BaseData.SaveTestdata(mes_testdata, ISPASS);
+                result = Context.BaseData.SaveTestData(mes_testdata, ISPASS);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public int SaveGrindBeanData(List<mes_grindbeandata> mes_grindbeandata)
+        {
+            int result = 0;
+            try
+            {
+                result = Context.BaseData.SaveGrindBeanData(mes_grindbeandata);
             }
             catch (System.Exception ex)
             {

@@ -117,7 +117,7 @@
                     <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="150,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Foreground="Orange"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSWZ_071"/>
                     <Label Content="测试后重量" HorizontalAlignment="Left" Margin="-4,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtCEHZL_071"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtCSHZL_071"/>
                     <Label Content="粉重" HorizontalAlignment="Left" Margin="148,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="26" Foreground="Orange"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="225,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtFZ_071"/>
                     <Label Content="比率" HorizontalAlignment="Left" Margin="2,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Height="23" Foreground="Orange"/>

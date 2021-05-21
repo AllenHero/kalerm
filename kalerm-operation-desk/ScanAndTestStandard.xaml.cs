@@ -701,7 +701,7 @@ namespace kalerm_operation_desk
             if (isPass)
             {
                 //TODO:
-                int savecount = bllBaseData.SaveTestdata(mes_testdata, 1);
+                int savecount = bllBaseData.SaveTestData(mes_testdata, 1);
                 if (savecount < 1)
                 {
                     lbMessage.Content = mes_testdata.Count + "|" + mes_testdata.Count + "|" + savecount + "保存测试数据失败，请重新扫Y保存过站";

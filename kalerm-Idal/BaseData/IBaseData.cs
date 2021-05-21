@@ -20,6 +20,8 @@ namespace kalerm_Idal.BaseData
 
         base_productionprocess GetProductionProcess(string ProcessId);
 
-        int SaveTestdata(List<mes_testdata> mes_testdata, int ISPASS);
+        int SaveTestData(List<mes_testdata> mes_testdata, int ISPASS);
+
+        int SaveGrindBeanData(List<mes_grindbeandata> mes_grindbeandata);
     }
 }
