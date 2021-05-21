@@ -100,40 +100,40 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label Content="空磨功率" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Height="30" Width="62" />
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="84,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="84,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Name="txtKMGL"/>
                     <Label Content="功率&lt;=135w" HorizontalAlignment="Left" Margin="134,10,0,0" VerticalAlignment="Top" Height="30" Width="88"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Name="txtGL"/>
                     <Label Content="档位" HorizontalAlignment="Left" Margin="5,40,0,0" VerticalAlignment="Top" Width="38" Height="30" Grid.RowSpan="2"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="84,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"  Grid.RowSpan="2"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="84,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"  Grid.RowSpan="2" Name="txtDW"/>
                     <Label Content="粉重第一杯" HorizontalAlignment="Left" Margin="144,40,0,0" VerticalAlignment="Top" Width="70" Height="33" Grid.RowSpan="2" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Grid.RowSpan="2"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Grid.RowSpan="2" Name="txtFirst"/>
                     <Label Content="粉重第二杯" HorizontalAlignment="Left" Margin="-1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" Height="29" Foreground="Green"></Label>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Name="txtSecond"/>
                     <Label Content="粉重第三杯" HorizontalAlignment="Left" Margin="143,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="71" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtThird"/>
                     <Label Content="粉重最小值" HorizontalAlignment="Left" Margin="-2,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="23"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="113,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="23"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="23" Name="txtFZMin"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="113,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="23" Name="txtBZ"/>
                     <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="150,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSWZ_071"/>
                     <Label Content="测试后重量" HorizontalAlignment="Left" Margin="-4,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtCEHZL_071"/>
                     <Label Content="粉重" HorizontalAlignment="Left" Margin="148,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="26" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtFZ_071"/>
                     <Label Content="比率" HorizontalAlignment="Left" Margin="2,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Height="23" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtRate_071"/>
                     <Label Content="0.3筛网重" HorizontalAlignment="Left" Margin="150,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSWZ_03"/>
                     <Label Content="测试后重量" HorizontalAlignment="Left" Margin="0,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" Height="29" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtCSHZL_03"/>
                     <Label Content="粉重" HorizontalAlignment="Left" Margin="155,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="44" Height="26" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="223,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="223,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtFZ_03"/>
                     <Label Content="比率" HorizontalAlignment="Left" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="85,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtRate_03"/>
                     <Label Content="总比率" HorizontalAlignment="Left" Margin="156,160,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="26" Width="54" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="224,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-                    <Label Content="A" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50"/>
-                    <Label Content="11.9" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="224,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSumRate"/>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50" Name="lbReasult"/>
+                    <Label Content="11.9" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50" Name="lbData"/>
                     
                 </Grid>
             </Border>
@@ -141,29 +141,29 @@
                 <DataGrid SelectionMode="Single"   Name="dataGrid"  CanUserReorderColumns="False" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" GridLinesVisibility="All" Margin="0">
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Binding="{Binding Path= testno}" Header="序号"  MinWidth="20"  FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testitemname }" Header="组件编号" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=value }" Header="空磨功率" MinWidth="20" FontSize="18"  IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=minvalue }" Header="功率"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=maxvalue }" Header="档位"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="测试人" MinWidth="20" FontSize="15" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=No}" Header="序号"  MinWidth="20"  FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=ComponentNumber }" Header="组件编号" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=KMGL }" Header="空磨功率" MinWidth="20" FontSize="18"  IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=GL }" Header="功率"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=DW }" Header="档位"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=CreateUser }" Header="测试人" MinWidth="20" FontSize="15" IsReadOnly="True"   />
 
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="第一杯" MinWidth="20" FontSize="15" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="第二杯" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="第三杯" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="最小值" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=First }" Header="第一杯" MinWidth="20" FontSize="15" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=Second }" Header="第二杯" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=Third }" Header="第三杯" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=FZMin }" Header="最小值" MinWidth="20" FontSize="18" IsReadOnly="True"   />
 
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=SWZ_071 }" Header="0.71筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=CSHZL_071 }" Header="0.71测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=FZ_071 }" Header="0.71粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=Rate_071 }" Header="0.71比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
 
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=SWZ_071 }" Header="0.3筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=CSHZL_071 }" Header="0.3测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=FZ_071 }" Header="0.3粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=Rate_071 }" Header="0.3比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
 
-                        <DataGridTextColumn Binding="{Binding Path=testtype }" Header="总比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=SumRate }" Header="总比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
