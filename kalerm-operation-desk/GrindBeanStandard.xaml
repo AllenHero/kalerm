@@ -141,8 +141,8 @@
                 <DataGrid SelectionMode="Single"   Name="dataGrid"  CanUserReorderColumns="False" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" GridLinesVisibility="All" Margin="0">
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Binding="{Binding Path=No}" Header="序号"  MinWidth="20"  FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=ComponentNumber }" Header="组件编号" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path= No}" Header="序号"  MinWidth="20"  FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path= ComponentNumber }" Header="组件编号" MinWidth="20" FontSize="18" IsReadOnly="True"   />
                         <DataGridTextColumn Binding="{Binding Path=KMGL }" Header="空磨功率" MinWidth="20" FontSize="18"  IsReadOnly="True"   />
                         <DataGridTextColumn Binding="{Binding Path=GL }" Header="功率"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
                         <DataGridTextColumn Binding="{Binding Path=DW }" Header="档位"  MinWidth="20" FontSize="18" IsReadOnly="True"   />
