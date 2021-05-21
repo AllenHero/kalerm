@@ -301,7 +301,11 @@ namespace kalerm_operation_desk
                     }
                     //工单
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
-                    worksheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    worksheet worksheet = null;
+                    if (!string.IsNullOrEmpty(WorkSheetNo))
+                    {
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    }    
                     string ProcessId = "";
                     if (worksheet != null)
                     {
@@ -310,7 +314,11 @@ namespace kalerm_operation_desk
                         ProcessId = worksheet.ProcessId;
                     }
                     string processname = "";
-                    base_productionprocess productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    base_productionprocess productionprocess = null;
+                    if (!string.IsNullOrEmpty(ProcessId))
+                    {
+                        productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    }                  
                     if (productionprocess != null)
                     {
                         processname = productionprocess.processname;

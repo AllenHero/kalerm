@@ -260,8 +260,12 @@ namespace kalerm_operation_desk
                         WorkSheetNo = sArray[0];
                     }
                     //工单
+                    worksheet worksheet = null;
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
-                    worksheet worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    if (!string.IsNullOrEmpty(WorkSheetNo))
+                    {
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                    }
                     string ProcessId = "";
                     if (worksheet !=null)
                     {
@@ -270,7 +274,11 @@ namespace kalerm_operation_desk
                         ProcessId = worksheet.ProcessId;
                     }
                     string processname = "";
-                    base_productionprocess productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    base_productionprocess productionprocess = null;
+                    if (!string.IsNullOrEmpty(ProcessId))
+                    {
+                        productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                    }
                     if (productionprocess!=null)
                     {
                         processname = productionprocess.processname;
@@ -299,8 +307,11 @@ namespace kalerm_operation_desk
                             lbMessage.Content = "请选择工作单元";
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             return;
-                        }   
-                        base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
+                        }
+                        if (!string.IsNullOrEmpty(WuId))
+                        {
+                            base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
+                        }
                         int index = 0;
                         foreach (var item in base_wutest)
                         {
