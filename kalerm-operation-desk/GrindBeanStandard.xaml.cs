@@ -155,6 +155,12 @@ namespace kalerm_operation_desk
                     dt = DateTime.Now;
                     string str = (txtScan.Text + "").ToUpper();//转大写
                     txtScan.Text = str;
+                    if (txtScan.Text + "" == "OK")//完成
+                    {
+                        txtScan.Text = "";
+                        return;
+                    }
+
                     string str1 = textWorkSheet.Text + "";
                     string WorkSheetNo = "";
                     if (str1.Contains('|'))

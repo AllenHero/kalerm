@@ -158,10 +158,10 @@
                         <DataGridTextColumn Binding="{Binding Path=FZ_071 }" Header="0.71粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
                         <DataGridTextColumn Binding="{Binding Path=Rate_071 }" Header="0.71比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
 
-                        <DataGridTextColumn Binding="{Binding Path=SWZ_071 }" Header="0.3筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=CSHZL_071 }" Header="0.3测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=FZ_071 }" Header="0.3粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
-                        <DataGridTextColumn Binding="{Binding Path=Rate_071 }" Header="0.3比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=SWZ_03 }" Header="0.3筛网重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=CSHZL_03 }" Header="0.3测试后" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=FZ_03 }" Header="0.3粉重" MinWidth="20" FontSize="18" IsReadOnly="True"   />
+                        <DataGridTextColumn Binding="{Binding Path=Rate_03 }" Header="0.3比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
 
                         <DataGridTextColumn Binding="{Binding Path=SumRate }" Header="总比率" MinWidth="20" FontSize="18" IsReadOnly="True"   />
                     </DataGrid.Columns>
