@@ -91,6 +91,10 @@ namespace kalerm_operation_desk
             cbbWorkUnit.SelectedValue = WorkUnitId;
             txtScan.Focus();
 
+            txtSWZ_071.Text = ConfigurationManager.AppSettings["txtSWZ_071"].ToString();
+
+            txtSWZ_03.Text = ConfigurationManager.AppSettings["txtSWZ_03"].ToString();
+
             string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03" };
             foreach (var item in arr)
             {
@@ -394,7 +398,7 @@ namespace kalerm_operation_desk
 
         public void ClearData()
         {
-            TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtSWZ_071, txtCSHZL_071, txtFZ_071, txtRate_071, txtSWZ_03, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
+            TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtCSHZL_071, txtFZ_071, txtRate_071, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
             for (int i = 0; i < txt.Length; i++)
             {
                 if (txt[i].Text.Trim() != null || txt[i].Text.Trim() != "")
@@ -402,6 +406,16 @@ namespace kalerm_operation_desk
                     txt[i].Clear();
                 }
             }
+        }
+
+        private void txtSWZ_071_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ConfigHelper.UpdateSettingString("txtSWZ_071", txtSWZ_071.Text);
+        }
+
+        private void txtSWZ_03_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ConfigHelper.UpdateSettingString("txtSWZ_03", txtSWZ_03.Text);
         }
     }
 }
