@@ -79,6 +79,7 @@
     <Compile Include="Extensions\ExtendString.cs" />
     <Compile Include="Extensions\ExtendXML.cs" />
     <Compile Include="Extensions\FieldValueHelper.cs" />
+    <Compile Include="FunctionHelper.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

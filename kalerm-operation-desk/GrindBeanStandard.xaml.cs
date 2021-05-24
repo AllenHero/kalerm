@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -60,6 +61,11 @@ namespace kalerm_operation_desk
         List<mes_grindbeandata> grindbeandataList = new List<mes_grindbeandata>();
 
         string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+
+        //重量测试
+        bool threadWeightRun = false;
+
+        //Thread thread;
 
         public GrindBeanStandard()
         {
@@ -303,6 +309,10 @@ namespace kalerm_operation_desk
             lbTotal.Content = TotalPass + "";
         }
 
+        /// <summary>
+        /// 检查数据
+        /// </summary>
+        /// <returns></returns>
         private bool CheckData()
         {
             bool isPass = true;
@@ -352,6 +362,9 @@ namespace kalerm_operation_desk
             return isPass;
         }
 
+        /// <summary>
+        /// 保存数据
+        /// </summary>
         private void SavaData()
         {
             if (isSCAN)
@@ -396,6 +409,9 @@ namespace kalerm_operation_desk
             }
         }
 
+        /// <summary>
+        /// 清空数据
+        /// </summary>
         public void ClearData()
         {
             TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtCSHZL_071, txtFZ_071, txtRate_071, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
@@ -408,14 +424,159 @@ namespace kalerm_operation_desk
             }
         }
 
+        /// <summary>
+        /// 编辑071筛网重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSWZ_071_TextChanged(object sender, TextChangedEventArgs e)
         {
             ConfigHelper.UpdateSettingString("txtSWZ_071", txtSWZ_071.Text);
         }
 
+        /// <summary>
+        /// 编辑03筛网重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSWZ_03_TextChanged(object sender, TextChangedEventArgs e)
         {
             ConfigHelper.UpdateSettingString("txtSWZ_03", txtSWZ_03.Text);
+        }
+
+        /// <summary>
+        /// 第一杯粉重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
+        {
+            //thread = new Thread(new ThreadStart(Weight));
+            //thread.IsBackground = true;
+            //thread.Start();
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            dynamic txtFirstValue = lbData.Content;
+            txtFirst.Text = txtFirstValue;
+        }
+
+        /// <summary>
+        /// 第二杯粉重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSecond_KeyUp(object sender, KeyEventArgs e)
+        {
+            //thread = new Thread(new ThreadStart(Weight));
+            //thread.IsBackground = true;
+            //thread.Start();
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            dynamic txtSecondValue = lbData.Content;
+            txtSecond.Text = txtSecondValue;
+        }
+
+        /// <summary>
+        /// 第三杯粉重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtThird_KeyUp(object sender, KeyEventArgs e)
+        {
+            //thread = new Thread(new ThreadStart(Weight));
+            //thread.IsBackground = true;
+            //thread.Start();
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            dynamic txtThirdValue = lbData.Content;
+            txtThird.Text = txtThirdValue;
+            GettxtFZMin();
+        }
+
+        /// <summary>
+        /// 获取最小粉重
+        /// </summary>
+        public void GettxtFZMin() 
+        {
+            List<decimal> strList = new List<decimal>();
+            strList.Add(Convert.ToDecimal(txtFirst.Text));
+            strList.Add(Convert.ToDecimal(txtFirst.Text));
+            strList.Add(Convert.ToDecimal(txtThird.Text));
+            decimal[] strArray = strList.ToArray();//list转数组
+            FunctionHelper FunctionHelper = new FunctionHelper(strArray);
+            decimal txtFZMinValue = Math.Round(FunctionHelper.Min, 2);
+            txtFZMin.Text = Convert.ToString(txtFZMinValue);
+        }
+
+        /// <summary>
+        /// 计算最终结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBZ_KeyUp(object sender, KeyEventArgs e) 
+        {
+            string result = "";
+            decimal txtFZMinValue = Convert.ToDecimal(txtFZMin.Text);
+            if (!string.IsNullOrEmpty(txtBZ.Text))
+            {
+                decimal txtBZValue = Convert.ToDecimal(txtBZ.Text);
+                decimal resultValue = txtFZMinValue - txtBZValue;
+                lbData.Content = resultValue;
+                if (resultValue > 7 && resultValue <= 9)
+                {
+                    result = "C";
+                }
+                else if (resultValue > 7 && resultValue <= 9)
+                {
+                    result = "B";
+                }
+                else if (resultValue > 11 && resultValue <= 13)
+                {
+                    result = "C";
+                }
+                lbReasult.Content = result;
+            }
+            else
+            {
+                lbMessage.Content = "请输入杯重";
+                lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                txtBZ.Focus();
+            }
+        }
+
+        private void Weight()
+        {
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            while (threadWeightRun)
+            {
+                decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    try
+                    {
+                        lbData.Content = value + ""; 
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }));
+                Thread.Sleep(100);
+            }
         }
     }
 }

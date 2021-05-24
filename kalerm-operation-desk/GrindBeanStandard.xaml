@@ -106,14 +106,14 @@
                     <Label Content="档位" HorizontalAlignment="Left" Margin="5,40,0,0" VerticalAlignment="Top" Width="38" Height="30" Grid.RowSpan="2"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="84,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"  Grid.RowSpan="2" Name="txtDW"/>
                     <Label Content="粉重第一杯" HorizontalAlignment="Left" Margin="144,40,0,0" VerticalAlignment="Top" Width="70" Height="33" Grid.RowSpan="2" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Grid.RowSpan="2" Name="txtFirst"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Grid.RowSpan="2" Name="txtFirst" KeyUp="txtFirst_KeyUp"/>
                     <Label Content="粉重第二杯" HorizontalAlignment="Left" Margin="-1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" Height="29" Foreground="Green"></Label>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Name="txtSecond"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Name="txtSecond" KeyUp="txtSecond_KeyUp"/>
                     <Label Content="粉重第三杯" HorizontalAlignment="Left" Margin="143,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="71" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtThird"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="226,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtThird" KeyUp="txtThird_KeyUp"/>
                     <Label Content="粉重最小值" HorizontalAlignment="Left" Margin="-2,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="28" Foreground="Green"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="86,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="23" Name="txtFZMin"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="113,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="23" Name="txtBZ"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="113,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="23" Name="txtBZ" KeyUp="txtBZ_KeyUp"/>
                     <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="150,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Foreground="Orange"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="225,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSWZ_071" TextChanged="txtSWZ_071_TextChanged"/>
                     <Label Content="测试后重量" HorizontalAlignment="Left" Margin="-4,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
@@ -132,8 +132,8 @@
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="85,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtRate_03"/>
                     <Label Content="总比率" HorizontalAlignment="Left" Margin="156,160,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="26" Width="54" Foreground="Blue"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="224,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSumRate"/>
-                    <Label Content="A" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50" Name="lbReasult"/>
-                    <Label Content="11.9" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50" Name="lbData"/>
+                    <Label Content="" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50" Name="lbReasult"/>
+                    <Label Content="" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50" Name="lbData"/>
                     
                 </Grid>
             </Border>
