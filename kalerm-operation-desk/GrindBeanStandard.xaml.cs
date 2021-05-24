@@ -650,7 +650,28 @@ namespace kalerm_operation_desk
                 txtRate_03Value = txtFZ_03Value / txtFZMinValue;
             }
             txtRate_03.Text = Convert.ToString(txtRate_03Value);
+            GetSumRate();
         }
+
+        /// <summary>
+        /// 计算总比率
+        /// </summary>
+        public void GetSumRate() 
+        {
+            decimal txtRate_071Value = 0;
+            if (!string.IsNullOrEmpty(txtRate_071.Text))
+            {
+                txtRate_071Value = Convert.ToDecimal(txtRate_071.Text);
+            }
+            decimal txtRate_03Value = 0;
+            if (!string.IsNullOrEmpty(txtRate_03.Text))
+            {
+                txtRate_03Value = Convert.ToDecimal(txtRate_03.Text);
+            }
+            decimal txtSumRateValue = txtRate_071Value + txtRate_03Value;
+            txtSumRate.Text = Convert.ToString(txtSumRateValue);
+        }
+
 
         private void Weight()
         {
