@@ -390,12 +390,12 @@ namespace kalerm_operation_desk
             }
         }
 
-        public void ClearData() 
+        public void ClearData()
         {
             TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtSWZ_071, txtCSHZL_071, txtFZ_071, txtRate_071, txtSWZ_03, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
             for (int i = 0; i < txt.Length; i++)
             {
-                if (txt[i].Text.Trim() != null && txt[i].Text.Trim() != "")
+                if (txt[i].Text.Trim() != null || txt[i].Text.Trim() != "")
                 {
                     txt[i].Clear();
                 }
