@@ -1,4 +1,5 @@
-﻿using kalerm_common.Extensions;
+﻿using kalerm_common;
+using kalerm_common.Extensions;
 using kalerm_Idal;
 using kalerm_Idal.BaseData;
 using kalerm_model;
@@ -191,6 +192,15 @@ namespace kalerm_sqldal.BaseData
                 dt = GetDataTable(sql, ConnectionType.mes);
                 if (dt != null && dt.Rows.Count > 0)
                     list = Common.DataTableConvertList<mes_grindbeandata>(dt);
+                List<dynamic> BladeUserList = ApiDataSource.GetBladeUserList("000000");
+                foreach (var item in list)
+                {
+                    var User = BladeUserList.Find(m => m.id == item.CreateUser);
+                    if (User!=null)
+                    {
+                        item.CreateUser = User.realName;
+                    }
+                }
                 return list;
             }
             catch (Exception ex)

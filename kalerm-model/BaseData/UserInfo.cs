@@ -27,6 +27,8 @@ namespace kalerm_model.BaseData
         public string roleId { get; set; }
 	
         public string deptId { get; set; }
-   
+
+        public string passWord { get; set; }
+
     }
 }

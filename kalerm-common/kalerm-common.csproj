@@ -52,6 +52,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.1.0\lib\net4\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,7 +64,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiDataSource.cs" />
     <Compile Include="BalanceWeight.cs" />
+    <Compile Include="ConfigHelper.cs" />
     <Compile Include="Extensions\Common.cs" />
     <Compile Include="Extensions\DataPagingExtension.cs" />
     <Compile Include="Extensions\DataRowHelper.cs" />
@@ -84,6 +89,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kalerm-model\kalerm-model.csproj">
+      <Project>{4E9BF30C-F13E-4E82-A2A8-77B163536687}</Project>
+      <Name>kalerm-model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

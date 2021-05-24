@@ -97,6 +97,10 @@ namespace kalerm_operation_desk
             UserInfo.accessToken = accessToken;
             UserInfo.roleId = roleId;
             UserInfo.deptId = deptId;
+            UserInfo.passWord = textPassword.Password;
+
+            ConfigHelper.UpdateSettingString("UserCode", userCode);
+            ConfigHelper.UpdateSettingString("PassWord", UserInfo.passWord);
             if (tokenObject != null && Convert.ToString(tokenObject.Claims.FirstOrDefault(x => x.Type == "user_id").Value) != null)
             {
                 MainWindow.UserInfo = UserInfo;

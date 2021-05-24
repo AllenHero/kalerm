@@ -273,6 +273,37 @@ namespace kalerm_common.Extensions
             }
         }
 
+        public static List<dynamic> DataTableConvertDynamicList<dynamic>(DataTable mTable)
+        {
+            try
+            {
+                List<dynamic> mList = new List<dynamic>();
+                var mT = default(dynamic);
+                string mTempName = string.Empty;
+                foreach (DataRow mRow in mTable.Rows)
+                {
+                    mT = Activator.CreateInstance<dynamic>();
+                    var mProperTypes = mT.GetType().GetProperties();
+                    foreach (var mPro in mProperTypes)
+                    {
+                        mTempName = mPro.Name;
+                        if (mTable.Columns.Contains(mTempName))
+                        {
+                            var mValue = mRow[mTempName];
+                            if (mValue != DBNull.Value)
+                                mPro.SetValue(mT, mValue, null);
+                        }
+                    }
+                    mList.Add(mT);
+                }
+                return mList;
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception(Ex.Message);
+            }
+        }
+
         public static T DataTableConvertModel<T>(DataTable dt) where T : new()
         {
             try
