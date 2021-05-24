@@ -17,7 +17,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetWorkSheetList(TenantId);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -31,7 +31,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetBaseWuList(ProductCode, TenantId);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -46,7 +46,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetBaseWuTestList(WuId, TenantId, out isOK);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -60,7 +60,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetWorkSheet(WorkSheetNo, TenantId);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -74,7 +74,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetProductionProcess(ProcessId, TenantId);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -90,7 +90,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.SaveTestData(mes_testdata, ISPASS);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -104,7 +104,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.SaveGrindBeanData(mes_grindbeandata);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -118,7 +118,7 @@ namespace kalerm_bll.BaseData
             {
                 result = Context.BaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
