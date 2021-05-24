@@ -502,13 +502,13 @@ namespace kalerm_operation_desk
             Thread.Sleep(100);
             dynamic txtThirdValue = lbData.Content;
             txtThird.Text = txtThirdValue;
-            GettxtFZMin();
+            GetFZMin();
         }
 
         /// <summary>
         /// 获取最小粉重
         /// </summary>
-        public void GettxtFZMin() 
+        public void GetFZMin() 
         {
             List<decimal> strList = new List<decimal>();
             strList.Add(Convert.ToDecimal(txtFirst.Text));
@@ -554,6 +554,102 @@ namespace kalerm_operation_desk
                 lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                 txtBZ.Focus();
             }
+        }
+
+        /// <summary>
+        /// 0.71测试后重量
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
+        {
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            dynamic txtCSHZL_071Value = lbData.Content;
+            txtCSHZL_071.Text = txtCSHZL_071Value;
+            GetFZ_071AndRate_071();
+        }
+
+        /// <summary>
+        /// 获取0.71粉重和比率
+        /// </summary>
+        public void GetFZ_071AndRate_071()
+        {
+            decimal txtSWZ_071Value = 0;
+            if (!string.IsNullOrEmpty(txtSWZ_071.Text))
+            {
+                txtSWZ_071Value = Convert.ToDecimal(txtSWZ_071.Text);
+            }
+            decimal txtCSHZL_071Value = 0;
+            if (!string.IsNullOrEmpty(txtCSHZL_071.Text))
+            {
+                txtCSHZL_071Value = Convert.ToDecimal(txtCSHZL_071.Text);
+            }
+            decimal txtFZ_071Value = txtCSHZL_071Value - txtSWZ_071Value;
+            txtFZ_071.Text = Convert.ToString(txtFZ_071Value);
+            decimal txtFZMinValue = 0;
+            if (!string.IsNullOrEmpty(txtFZMin.Text))
+            {
+                txtFZMinValue = Convert.ToDecimal(txtFZMin.Text);
+            }
+            decimal txtRate_071Value = 0;
+            if (txtFZMinValue != 0)
+            {
+                txtRate_071Value = txtFZ_071Value / txtFZMinValue;
+            }
+            txtRate_071.Text = Convert.ToString(txtRate_071Value);
+        }
+
+        /// <summary>
+        /// 0.3粉重
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
+        {
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            dynamic txtCSHZL_03Value = lbData.Content;
+            txtCSHZL_03.Text = txtCSHZL_03Value;
+            GetFZ_03AndRate_03();
+        }
+
+        /// <summary>
+        /// 获取0.3粉重和比率
+        /// </summary>
+        public void GetFZ_03AndRate_03()
+        {
+            decimal txtSWZ_03Value = 0;
+            if (!string.IsNullOrEmpty(txtSWZ_03.Text))
+            {
+                txtSWZ_03Value = Convert.ToDecimal(txtSWZ_03.Text);
+            }
+            decimal txtCSHZL_03Value = 0;
+            if (!string.IsNullOrEmpty(txtCSHZL_03.Text))
+            {
+                txtCSHZL_03Value = Convert.ToDecimal(txtCSHZL_03.Text);
+            }
+            decimal txtFZ_03Value = txtCSHZL_03Value - txtSWZ_03Value;
+            txtFZ_03.Text = Convert.ToString(txtFZ_03Value);
+            decimal txtFZMinValue = 0;
+            if (!string.IsNullOrEmpty(txtFZMin.Text))
+            {
+                txtFZMinValue = Convert.ToDecimal(txtFZMin.Text);
+            }
+            decimal txtRate_03Value = 0;
+            if (txtFZMinValue != 0)
+            {
+                txtRate_03Value = txtFZ_03Value / txtFZMinValue;
+            }
+            txtRate_03.Text = Convert.ToString(txtRate_03Value);
         }
 
         private void Weight()
