@@ -59,6 +59,8 @@ namespace kalerm_operation_desk
 
         List<mes_grindbeandata> grindbeandataList = new List<mes_grindbeandata>();
 
+        string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+
         public GrindBeanStandard()
         {
             InitializeComponent();
@@ -79,12 +81,12 @@ namespace kalerm_operation_desk
             lbWTCOM.Content = MainWindow.WeightCom + "";
             lbTotal.Content = TotalPass + "";
             this.Loaded -= GrindBeanStandard_Loaded;
-            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
+            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in worksheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(""));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
             cbbWorkUnit.SelectedValue = WorkUnitId;
             txtScan.Focus();
@@ -108,7 +110,7 @@ namespace kalerm_operation_desk
                 string[] sArray = str1.Split('|');
                 ProductCode = sArray[1];
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
         }
         private void BtnSet_Click(object sender, RoutedEventArgs e)
@@ -182,7 +184,7 @@ namespace kalerm_operation_desk
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
                     if (!string.IsNullOrEmpty(WorkSheetNo))
                     {
-                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId);
                     }
                     string ProcessId = "";
                     if (worksheet != null)
@@ -195,7 +197,7 @@ namespace kalerm_operation_desk
                     base_productionprocess productionprocess = null;
                     if (!string.IsNullOrEmpty(ProcessId))
                     {
-                        productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                        productionprocess = bllBaseData.GetProductionProcess(ProcessId, TenantId);
                     }
                     if (productionprocess != null)
                     {
@@ -228,7 +230,7 @@ namespace kalerm_operation_desk
                         //查询磨豆数据
                         if (!string.IsNullOrEmpty(WuId))
                         {
-                            grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+                            grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
                         }
                         int index = 0;
                         foreach (var item in grindbeandataList)
@@ -365,7 +367,7 @@ namespace kalerm_operation_desk
                 string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
                 if (!string.IsNullOrEmpty(WuId) && !string.IsNullOrEmpty(WorkSheetNo))
                 {
-                    grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+                    grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
                 }
                 int index = 0;
                 foreach (var item in grindbeandataList)

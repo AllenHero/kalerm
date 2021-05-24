@@ -19,10 +19,14 @@ namespace kalerm_sqldal.BaseData
     {
         public SQLBaseData(BaseDatabaseContext context) : base(context) { }
 
-        public List<worksheet> GetWorkSheetList()
+        public List<worksheet> GetWorkSheetList(string TenantId)
         {
             List<worksheet> list = new List<worksheet>();
-            string sql = string.Format(@"select * from `kalerm-app-aps`.`worksheet`");
+            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a where 1=1");
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
+            }
             try
             {
                 DataTable dt = new DataTable();
@@ -37,13 +41,17 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wu> GetBaseWuList(string ProductCode)
+        public List<base_wu> GetBaseWuList(string ProductCode, string TenantId)
         {
             List<base_wu> list = new List<base_wu>();
-            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid ");
+            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid where 1=1");
             if (!string.IsNullOrEmpty(ProductCode))
             {
-                sql += " where a.productcode='" + ProductCode + "'";
+                sql += " and a.productcode='" + ProductCode + "'";
+            }
+            if (!string.IsNullOrEmpty(ProductCode))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
             }
             try
             {
@@ -59,14 +67,18 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wutest> GetBaseWuTestList(string WuId, out bool isOK)
+        public List<base_wutest> GetBaseWuTestList(string WuId, string TenantId, out bool isOK)
         {
             isOK = false;
             List<base_wutest> list = new List<base_wutest>();
-            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wutest` a ");
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wutest` a where 1=1");
             if (!string.IsNullOrEmpty(WuId))
             {
-                sql += " where a.wuid='" + WuId + "'";
+                sql += " and a.wuid='" + WuId + "'";
+            }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
             }
             try
             {
@@ -83,13 +95,17 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public worksheet GetWorkSheet(string WorkSheetNo)
+        public worksheet GetWorkSheet(string WorkSheetNo, string TenantId)
         {
             worksheet model = new worksheet();
-            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a ");
+            string sql = string.Format(@"select a.* from `kalerm-app-aps`.`worksheet` a where 1=1");
             if (!string.IsNullOrEmpty(WorkSheetNo))
             {
-                sql += " where a.WorkSheetNo='" + WorkSheetNo + "'";
+                sql += " and a.WorkSheetNo='" + WorkSheetNo + "'";
+            }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
             }
             try
             {
@@ -105,13 +121,17 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public base_productionprocess GetProductionProcess(string ProcessId)
+        public base_productionprocess GetProductionProcess(string ProcessId,string TenantId)
         {
             base_productionprocess model = new base_productionprocess();
-            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_productionprocess` a ");
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_productionprocess` a where 1=1");
             if (!string.IsNullOrEmpty(ProcessId))
             {
-                sql += " where a.processid='" + ProcessId + "'";
+                sql += " and a.processid='" + ProcessId + "'";
+            }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
             }
             try
             {
@@ -173,7 +193,7 @@ namespace kalerm_sqldal.BaseData
             return result;
         }
 
-        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId, string WorkSheetNo)
+        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId, string WorkSheetNo, string TenantId)
         {
             List<mes_grindbeandata> list = new List<mes_grindbeandata>();
             string sql = string.Format(@"select a.* from `kalerm-app-mes`.`mes_grindbeandata` a where 1=1 ");
@@ -181,9 +201,13 @@ namespace kalerm_sqldal.BaseData
             {
                 sql += " and a.wuid='" + WuId + "'";
             }
-            if (!string.IsNullOrEmpty(WuId))
+            if (!string.IsNullOrEmpty(WorkSheetNo))
             {
                 sql += " and a.WorkSheetNo='" + WorkSheetNo + "'";
+            }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and a.TenantId='" + TenantId + "'";
             }
             sql += " order by a.CreateTime desc";
             try
@@ -192,7 +216,7 @@ namespace kalerm_sqldal.BaseData
                 dt = GetDataTable(sql, ConnectionType.mes);
                 if (dt != null && dt.Rows.Count > 0)
                     list = Common.DataTableConvertList<mes_grindbeandata>(dt);
-                List<dynamic> BladeUserList = ApiDataSource.GetBladeUserList("000000");
+                List<dynamic> BladeUserList = ApiDataSource.GetBladeUserList(TenantId);
                 foreach (var item in list)
                 {
                     var User = BladeUserList.Find(m => m.id == item.CreateUser);

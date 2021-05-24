@@ -10,12 +10,12 @@ namespace kalerm_bll.BaseData
 {
     public class BllBaseData : BaseBusiness
     {
-        public List<worksheet> GetWorkSheetList()
+        public List<worksheet> GetWorkSheetList(string TenantId)
         {
             List<worksheet> result = new List<worksheet>();
             try
             {
-                result = Context.BaseData.GetWorkSheetList();
+                result = Context.BaseData.GetWorkSheetList(TenantId);
             }
             catch (System.Exception ex)
             {
@@ -24,12 +24,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wu> GetBaseWuList(string ProductCode)
+        public List<base_wu> GetBaseWuList(string ProductCode,string TenantId)
         {
             List<base_wu> result = new List<base_wu>();
             try
             {
-                result = Context.BaseData.GetBaseWuList(ProductCode);
+                result = Context.BaseData.GetBaseWuList(ProductCode, TenantId);
             }
             catch (System.Exception ex)
             {
@@ -38,13 +38,13 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wutest> GetBaseWuTestList(string WuId, out bool isOK)
+        public List<base_wutest> GetBaseWuTestList(string WuId,string TenantId, out bool isOK)
         {
             isOK = false;
             List<base_wutest> result = new List<base_wutest>();
             try
             {
-                result = Context.BaseData.GetBaseWuTestList(WuId, out isOK);
+                result = Context.BaseData.GetBaseWuTestList(WuId, TenantId, out isOK);
             }
             catch (System.Exception ex)
             {
@@ -53,12 +53,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public worksheet GetWorkSheet(string WorkSheetNo)
+        public worksheet GetWorkSheet(string WorkSheetNo,string TenantId)
         {
             worksheet result = new worksheet();
             try
             {
-                result = Context.BaseData.GetWorkSheet(WorkSheetNo);
+                result = Context.BaseData.GetWorkSheet(WorkSheetNo, TenantId);
             }
             catch (System.Exception ex)
             {
@@ -67,12 +67,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public base_productionprocess GetProductionProcess(string ProcessId)
+        public base_productionprocess GetProductionProcess(string ProcessId,string TenantId)
         {
             base_productionprocess result = new base_productionprocess();
             try
             {
-                result = Context.BaseData.GetProductionProcess(ProcessId);
+                result = Context.BaseData.GetProductionProcess(ProcessId, TenantId);
             }
             catch (System.Exception ex)
             {
@@ -111,12 +111,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId,string WorkSheetNo)
+        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId,string WorkSheetNo,string TenantId)
         {
             List<mes_grindbeandata> result = new List<mes_grindbeandata>();
             try
             {
-                result = Context.BaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+                result = Context.BaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
             }
             catch (System.Exception ex)
             {

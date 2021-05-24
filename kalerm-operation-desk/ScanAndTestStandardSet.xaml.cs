@@ -36,6 +36,7 @@ namespace kalerm_operation_desk
 
         public string WorkUnitId = "";
 
+        string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
 
         public ScanAndTestStandardSet()
         {
@@ -55,7 +56,7 @@ namespace kalerm_operation_desk
         private void ScanAndTestStandardSet_Loaded(object sender, RoutedEventArgs e)
         {
 
-            WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
+            WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
@@ -94,7 +95,7 @@ namespace kalerm_operation_desk
                 string[] sArray = str1.Split('|');
                 ProductCode = sArray[1];
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
         }
     }

@@ -91,6 +91,8 @@ namespace kalerm_operation_desk
 
         ObservableCollection<base_wu> base_wu = new ObservableCollection<base_wu>();
 
+        string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+
         public ScanAndTestStandardGPT()
         {
             InitializeComponent();
@@ -190,12 +192,12 @@ namespace kalerm_operation_desk
             lbTPCOM.Content = MainWindow.TemperatureCom + "";
             lbTotal.Content = TotalPass + "";
             this.Loaded -= ScanAndTestStandard_Loaded;
-            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList());
+            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in worksheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(""));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
             cbbWorkUnit.SelectedValue = WorkUnitId;
             txtScan.Focus();
@@ -304,7 +306,7 @@ namespace kalerm_operation_desk
                     worksheet worksheet = null;
                     if (!string.IsNullOrEmpty(WorkSheetNo))
                     {
-                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo);
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId);
                     }    
                     string ProcessId = "";
                     if (worksheet != null)
@@ -317,7 +319,7 @@ namespace kalerm_operation_desk
                     base_productionprocess productionprocess = null;
                     if (!string.IsNullOrEmpty(ProcessId))
                     {
-                        productionprocess = bllBaseData.GetProductionProcess(ProcessId);
+                        productionprocess = bllBaseData.GetProductionProcess(ProcessId, TenantId);
                     }                  
                     if (productionprocess != null)
                     {
@@ -348,7 +350,7 @@ namespace kalerm_operation_desk
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             return;
                         }
-                        base_wutest = bllBaseData.GetBaseWuTestList(WuId, out isOK);
+                        base_wutest = bllBaseData.GetBaseWuTestList(WuId, TenantId, out isOK);
                         int index = 0;
                         foreach (var item in base_wutest)
                         {
@@ -918,7 +920,7 @@ namespace kalerm_operation_desk
                 string[] sArray = str1.Split('|');
                 ProductCode = sArray[1];
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode));
+            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
         }
     }
