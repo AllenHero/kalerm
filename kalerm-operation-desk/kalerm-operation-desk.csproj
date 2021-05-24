@@ -93,6 +93,7 @@
     <Compile Include="Control\AutoCompleteTextBox.xaml.cs">
       <DependentUpon>AutoCompleteTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ControlClass.cs" />
     <Compile Include="GrindBean.xaml.cs">
       <DependentUpon>GrindBean.xaml</DependentUpon>
     </Compile>
@@ -122,7 +123,10 @@
     <Compile Include="ScanAndTestStandardTestError.xaml.cs">
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ulitity\FormUltility.cs" />
     <Compile Include="Ulitity\PortUlitity.cs" />
+    <Compile Include="Ulitity\RegexUtility.cs" />
+    <Compile Include="Ulitity\StringsUlitity.cs" />
     <Page Include="Control\AutoCompleteTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
