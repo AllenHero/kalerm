@@ -57,6 +57,8 @@ namespace kalerm_operation_desk
 
         List<mes_grindbeandata> mes_grindbeandata = new List<mes_grindbeandata>();
 
+        List<mes_grindbeandata> grindbeandataList = new List<mes_grindbeandata>();
+
         public GrindBeanStandard()
         {
             InitializeComponent();
@@ -223,12 +225,24 @@ namespace kalerm_operation_desk
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             return;
                         }
+                        //查询磨豆数据
+                        if (!string.IsNullOrEmpty(WuId))
+                        {
+                            grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+                        }
+                        int index = 0;
+                        foreach (var item in grindbeandataList)
+                        {
+                            index = index + 1;
+                            item.Id = Convert.ToString(index);
+                        }
                         txtScan.IsEnabled = true;
                         isSCAN = false;
                         TestCount = 0;
                         lbTest.Content = TestCount;
                         txtScan.Focus();
                         txtScan.Text = "";
+                        dataGrid.ItemsSource = grindbeandataList;
                     }
 
                     else//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
@@ -347,6 +361,20 @@ namespace kalerm_operation_desk
                     lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                     return;
                 }//测试数据保存
+                string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
+                if (!string.IsNullOrEmpty(WuId) && !string.IsNullOrEmpty(WorkSheetNo))
+                {
+                    grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+                }
+                int index = 0;
+                foreach (var item in grindbeandataList)
+                {
+                    index = index + 1;
+                    item.Id = Convert.ToString(index);
+                }
+                dataGrid.ItemsSource = grindbeandataList;
+                ClearData();
                 isSCAN = true;
                 string MachineName = Environment.MachineName;
                 lbMessage.Content = "成功过站";
@@ -359,6 +387,18 @@ namespace kalerm_operation_desk
             {
                 lbMessage.Content = "有数据为空,不能保存";
                 lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+            }
+        }
+
+        public void ClearData() 
+        {
+            TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtSWZ_071, txtCSHZL_071, txtFZ_071, txtRate_071, txtSWZ_03, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
+            for (int i = 0; i < txt.Length; i++)
+            {
+                if (txt[i].Text.Trim() != null && txt[i].Text.Trim() != "")
+                {
+                    txt[i].Clear();
+                }
             }
         }
     }

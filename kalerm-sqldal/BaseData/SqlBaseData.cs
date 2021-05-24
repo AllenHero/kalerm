@@ -172,6 +172,33 @@ namespace kalerm_sqldal.BaseData
             return result;
         }
 
+        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId, string WorkSheetNo)
+        {
+            List<mes_grindbeandata> list = new List<mes_grindbeandata>();
+            string sql = string.Format(@"select a.* from `kalerm-app-mes`.`mes_grindbeandata` a where 1=1 ");
+            if (!string.IsNullOrEmpty(WuId))
+            {
+                sql += " and a.wuid='" + WuId + "'";
+            }
+            if (!string.IsNullOrEmpty(WuId))
+            {
+                sql += " and a.WorkSheetNo='" + WorkSheetNo + "'";
+            }
+            sql += " order by a.CreateTime desc";
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.mes);
+                if (dt != null && dt.Rows.Count > 0)
+                    list = Common.DataTableConvertList<mes_grindbeandata>(dt);
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #region sql语句
 
         /// <summary>

@@ -110,5 +110,19 @@ namespace kalerm_bll.BaseData
             }
             return result;
         }
+
+        public List<mes_grindbeandata> GetGrindBeanDataList(string WuId,string WorkSheetNo)
+        {
+            List<mes_grindbeandata> result = new List<mes_grindbeandata>();
+            try
+            {
+                result = Context.BaseData.GetGrindBeanDataList(WuId, WorkSheetNo);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }

@@ -23,5 +23,7 @@ namespace kalerm_Idal.BaseData
         int SaveTestData(List<mes_testdata> mes_testdata, int ISPASS);
 
         int SaveGrindBeanData(List<mes_grindbeandata> mes_grindbeandata);
+
+        List<mes_grindbeandata> GetGrindBeanDataList(string WuId, string WorkSheetNo);
     }
 }
