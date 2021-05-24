@@ -144,7 +144,6 @@ namespace kalerm_operation_desk
         internal void SetButton(MessageWindowButtons buttons)
         {
             double width = buttonPanel.Width;
-            double widthspace = 8;
             switch (buttons)
             {
                 case MessageWindowButtons.OK:

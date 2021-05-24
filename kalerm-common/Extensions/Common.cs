@@ -59,7 +59,6 @@ namespace kalerm_common.Extensions
             byte CL; byte CH;       //多项式码&HA001
             byte SaveHi; byte SaveLo;
             byte[] tmpData;
-            int I;
             int Flag;
             CRC16Lo = 0xFF;
             CRC16Hi = 0xFF;

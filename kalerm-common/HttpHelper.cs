@@ -216,7 +216,7 @@ namespace kalerm_common
             {
                 param.contentType = "application/json";
             }
-            param.timeOut = param.timeOut == null ? 5 : param.timeOut;
+            param.timeOut = Convert.ToString(param.timeOut) == null ? 5 : param.timeOut;
             param.timeOut = param.timeOut <= 0 ? 5 : param.timeOut;
             return new ResponseObject(true);
         }
