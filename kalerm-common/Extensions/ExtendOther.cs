@@ -20,7 +20,6 @@ namespace kalerm_common.Extensions
             return list.Any(item => item.Equals(value));
         }
 
-
         /// <summary>
         ///  ForEach扩展
         /// </summary>

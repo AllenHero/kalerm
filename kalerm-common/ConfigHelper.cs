@@ -25,7 +25,6 @@ namespace kalerm_common
         public static void UpdateSettingString(string settingName, string valueName)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
             if (ConfigurationManager.AppSettings[settingName] != null)
             {
                 config.AppSettings.Settings.Remove(settingName);

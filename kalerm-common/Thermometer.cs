@@ -77,7 +77,9 @@ namespace kalerm_common
                     ComDevice.Write(data, 0, data.Length);
                 ComDevice.Close();
             }
-            catch { }
+            catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void ComDevice_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -105,9 +107,9 @@ namespace kalerm_common
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
     }

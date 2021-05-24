@@ -226,9 +226,9 @@ namespace kalerm_operation_desk
                             lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
                         dataGrid.ItemsSource = base_wutest;
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        throw new Exception(ex.Message);
                     }
                 }
                 if (e.Key == Key.Enter)
@@ -562,9 +562,9 @@ namespace kalerm_operation_desk
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        throw new Exception(ex.Message);
                     }
                 }));
                 Thread.Sleep(100);
@@ -593,9 +593,9 @@ namespace kalerm_operation_desk
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        throw new Exception(ex.Message);
                     }
                 }));
                 Thread.Sleep(100);
@@ -624,9 +624,9 @@ namespace kalerm_operation_desk
                                 lbITEM_VALUE.Foreground = new SolidColorBrush(Colors.Black);
                         }
                     }
-                    catch
-                    { 
-                    
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
                     }
                 }));
                 Thread.Sleep(100);

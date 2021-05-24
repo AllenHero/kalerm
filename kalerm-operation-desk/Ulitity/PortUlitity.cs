@@ -56,9 +56,9 @@ namespace kalerm_operation_desk.Ulitity
                     GlobalResourceManager.TryParse(addresses[i], out ParseResult result);
                     list.Add(result.AliasIfExists);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    //list.Add("None");
+                    throw new Exception(ex.Message);
                 }
             }
             return list.ToArray();
@@ -76,7 +76,10 @@ namespace kalerm_operation_desk.Ulitity
                     result = true;
                 }
             }
-            catch { }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
             return result;
         }
 

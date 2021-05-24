@@ -73,7 +73,6 @@ namespace kalerm_common.Extensions
                         string xml = sr.ReadToEnd();
                         try
                         {
-
                             ds = xml.ToDataSet();
                         }
                         catch (Exception ex)

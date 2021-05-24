@@ -169,9 +169,9 @@ namespace kalerm_operation_desk.Base
                     this.Owner = (Window)System.Windows.Interop.HwndSource.FromHwnd(ActiveWindowHandle).RootVisual;
                     this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    throw new Exception(ex.Message);
                 }
             }
         }
@@ -271,9 +271,9 @@ namespace kalerm_operation_desk.Base
                     button.Source = new BitmapImage(new Uri(string.Format("/EmployeeSkillManagement;component/Image/{0}_2.png", button.Tag), UriKind.Relative));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -287,8 +287,9 @@ namespace kalerm_operation_desk.Base
                     button.Source = new BitmapImage(new Uri(string.Format("/EmployeeSkillManagement;component/Image/{0}_1.png", button.Tag), UriKind.Relative));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception(ex.Message);
 
             }
         }
@@ -324,9 +325,9 @@ namespace kalerm_operation_desk.Base
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 

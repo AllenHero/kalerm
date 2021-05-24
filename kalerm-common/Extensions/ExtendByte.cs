@@ -11,6 +11,7 @@ namespace kalerm_common.Extensions
     public static class ExtendByte
     {
         #region 计算hash
+
         /// <summary>
         /// 计算hash
         /// </summary>

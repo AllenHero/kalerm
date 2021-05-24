@@ -326,7 +326,6 @@ namespace kalerm_common.Extensions
                     if (columns.Contains(name))
                     {
                         if (!pi.CanWrite) continue;
-
                         object value = dr[name];
                         if (value != DBNull.Value)
                         {
@@ -336,9 +335,9 @@ namespace kalerm_common.Extensions
                 }
                 return t;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
     }

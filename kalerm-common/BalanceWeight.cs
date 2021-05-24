@@ -51,7 +51,9 @@ namespace kalerm_common
             {
                 threadRun = true;
             }
-            catch { }
+            catch (Exception ex){
+                throw new Exception(ex.Message);
+            }
         }
 
         private void Read()
@@ -68,8 +70,10 @@ namespace kalerm_common
                     if (ComDevice.IsOpen)
                         ComDevice.Write(data, 0, data.Length);
                 }
-                catch
-                { }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
                 Thread.Sleep(400);
             }
         }
@@ -82,7 +86,10 @@ namespace kalerm_common
             {
                 ComDevice.Close();
             }
-            catch { }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void ComDevice_DataReceived(object sender, SerialDataReceivedEventArgs e)

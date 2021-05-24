@@ -126,7 +126,10 @@ namespace kalerm_operation_desk.Control
                     comboBox.IsDropDownOpen = false;
                 }
             }
-            catch { }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)

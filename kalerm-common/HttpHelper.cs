@@ -129,7 +129,6 @@ namespace kalerm_common
             public string tenantid { get; set; }
         }
 
-
         public static ResponseObject WebApiNoJson(ParamApi paramapi)
         {
             var isCheck = Check(paramapi);

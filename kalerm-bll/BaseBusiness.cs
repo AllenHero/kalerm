@@ -21,5 +21,4 @@ namespace kalerm_bll
             Context = new SQLDatabaseContext();
         }
     }
-
 }

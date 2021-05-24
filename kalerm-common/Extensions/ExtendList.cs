@@ -27,7 +27,6 @@ namespace kalerm_common.Extensions
                 {
                     result.Columns.Add(pi.Name, pi.PropertyType);
                 }
-
                 for (int i = 0; i < list.Count; i++)
                 {
                     ArrayList tempList = new ArrayList();
@@ -69,7 +68,6 @@ namespace kalerm_common.Extensions
             {
                 propertyNameList.AddRange(propertyName);
             }
-
             DataTable result = new DataTable();
             if (list.Count > 0)
             {
