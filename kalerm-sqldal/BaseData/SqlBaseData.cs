@@ -158,7 +158,7 @@ namespace kalerm_sqldal.BaseData
             foreach (var row in mes_grindbeandata)
             {
                 sql += string.Format(@"insert into `kalerm-app-mes`.`mes_grindbeandata` (Id, OrderNo,WorkSheetNo, WuId, BarCode, ComponentNumber, KMGL,GL,DW,`First`,`Second`,`Third`,FZMin,BZ,SWZ_071,CSHZL_071,FZ_071,Rate_071,SWZ_03,CSHZL_03,FZ_03,Rate_03,SumRate,CreateUser,CreateTime,TenantId) VALUES 
-                  ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}','{11}', '{12}', '{13}',{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', '{21}', '{22}', '{23}', '{24}','{25}');",
+                  ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}','{11}', '{12}', '{13}','{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', '{21}', '{22}', '{23}', '{24}','{25}');",
                   row.Id, row.OrderNo, row.WorkSheetNo, row.WuId, row.BarCode, row.ComponentNumber, row.KMGL, row.GL, row.DW, row.First, row.Second, row.Third, row.FZMin, row.BZ, row.SWZ_071, row.CSHZL_071, row.FZ_071, row.Rate_071, row.SWZ_03, row.CSHZL_03, row.FZ_03, row.Rate_03, row.SumRate, row.CreateUser, row.CreateTime, row.TenantId );
             }
             try
