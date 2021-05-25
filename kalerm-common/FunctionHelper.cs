@@ -31,9 +31,9 @@ namespace kalerm_common
         public FunctionHelper(decimal[] Samples)
         {
             this.Samples = Samples;
-            SPCMax();
-            SPCMin();
-            SPCMean();       
+            GetMax();
+            GetMin();
+            GetMean();       
         }
 
         #region 最大值 MAX
@@ -42,7 +42,7 @@ namespace kalerm_common
         /// 最大值 MAX
         /// </summary>
         /// <returns></returns>
-        public void SPCMax()
+        public void GetMax()
         {
             decimal max = this.Samples[0];
             for (int i = 0; i < this.Samples.Length; i++)
@@ -60,7 +60,7 @@ namespace kalerm_common
         /// 最小值 MIN
         /// </summary>
         /// <returns></returns>
-        public void SPCMin()
+        public void GetMin()
         {
             decimal min = this.Samples[0];
             for (int i = 0; i < this.Samples.Length; i++)
@@ -78,7 +78,7 @@ namespace kalerm_common
         /// 平均值 AVE
         /// </summary>
         /// <returns></returns>
-        public void SPCMean()
+        public void GetMean()
         {
             decimal sumup = 0;
             for (int i = 0; i < this.Samples.Length; i++)

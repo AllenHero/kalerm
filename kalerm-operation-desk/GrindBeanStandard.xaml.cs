@@ -538,7 +538,7 @@ namespace kalerm_operation_desk
                 {
                     result = "C";
                 }
-                else if (resultValue > 7 && resultValue <= 9)
+                else if (resultValue > 9 && resultValue <= 11)
                 {
                     result = "B";
                 }
@@ -605,7 +605,7 @@ namespace kalerm_operation_desk
         }
 
         /// <summary>
-        /// 0.3粉重
+        /// 0.3测试后重量
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -671,7 +671,6 @@ namespace kalerm_operation_desk
             decimal txtSumRateValue = txtRate_071Value + txtRate_03Value;
             txtSumRate.Text = Convert.ToString(txtSumRateValue);
         }
-
 
         private void Weight()
         {
