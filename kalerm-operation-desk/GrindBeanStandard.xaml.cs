@@ -65,7 +65,7 @@ namespace kalerm_operation_desk
         //重量测试
         bool threadWeightRun = false;
 
-        //Thread thread;
+        Thread thread;
 
         public GrindBeanStandard()
         {
@@ -260,7 +260,7 @@ namespace kalerm_operation_desk
                         dataGrid.ItemsSource = grindbeandataList;
                     }
 
-                    else//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
+                    else if (isSCAN == false)//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
                     {
                         if (TestCount < typeList.Count)//还有测试项目未完成
                         {
@@ -288,7 +288,32 @@ namespace kalerm_operation_desk
                                     break;
                             }
                             TestCount += 1;
-                        }       
+                        }
+                        if (typeList.Count == TestCount)
+                        {
+                            txtFirst.Focus();
+                        }
+                    }
+                    //自动称重
+                    else if (txtFirst.IsFocused == true)
+                    {
+                        txtFirst.KeyUp += txtFirst_KeyUp;
+                    }
+                    else if (txtSecond.IsFocused==true) 
+                    {
+                        txtSecond.KeyUp += txtSecond_KeyUp; 
+                    }
+                    else if (txtThird.IsFocused==true)
+                    {
+                        txtThird.KeyUp += txtThird_KeyUp;    
+                    }
+                    else if (txtCSHZL_071.IsFocused==true)
+                    {
+                        txtCSHZL_071.KeyUp += txtCSHZL_071_KeyUp;                      
+                    }
+                    else if (txtCSHZL_03.IsFocused==true)
+                    {
+                        txtCSHZL_03.KeyUp += txtCSHZL_03_KeyUp;
                     }
                 }
             }
@@ -465,6 +490,7 @@ namespace kalerm_operation_desk
             Thread.Sleep(100);
             dynamic txtFirstValue = lbData.Content;
             txtFirst.Text = txtFirstValue;
+            txtSecond.Focus();
         }
 
         /// <summary>
@@ -485,6 +511,7 @@ namespace kalerm_operation_desk
             Thread.Sleep(100);
             dynamic txtSecondValue = lbData.Content;
             txtSecond.Text = txtSecondValue;
+            txtThird.Focus();
         }
 
         /// <summary>
@@ -506,6 +533,7 @@ namespace kalerm_operation_desk
             dynamic txtThirdValue = lbData.Content;
             txtThird.Text = txtThirdValue;
             GetFZMin();
+            txtCSHZL_071.Focus();
         }
 
         /// <summary>
@@ -575,6 +603,7 @@ namespace kalerm_operation_desk
             dynamic txtCSHZL_071Value = lbData.Content;
             txtCSHZL_071.Text = txtCSHZL_071Value;
             GetFZ_071AndRate_071();
+            txtCSHZL_03.Focus();
         }
 
         /// <summary>
