@@ -72,6 +72,9 @@ namespace kalerm_operation_desk
             InitializeComponent();
             this.Loaded += GrindBeanStandard_Loaded;
             txtScan.KeyUp += TxtScan_KeyUp;
+            btnSet.Click += BtnSet_Click;
+            btnCom.Click += BtnCom_Click;
+            btnClear.Click += BtnClear_Click;
         }
 
         private void GrindBeanStandard_Loaded(object sender, RoutedEventArgs e)
