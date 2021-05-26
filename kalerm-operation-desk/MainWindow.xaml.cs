@@ -62,14 +62,6 @@ namespace kalerm_operation_desk
             {
                 tbUserName.Text = "当前用户：【" + UserInfo.realName + "】";
             }
-            try
-            {
-                //TODO
-            }
-            catch (Exception ex)
-            {
-                ReMessageBox.Show(ex.Message);
-            }
         }
 
         #region 主菜单无法显示完全时，滚动按钮
@@ -323,14 +315,6 @@ namespace kalerm_operation_desk
             }
         }
 
-        private void RestartSystem()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = Process.GetCurrentProcess().MainModule.FileName; //Assembly.GetExecutingAssembly().Location;
-            Process.Start(psi);
-            Application.Current.Shutdown();
-        }
-
         private void ExpanderItem_MouseLeave(object sender, MouseEventArgs e)
         {
             try
@@ -384,6 +368,7 @@ namespace kalerm_operation_desk
                 throw new Exception(ex.Message);
             }
         }
+
         private void WindowButton_MouseLeave(object sender, MouseEventArgs e)
         {
             try
