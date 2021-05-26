@@ -25,7 +25,7 @@ namespace kalerm_operation_desk
             dicImages.Clear();
             for (int i = 0; i < 4; i++)
             {
-                dicImages.Add(i, "/EmployeeSkillManagement;component/Control/Icon/" + i.ToString() + ".png");
+                dicImages.Add(i, "/Control/Icon/" + i.ToString() + ".png");
             }
         }
         public void Dispose()

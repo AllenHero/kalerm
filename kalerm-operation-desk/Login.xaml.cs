@@ -181,7 +181,7 @@ namespace kalerm_operation_desk
                         {
 
                             ReMessageBox.Show("登录失败");
-                            imageLogin.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_2.png", UriKind.Relative));
+                            imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_2.png", UriKind.Relative));
                         }
                     }
                 }
@@ -190,7 +190,7 @@ namespace kalerm_operation_desk
             {
 
                 ReMessageBox.Show("登录失败" + ex.Message);
-                imageLogin.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_2.png", UriKind.Relative));
+                imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_2.png", UriKind.Relative));
             }
             finally
             {
@@ -202,13 +202,13 @@ namespace kalerm_operation_desk
         private void imageLogin_MouseEnter(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageLogin.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_4.png", UriKind.Relative));
+            imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_4.png", UriKind.Relative));
         }
 
         private void imageLogin_MouseLeave(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageLogin.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_2.png", UriKind.Relative));
+            imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_2.png", UriKind.Relative));
         }
 
         #region imageClose
@@ -216,13 +216,13 @@ namespace kalerm_operation_desk
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageClose.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/Exit_2.png", UriKind.Relative));
+            imageClose.Source = new BitmapImage(new Uri("/Image/Exit_2.png", UriKind.Relative));
         }
 
         private void imageClose_MouseLeave(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageClose.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/Exit_1.png", UriKind.Relative));
+            imageClose.Source = new BitmapImage(new Uri("/Image/Exit_1.png", UriKind.Relative));
         }
 
         private void imageClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -238,13 +238,13 @@ namespace kalerm_operation_desk
         private void imageCancel_MouseEnter(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageCancel.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_5.png", UriKind.Relative));
+            imageCancel.Source = new BitmapImage(new Uri("/Image/LandWindow_5.png", UriKind.Relative));
         }
 
         private void imageCancel_MouseLeave(object sender, MouseEventArgs e)
         {
             if (loading.Visibility == System.Windows.Visibility.Visible) return;
-            imageCancel.Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/LandWindow_3.png", UriKind.Relative));
+            imageCancel.Source = new BitmapImage(new Uri("/Image/LandWindow_3.png", UriKind.Relative));
         }
 
         private void imageCancel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

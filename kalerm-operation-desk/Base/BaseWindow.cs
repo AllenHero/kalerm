@@ -268,7 +268,7 @@ namespace kalerm_operation_desk.Base
                 Image button = sender as Image;
                 if (button != null)
                 {
-                    button.Source = new BitmapImage(new Uri(string.Format("/EmployeeSkillManagement;component/Image/{0}_2.png", button.Tag), UriKind.Relative));
+                    button.Source = new BitmapImage(new Uri(string.Format("/Image/{0}_2.png", button.Tag), UriKind.Relative));
                 }
             }
             catch (Exception ex)
@@ -284,7 +284,7 @@ namespace kalerm_operation_desk.Base
                 Image button = sender as Image;
                 if (button != null)
                 {
-                    button.Source = new BitmapImage(new Uri(string.Format("/EmployeeSkillManagement;component/Image/{0}_1.png", button.Tag), UriKind.Relative));
+                    button.Source = new BitmapImage(new Uri(string.Format("/Image/{0}_1.png", button.Tag), UriKind.Relative));
                 }
             }
             catch (Exception ex)
