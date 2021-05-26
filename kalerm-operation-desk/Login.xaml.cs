@@ -95,7 +95,6 @@ namespace kalerm_operation_desk
                 {
                     ReMessageBox.Show("租户不能为空");
                 }
-
                 var tokenId = "";
                 if (tokenId == null || tokenId == "")
                 {
@@ -121,7 +120,6 @@ namespace kalerm_operation_desk
                 string accessToken = tokenId;
                 string roleId = tokenObject.Claims.FirstOrDefault(x => x.Type == "role_id").Value;
                 string deptId = tokenObject.Claims.FirstOrDefault(x => x.Type == "dept_id").Value;
-
                 UserInfo.tenantId = tenantId;
                 UserInfo.userId = userId;
                 UserInfo.userCode = userCode;
@@ -133,25 +131,12 @@ namespace kalerm_operation_desk
                 UserInfo.roleId = roleId;
                 UserInfo.deptId = deptId;
                 UserInfo.passWord = textPassword.Password;
-
-                this.Dispatcher.Invoke(new Action(() =>
-                {
-                    ConfigHelper.UpdateSettingString("UserCode", userCode);
-                    ConfigHelper.UpdateSettingString("PassWord", UserInfo.passWord);
-                    if (tokenObject != null && Convert.ToString(tokenObject.Claims.FirstOrDefault(x => x.Type == "user_id").Value) != null)
-                    {
-                        MainWindow.UserInfo = UserInfo;
-                        MainWindow aChild = new MainWindow();
-                        aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                        aChild.Show();
-                        // 关闭自己(父窗体) 
-                        this.Close();
-                    }
-                }));
+                ConfigHelper.UpdateSettingString("UserCode", userCode);
+                ConfigHelper.UpdateSettingString("PassWord", UserInfo.passWord);
             }
-            catch (Exception ex)
+            catch 
             {
-                throw new Exception("获取数据异常，请检查网络后重试" + ex.Message);
+                throw new Exception("获取数据异常，请检查网络后重试");
             }
         }
 
@@ -179,7 +164,6 @@ namespace kalerm_operation_desk
                         }
                         else
                         {
-
                             ReMessageBox.Show("登录失败");
                             imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_2.png", UriKind.Relative));
                         }
@@ -188,7 +172,6 @@ namespace kalerm_operation_desk
             }
             catch (Exception ex)
             {
-
                 ReMessageBox.Show("登录失败" + ex.Message);
                 imageLogin.Source = new BitmapImage(new Uri("/Image/LandWindow_2.png", UriKind.Relative));
             }
