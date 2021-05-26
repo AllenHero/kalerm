@@ -104,9 +104,6 @@
     <Compile Include="Control\MainTabItemControl.xaml.cs">
       <DependentUpon>MainTabItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GrindBean.xaml.cs">
-      <DependentUpon>GrindBean.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GrindBeanStandard.xaml.cs">
       <DependentUpon>GrindBeanStandard.xaml</DependentUpon>
     </Compile>
@@ -153,10 +150,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\MainTabItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GrindBean.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
