@@ -24,17 +24,13 @@ namespace kalerm_operation_desk
     /// </summary>
     public partial class MainWindowNew : Window
     {
-        Frame frame = new Frame();
-
-        ObservableCollection<TreeModle> TreeModle = new ObservableCollection<TreeModle>();
-
         Dictionary<int, string> TabItemControl = new Dictionary<int, string>();
 
         public static UserInfo UserInfo;
 
-        public static string LineNO;
+        public static string WorkSheetNo;
 
-        public static string PROCESS_NO;
+        public static string WorkUnitId;
 
         public static string WeightCom;
 
@@ -57,12 +53,11 @@ namespace kalerm_operation_desk
 
         private void MainWindowNew_Loaded(object sender, RoutedEventArgs e)
         {
-            LineNO = ConfigurationManager.AppSettings["LineNO"] + "";
-            PROCESS_NO = ConfigurationManager.AppSettings["PROCESS_NO"] + "";
+            WorkSheetNo = ConfigurationManager.AppSettings["WorkSheetNo"] + "";
+            WorkUnitId = ConfigurationManager.AppSettings["WorkUnitId"] + "";
             WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
             TemperatureCom = ConfigurationManager.AppSettings["TemperatureCom"] + "";
             TabItemControl.Add(0, "首页");
-            TreeModle = new ObservableCollection<TreeModle>();
             if (UserInfo != null && UserInfo.realName != null)
             {
                 tbUserName.Text = "当前用户：【" + UserInfo.realName + "】";
@@ -77,7 +72,6 @@ namespace kalerm_operation_desk
             }
         }
 
-
         #region 主菜单无法显示完全时，滚动按钮
 
         private void ImageDown_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -85,10 +79,10 @@ namespace kalerm_operation_desk
             try
             {
                 menuStack.LineUp();
-            }
-            catch
+            } 
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -98,9 +92,9 @@ namespace kalerm_operation_desk
             {
                 menuStack.LineDown();
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -228,9 +222,9 @@ namespace kalerm_operation_desk
                     else this.WindowState = System.Windows.WindowState.Maximized;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -254,9 +248,9 @@ namespace kalerm_operation_desk
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -272,81 +266,81 @@ namespace kalerm_operation_desk
 
         #region 生成菜单
 
-        private Expander CreateExpander(PropertyNodeItem NodeItem)
-        {
-            Expander exp = new Expander();
-            exp.Expanded += new RoutedEventHandler(Expander_Expanded);
-            exp.Collapsed += new RoutedEventHandler(Expander_Collapsed);
-            exp.Header = new TextBlock() { VerticalAlignment = System.Windows.VerticalAlignment.Center, Text = NodeItem.DisplayName, FontSize = 14, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
-            return exp;
-        }
+        //private Expander CreateExpander(PropertyNodeItem NodeItem)
+        //{
+        //    Expander exp = new Expander();
+        //    exp.Expanded += new RoutedEventHandler(Expander_Expanded);
+        //    exp.Collapsed += new RoutedEventHandler(Expander_Collapsed);
+        //    exp.Header = new TextBlock() { VerticalAlignment = System.Windows.VerticalAlignment.Center, Text = NodeItem.DisplayName, FontSize = 14, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
+        //    return exp;
+        //}
 
-        private void CreateExpanderItem(Grid grid, PropertyNodeItem NodeItem)
-        {
-            if (grid.RowDefinitions.Count != 0)
-            {
-                grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(2) });
-                Border border = new Border() { Width = 150, HorizontalAlignment = System.Windows.HorizontalAlignment.Center, Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
-                border.Child = new Image { Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/Line.jpg", UriKind.Relative)) };
-                grid.Children.Add(border);
-                border.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
-            }
-            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
-            ExpanderItem item = new ExpanderItem();
-            item.HeaderText = NodeItem.DisplayName;
-            item.Tag = NodeItem;
-            item.HeaderFontSize = 13;
-            item.HeaderForeground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-            if (IsExistResource("Image/Icon/" + NodeItem.DisplayName + ".ico"))
-            {
-                item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/" + NodeItem.DisplayName + ".ico", UriKind.Relative));
-            }
-            else
-            {
-                item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/DefaultIcon.ico", UriKind.Relative));
-            }
-            grid.Children.Add(item);
-            item.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
-            item.MouseEnter += new MouseEventHandler(ExpanderItem_MouseEnter);
-            item.MouseLeave += new MouseEventHandler(ExpanderItem_MouseLeave);
-            item.MouseLeftButtonDown += new MouseButtonEventHandler(ExpanderItem_MouseLeftButtonDown);
-        }
+        //private void CreateExpanderItem(Grid grid, PropertyNodeItem NodeItem)
+        //{
+        //    if (grid.RowDefinitions.Count != 0)
+        //    {
+        //        grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(2) });
+        //        Border border = new Border() { Width = 150, HorizontalAlignment = System.Windows.HorizontalAlignment.Center, Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
+        //        border.Child = new Image { Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/Line.jpg", UriKind.Relative)) };
+        //        grid.Children.Add(border);
+        //        border.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
+        //    }
+        //    grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+        //    ExpanderItem item = new ExpanderItem();
+        //    item.HeaderText = NodeItem.DisplayName;
+        //    item.Tag = NodeItem;
+        //    item.HeaderFontSize = 13;
+        //    item.HeaderForeground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+        //    if (IsExistResource("Image/Icon/" + NodeItem.DisplayName + ".ico"))
+        //    {
+        //        item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/" + NodeItem.DisplayName + ".ico", UriKind.Relative));
+        //    }
+        //    else
+        //    {
+        //        item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/DefaultIcon.ico", UriKind.Relative));
+        //    }
+        //    grid.Children.Add(item);
+        //    item.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
+        //    item.MouseEnter += new MouseEventHandler(ExpanderItem_MouseEnter);
+        //    item.MouseLeave += new MouseEventHandler(ExpanderItem_MouseLeave);
+        //    item.MouseLeftButtonDown += new MouseButtonEventHandler(ExpanderItem_MouseLeftButtonDown);
+        //}
 
         /// <summary>
         /// 判断指定key的资源是否存在
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        private bool IsExistResource(string key)
-        {
-            try
-            {
-                #region key值包含中文时，需要转化
-                string newKey = "";
-                byte[] data = System.Text.Encoding.UTF8.GetBytes(key);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    if (data[i] > 128)
-                    {
-                        newKey += "%" + Convert.ToString(data[i], 16);
-                    }
-                    else newKey += (char)data[i];
-                }
-                #endregion
-                string resourceName = this.GetType().Assembly.GetName().Name + ".g";
-                System.Resources.ResourceManager mgr = new System.Resources.ResourceManager(resourceName, this.GetType().Assembly);
-                using (System.Resources.ResourceSet set = mgr.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true))
-                {
-                    object obj = set.GetObject(newKey, true);
-                    if (obj == null) return false;
-                    else return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        //private bool IsExistResource(string key)
+        //{
+        //    try
+        //    {
+        //        #region key值包含中文时，需要转化
+        //        string newKey = "";
+        //        byte[] data = System.Text.Encoding.UTF8.GetBytes(key);
+        //        for (int i = 0; i < data.Length; i++)
+        //        {
+        //            if (data[i] > 128)
+        //            {
+        //                newKey += "%" + Convert.ToString(data[i], 16);
+        //            }
+        //            else newKey += (char)data[i];
+        //        }
+        //        #endregion
+        //        string resourceName = this.GetType().Assembly.GetName().Name + ".g";
+        //        System.Resources.ResourceManager mgr = new System.Resources.ResourceManager(resourceName, this.GetType().Assembly);
+        //        using (System.Resources.ResourceSet set = mgr.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true))
+        //        {
+        //            object obj = set.GetObject(newKey, true);
+        //            if (obj == null) return false;
+        //            else return true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         #endregion
 
@@ -414,9 +408,9 @@ namespace kalerm_operation_desk
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -439,9 +433,9 @@ namespace kalerm_operation_desk
                     expItem.BackgroundImage = null;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -456,9 +450,9 @@ namespace kalerm_operation_desk
                     expItem.BackgroundImage = new BitmapImage(new Uri("/Image/ExpanderMouse.jpg", UriKind.Relative));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -476,9 +470,9 @@ namespace kalerm_operation_desk
                     button.Source = new BitmapImage(new Uri(string.Format("/Image/{0}_2.png", button.Tag), UriKind.Relative));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
         private void WindowButton_MouseLeave(object sender, MouseEventArgs e)
@@ -491,9 +485,9 @@ namespace kalerm_operation_desk
                     button.Source = new BitmapImage(new Uri(string.Format("/Image/{0}_1.png", button.Tag), UriKind.Relative));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -532,9 +526,9 @@ namespace kalerm_operation_desk
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 
@@ -558,12 +552,6 @@ namespace kalerm_operation_desk
             }
         }
 
-        private class ObservableCollection<T>
-        {
-
-        }
-
         #endregion
-
     }
 }
