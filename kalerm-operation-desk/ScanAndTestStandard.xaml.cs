@@ -74,8 +74,6 @@ namespace kalerm_operation_desk
         //测试项目
         List<base_wutest> base_wutest = new List<base_wutest>();
 
-        ObservableCollection<ReportBaseModel> BaseModel = new ObservableCollection<ReportBaseModel>();
-
         ObservableCollection<worksheet> worksheet = new ObservableCollection<worksheet>();
 
         ObservableCollection<base_wu> base_wu = new ObservableCollection<base_wu>();

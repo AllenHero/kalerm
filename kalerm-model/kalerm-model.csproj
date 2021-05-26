@@ -42,8 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseData\PropertyNodeItem.cs" />
-    <Compile Include="BaseData\ReportBaseModel.cs" />
-    <Compile Include="BaseData\TreeModle.cs" />
     <Compile Include="BaseData\UserInfo.cs" />
     <Compile Include="base_productionprocess.cs" />
     <Compile Include="base_wu.cs" />
