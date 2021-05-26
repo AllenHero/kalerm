@@ -53,7 +53,6 @@ namespace kalerm_operation_desk
 
         private void MainWindowNew_Loaded(object sender, RoutedEventArgs e)
         {
-            return;
             WorkSheetNo = ConfigurationManager.AppSettings["WorkSheetNo"] + "";
             WorkUnitId = ConfigurationManager.AppSettings["WorkUnitId"] + "";
             WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
@@ -265,86 +264,6 @@ namespace kalerm_operation_desk
             dockShowMenu.Opacity = 1;
         }
 
-        #region 生成菜单
-
-        //private Expander CreateExpander(PropertyNodeItem NodeItem)
-        //{
-        //    Expander exp = new Expander();
-        //    exp.Expanded += new RoutedEventHandler(Expander_Expanded);
-        //    exp.Collapsed += new RoutedEventHandler(Expander_Collapsed);
-        //    exp.Header = new TextBlock() { VerticalAlignment = System.Windows.VerticalAlignment.Center, Text = NodeItem.DisplayName, FontSize = 14, Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
-        //    return exp;
-        //}
-
-        //private void CreateExpanderItem(Grid grid, PropertyNodeItem NodeItem)
-        //{
-        //    if (grid.RowDefinitions.Count != 0)
-        //    {
-        //        grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(2) });
-        //        Border border = new Border() { Width = 150, HorizontalAlignment = System.Windows.HorizontalAlignment.Center, Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) };
-        //        border.Child = new Image { Source = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/Line.jpg", UriKind.Relative)) };
-        //        grid.Children.Add(border);
-        //        border.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
-        //    }
-        //    grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
-        //    ExpanderItem item = new ExpanderItem();
-        //    item.HeaderText = NodeItem.DisplayName;
-        //    item.Tag = NodeItem;
-        //    item.HeaderFontSize = 13;
-        //    item.HeaderForeground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-        //    if (IsExistResource("Image/Icon/" + NodeItem.DisplayName + ".ico"))
-        //    {
-        //        item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/" + NodeItem.DisplayName + ".ico", UriKind.Relative));
-        //    }
-        //    else
-        //    {
-        //        item.ImageSource = new BitmapImage(new Uri("/EmployeeSkillManagement;component/Image/DefaultIcon.ico", UriKind.Relative));
-        //    }
-        //    grid.Children.Add(item);
-        //    item.SetValue(Grid.RowProperty, grid.RowDefinitions.Count - 1);
-        //    item.MouseEnter += new MouseEventHandler(ExpanderItem_MouseEnter);
-        //    item.MouseLeave += new MouseEventHandler(ExpanderItem_MouseLeave);
-        //    item.MouseLeftButtonDown += new MouseButtonEventHandler(ExpanderItem_MouseLeftButtonDown);
-        //}
-
-        /// <summary>
-        /// 判断指定key的资源是否存在
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        //private bool IsExistResource(string key)
-        //{
-        //    try
-        //    {
-        //        #region key值包含中文时，需要转化
-        //        string newKey = "";
-        //        byte[] data = System.Text.Encoding.UTF8.GetBytes(key);
-        //        for (int i = 0; i < data.Length; i++)
-        //        {
-        //            if (data[i] > 128)
-        //            {
-        //                newKey += "%" + Convert.ToString(data[i], 16);
-        //            }
-        //            else newKey += (char)data[i];
-        //        }
-        //        #endregion
-        //        string resourceName = this.GetType().Assembly.GetName().Name + ".g";
-        //        System.Resources.ResourceManager mgr = new System.Resources.ResourceManager(resourceName, this.GetType().Assembly);
-        //        using (System.Resources.ResourceSet set = mgr.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true))
-        //        {
-        //            object obj = set.GetObject(newKey, true);
-        //            if (obj == null) return false;
-        //            else return true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-
-        #endregion
-
         #region 菜单的鼠标效果和点击事件
 
         private void ExpanderItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -354,66 +273,10 @@ namespace kalerm_operation_desk
                 ExpanderItem expItem = sender as ExpanderItem;
                 if (expItem != null)
                 {
-                    //if (expItem.Tag is PropertyNodeItem)
-                    //{
-                    //    PropertyNodeItem item = expItem.Tag as PropertyNodeItem;
-                    //    if (item == null)
-                    //        return;
-                    //    if (item.Icon + "" == "")
-                    //        return;
-                    //    foreach (var row in TabItemControl)
-                    //    {
-                    //        if (row.Value + "" == item.DisplayName + "")
-                    //        {
-                    //            MainTab.SelectedIndex = Convert.ToInt32(row.Key);
-                    //            return;
-                    //        }
-                    //    }
-                    //    if (TabItemControl.Count >= 8)
-                    //    {
-                    //        ReMessageBox.Show("加载的界面过多，请删除几个界面重试");
-                    //        return;
-                    //    }
-                    //    MainTabItemControl MainTabItemControl = new MainTabItemControl();
-                    //    MainTabItemControl.UICode = item.Icon;
-                    //    MainTabItemControl.PropertyNodeItem = item;
-                    //    MainTabItemControl.HeaderText = item.DisplayName;
-                    //    ControlTabItem TabItem = new ControlTabItem();
-                    //    TabItem.Margin = new Thickness(3, 0, 0, 0);
-                    //    TabItem.Header = item.DisplayName;
-                    //    MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
-                    //    TabItem.Content = MainTabItemControl;
-                    //    MainTab.Items.Add(TabItem);
-                    //    TabItemControl.Add(TabItemControl.Count, item.DisplayName);
-                    //    MainTab.SelectedIndex = TabItemControl.Count - 1;
-                    //}
-                    //else if (expItem.Tag != null && expItem.Tag.ToString() == "ExitSystem")
-                    //{
-                    //    // 关闭主窗体，打开登陆界面
-                    //    if (ReMessageBox.Show("是否注销系统？", "提示", MessageWindowButtons.YesNo, MessageWindowIcons.Question) == MessageWindowResult.Yes)
-                    //    {
-                    //        Dispose();
-                    //        #region 重启系统
-                    //        //目的是关闭所有线程，主要是控件内的线程
-                    //        RestartSystem();
-                    //        #endregion
-                    //    }
-                    //}
-                    //else if (expItem.Tag != null && expItem.Tag.ToString() == "ChangePassword")
-                    //{
-                    //    //打开子窗体 
-                    //    //ChangePassword aChild = new ChangePassword();
-                    //    //aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    //    //aChild.UserInfo = UserInfo;
-                    //    //aChild.ShowDialog();
-                    //}
-
                     if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandard") 
                     {
-                        MessageBox.Show("ScanAndTestStandard");
                         MainTabItemControl MainTabItemControl = new MainTabItemControl();
                         MainTabItemControl.UICode = "/ScanAndTestStandard.xaml";
-                        //MainTabItemControl.PropertyNodeItem = item;
                         MainTabItemControl.HeaderText = "流程扫描";
                         ControlTabItem TabItem = new ControlTabItem();
                         TabItem.Margin = new Thickness(3, 0, 0, 0);
@@ -421,17 +284,36 @@ namespace kalerm_operation_desk
                         MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
                         TabItem.Content = MainTabItemControl;
                         MainTab.Items.Add(TabItem);
-
                         TabItemControl.Add(TabItemControl.Count, "流程扫描");
-                        MainTab.SelectedIndex = TabItemControl.Count;
+                        MainTab.SelectedIndex = TabItemControl.Count-1;
                     }
                     else if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandardGPT")
                     {
-                        MessageBox.Show("ScanAndTestStandardGPT");
+                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
+                        MainTabItemControl.UICode = "/ScanAndTestStandardGPT.xaml";
+                        MainTabItemControl.HeaderText = "安规测试扫码";
+                        ControlTabItem TabItem = new ControlTabItem();
+                        TabItem.Margin = new Thickness(3, 0, 0, 0);
+                        TabItem.Header = "安规测试扫码";
+                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
+                        TabItem.Content = MainTabItemControl;
+                        MainTab.Items.Add(TabItem);
+                        TabItemControl.Add(TabItemControl.Count, "安规测试扫码");
+                        MainTab.SelectedIndex = TabItemControl.Count - 1;
                     }
                     else if (expItem.Tag != null && expItem.Tag.ToString() == "GrindBeanStandard") 
                     {
-                        MessageBox.Show("GrindBeanStandard");
+                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
+                        MainTabItemControl.UICode = "/GrindBeanStandard.xaml";
+                        MainTabItemControl.HeaderText = "磨豆数据采集";
+                        ControlTabItem TabItem = new ControlTabItem();
+                        TabItem.Margin = new Thickness(3, 0, 0, 0);
+                        TabItem.Header = "磨豆数据采集";
+                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
+                        TabItem.Content = MainTabItemControl;
+                        MainTab.Items.Add(TabItem);
+                        TabItemControl.Add(TabItemControl.Count, "磨豆数据采集");
+                        MainTab.SelectedIndex = TabItemControl.Count - 1;
                     }
                 }
             }

@@ -33,10 +33,10 @@ namespace kalerm_operation_desk
         DateTime dt = new DateTime();
 
         //电子秤
-        BalanceWeight BalanceWeight = new BalanceWeight("COM1");
+        BalanceWeight BalanceWeight = new BalanceWeight(MainWindowNew.WeightCom);
 
         //温度仪
-        Thermometer Thermometer = new Thermometer("COM2");
+        Thermometer Thermometer = new Thermometer(MainWindowNew.TemperatureCom);
 
         //总测试数
         int TotalPass = 0;

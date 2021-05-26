@@ -57,12 +57,12 @@ namespace kalerm_operation_desk.Control
                 }
                 else
                     frame.Navigate(new Uri(UICode, UriKind.RelativeOrAbsolute), "OK");
-                //frame.LoadCompleted += new LoadCompletedEventHandler(frame_LoadCompleted);
-                //frame.NavigationFailed += new NavigationFailedEventHandler(frame_NavigationFailed);
+                frame.LoadCompleted += new LoadCompletedEventHandler(frame_LoadCompleted);
+                frame.NavigationFailed += new NavigationFailedEventHandler(frame_NavigationFailed);
             }
             catch
             {
-
+                //throw new Exception(ex.Message);
             }
         }
 
