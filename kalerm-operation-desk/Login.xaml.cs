@@ -140,8 +140,8 @@ namespace kalerm_operation_desk
                     ConfigHelper.UpdateSettingString("PassWord", UserInfo.passWord);
                     if (tokenObject != null && Convert.ToString(tokenObject.Claims.FirstOrDefault(x => x.Type == "user_id").Value) != null)
                     {
-                        MainWindowNew.UserInfo = UserInfo;
-                        MainWindowNew aChild = new MainWindowNew();
+                        MainWindow.UserInfo = UserInfo;
+                        MainWindow aChild = new MainWindow();
                         aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                         aChild.Show();
                         // 关闭自己(父窗体) 
@@ -169,9 +169,9 @@ namespace kalerm_operation_desk
                     {
                         if (UserInfo != null && UserInfo.userCode != null)
                         {
-                            MainWindowNew.UserInfo = UserInfo;
+                            MainWindow.UserInfo = UserInfo;
                             UserInfo.passWord = textPassword.Password + "";
-                            MainWindowNew aChild = new MainWindowNew();
+                            MainWindow aChild = new MainWindow();
                             aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                             aChild.Show();
                             // 关闭自己(父窗体) 

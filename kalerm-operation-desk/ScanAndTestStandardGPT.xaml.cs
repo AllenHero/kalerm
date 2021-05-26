@@ -58,13 +58,13 @@ namespace kalerm_operation_desk
         bool TimeStart = false;
 
         //电子秤
-        BalanceWeight BalanceWeight = new BalanceWeight(MainWindowNew.WeightCom);
+        BalanceWeight BalanceWeight = new BalanceWeight(MainWindow.WeightCom);
 
         //重量测试
         bool threadWeightRun = false;
 
         //温度仪
-        Thermometer Thermometer = new Thermometer(MainWindowNew.TemperatureCom);
+        Thermometer Thermometer = new Thermometer(MainWindow.TemperatureCom);
 
         //重量测试
         bool threadTempRun = false;

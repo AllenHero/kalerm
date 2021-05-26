@@ -36,7 +36,7 @@ namespace kalerm_operation_desk
         ObservableCollection<worksheet> worksheet = new ObservableCollection<worksheet>();
 
         //电子秤
-        BalanceWeight BalanceWeight = new BalanceWeight(MainWindowNew.WeightCom);
+        BalanceWeight BalanceWeight = new BalanceWeight(MainWindow.WeightCom);
 
         private BllBaseData bllBaseData = new BllBaseData();
 
