@@ -353,59 +353,59 @@ namespace kalerm_operation_desk
                 ExpanderItem expItem = sender as ExpanderItem;
                 if (expItem != null)
                 {
-                    if (expItem.Tag is PropertyNodeItem)
-                    {
-                        PropertyNodeItem item = expItem.Tag as PropertyNodeItem;
-                        if (item == null)
-                            return;
-                        if (item.Icon + "" == "")
-                            return;
-                        foreach (var row in TabItemControl)
-                        {
-                            if (row.Value + "" == item.DisplayName + "")
-                            {
-                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
-                                return;
-                            }
-                        }
-                        if (TabItemControl.Count >= 8)
-                        {
-                            ReMessageBox.Show("加载的界面过多，请删除几个界面重试");
-                            return;
-                        }
-                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
-                        MainTabItemControl.UICode = item.Icon;
-                        MainTabItemControl.PropertyNodeItem = item;
-                        MainTabItemControl.HeaderText = item.DisplayName;
-                        ControlTabItem TabItem = new ControlTabItem();
-                        TabItem.Margin = new Thickness(3, 0, 0, 0);
-                        TabItem.Header = item.DisplayName;
-                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
-                        TabItem.Content = MainTabItemControl;
-                        MainTab.Items.Add(TabItem);
-                        TabItemControl.Add(TabItemControl.Count, item.DisplayName);
-                        MainTab.SelectedIndex = TabItemControl.Count - 1;
-                    }
-                    else if (expItem.Tag != null && expItem.Tag.ToString() == "ExitSystem")
-                    { 
-                        // 关闭主窗体，打开登陆界面
-                        if (ReMessageBox.Show("是否注销系统？", "提示", MessageWindowButtons.YesNo, MessageWindowIcons.Question) == MessageWindowResult.Yes)
-                        {
-                            Dispose();
-                            #region 重启系统
-                            //目的是关闭所有线程，主要是控件内的线程
-                            RestartSystem();
-                            #endregion
-                        }
-                    }
-                    else if (expItem.Tag != null && expItem.Tag.ToString() == "ChangePassword")
-                    {
-                        //打开子窗体 
-                        //ChangePassword aChild = new ChangePassword();
-                        //aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                        //aChild.UserInfo = UserInfo;
-                        //aChild.ShowDialog();
-                    }
+                    //if (expItem.Tag is PropertyNodeItem)
+                    //{
+                    //    PropertyNodeItem item = expItem.Tag as PropertyNodeItem;
+                    //    if (item == null)
+                    //        return;
+                    //    if (item.Icon + "" == "")
+                    //        return;
+                    //    foreach (var row in TabItemControl)
+                    //    {
+                    //        if (row.Value + "" == item.DisplayName + "")
+                    //        {
+                    //            MainTab.SelectedIndex = Convert.ToInt32(row.Key);
+                    //            return;
+                    //        }
+                    //    }
+                    //    if (TabItemControl.Count >= 8)
+                    //    {
+                    //        ReMessageBox.Show("加载的界面过多，请删除几个界面重试");
+                    //        return;
+                    //    }
+                    //    MainTabItemControl MainTabItemControl = new MainTabItemControl();
+                    //    MainTabItemControl.UICode = item.Icon;
+                    //    MainTabItemControl.PropertyNodeItem = item;
+                    //    MainTabItemControl.HeaderText = item.DisplayName;
+                    //    ControlTabItem TabItem = new ControlTabItem();
+                    //    TabItem.Margin = new Thickness(3, 0, 0, 0);
+                    //    TabItem.Header = item.DisplayName;
+                    //    MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
+                    //    TabItem.Content = MainTabItemControl;
+                    //    MainTab.Items.Add(TabItem);
+                    //    TabItemControl.Add(TabItemControl.Count, item.DisplayName);
+                    //    MainTab.SelectedIndex = TabItemControl.Count - 1;
+                    //}
+                    //else if (expItem.Tag != null && expItem.Tag.ToString() == "ExitSystem")
+                    //{
+                    //    // 关闭主窗体，打开登陆界面
+                    //    if (ReMessageBox.Show("是否注销系统？", "提示", MessageWindowButtons.YesNo, MessageWindowIcons.Question) == MessageWindowResult.Yes)
+                    //    {
+                    //        Dispose();
+                    //        #region 重启系统
+                    //        //目的是关闭所有线程，主要是控件内的线程
+                    //        RestartSystem();
+                    //        #endregion
+                    //    }
+                    //}
+                    //else if (expItem.Tag != null && expItem.Tag.ToString() == "ChangePassword")
+                    //{
+                    //    //打开子窗体 
+                    //    //ChangePassword aChild = new ChangePassword();
+                    //    //aChild.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    //    //aChild.UserInfo = UserInfo;
+                    //    //aChild.ShowDialog();
+                    //}
                 }
             }
             catch (Exception ex)

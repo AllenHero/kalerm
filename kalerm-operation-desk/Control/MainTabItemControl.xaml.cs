@@ -23,7 +23,7 @@ namespace kalerm_operation_desk.Control
     {
         public string UICode { get; set; }
 
-        public PropertyNodeItem PropertyNodeItem { get; set; }
+        //public PropertyNodeItem PropertyNodeItem { get; set; }
 
         public MainTabItemControl()
         {
@@ -51,14 +51,14 @@ namespace kalerm_operation_desk.Control
             this.Loaded -= new RoutedEventHandler(MainTabItemControl_Loaded);
             try
             {
-                if (PropertyNodeItem != null && !string.IsNullOrEmpty(PropertyNodeItem.AuNode))
-                {
-                    frame.Navigate(new Uri(UICode, UriKind.RelativeOrAbsolute), PropertyNodeItem.AuNode);
-                }
-                else
-                    frame.Navigate(new Uri(UICode, UriKind.RelativeOrAbsolute), "OK");
-                frame.LoadCompleted += new LoadCompletedEventHandler(frame_LoadCompleted);
-                frame.NavigationFailed += new NavigationFailedEventHandler(frame_NavigationFailed);
+                //if (PropertyNodeItem != null && !string.IsNullOrEmpty(PropertyNodeItem.AuNode))
+                //{
+                //    frame.Navigate(new Uri(UICode, UriKind.RelativeOrAbsolute), PropertyNodeItem.AuNode);
+                //}
+                //else
+                //    frame.Navigate(new Uri(UICode, UriKind.RelativeOrAbsolute), "OK");
+                //frame.LoadCompleted += new LoadCompletedEventHandler(frame_LoadCompleted);
+                //frame.NavigationFailed += new NavigationFailedEventHandler(frame_NavigationFailed);
             }
             catch
             {
