@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:kalerm_operation_desk"
              StartupUri="Login.xaml">
     <Application.Resources>
-
         <!--<LinearGradientBrush x:Key="fadeBrush">
             <GradientStop Color="Red" Offset="0"/>
             <GradientStop Color="Gray" Offset="1"/>
@@ -37,7 +36,7 @@
                         <!--背景色-->
                         <Border x:Name="back" Opacity="0.8" CornerRadius="2" BorderThickness="0">
                             <Border.Background>
-                                <ImageBrush ImageSource="/kalerm-operation-desk;component/Image/Button_1.png"/>
+                                <ImageBrush ImageSource="/Image/Button_1.png"/>
                             </Border.Background>
                             <!--前景色及边框-->
                             <Border x:Name="fore" BorderThickness="0" CornerRadius="3" Background="Transparent">
@@ -50,7 +49,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="back" Property="Background">
                                     <Setter.Value>
-                                        <ImageBrush ImageSource="/kalerm-operation-desk;component/Image/Button_2.png"/>
+                                        <ImageBrush ImageSource="/Image/Button_2.png"/>
                                     </Setter.Value>
                                 </Setter>
                                 <Setter Property="Foreground" Value="#007ccc"></Setter>
@@ -59,7 +58,7 @@
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="back" Property="Background">
                                     <Setter.Value>
-                                        <ImageBrush ImageSource="/kalerm-operation-desk;component/Image/Button_3.png"/>
+                                        <ImageBrush ImageSource="/Image/Button_3.png"/>
                                     </Setter.Value>
                                 </Setter>
                                 <Setter Property="Foreground" Value="#FF9FD2F5"></Setter>

@@ -94,8 +94,15 @@
       <DependentUpon>AutoCompleteTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\ControlClass.cs" />
+    <Compile Include="Control\ControlTabItem.cs" />
+    <Compile Include="Control\ExpanderItem.xaml.cs">
+      <DependentUpon>ExpanderItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\LoadingMask.xaml.cs">
       <DependentUpon>LoadingMask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainTabItemControl.xaml.cs">
+      <DependentUpon>MainTabItemControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="GrindBean.xaml.cs">
       <DependentUpon>GrindBean.xaml</DependentUpon>
@@ -105,6 +112,9 @@
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindowNew.xaml.cs">
+      <DependentUpon>MainWindowNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
@@ -134,7 +144,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\ExpanderItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\LoadingMask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\MainTabItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,6 +180,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindowNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
