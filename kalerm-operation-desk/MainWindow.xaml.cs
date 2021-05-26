@@ -267,6 +267,14 @@ namespace kalerm_operation_desk
                 {
                     if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandard")
                     {
+                        foreach (var row in TabItemControl)
+                        {
+                            if (row.Value + "" == "流程扫描")
+                            {
+                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
+                                return;
+                            }
+                        }
                         MainTabItemControl MainTabItemControl = new MainTabItemControl();
                         MainTabItemControl.UICode = "/ScanAndTestStandard.xaml";
                         MainTabItemControl.HeaderText = "流程扫描";
@@ -281,6 +289,14 @@ namespace kalerm_operation_desk
                     }
                     else if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandardGPT")
                     {
+                        foreach (var row in TabItemControl)
+                        {
+                            if (row.Value + "" == "安规测试扫码")
+                            {
+                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
+                                return;
+                            }
+                        }
                         MainTabItemControl MainTabItemControl = new MainTabItemControl();
                         MainTabItemControl.UICode = "/ScanAndTestStandardGPT.xaml";
                         MainTabItemControl.HeaderText = "安规测试扫码";
@@ -295,6 +311,14 @@ namespace kalerm_operation_desk
                     }
                     else if (expItem.Tag != null && expItem.Tag.ToString() == "GrindBeanStandard")
                     {
+                        foreach (var row in TabItemControl)
+                        {
+                            if (row.Value + "" == "磨豆数据采集")
+                            {
+                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
+                                return;
+                            }
+                        }
                         MainTabItemControl MainTabItemControl = new MainTabItemControl();
                         MainTabItemControl.UICode = "/GrindBeanStandard.xaml";
                         MainTabItemControl.HeaderText = "磨豆数据采集";
