@@ -53,6 +53,7 @@ namespace kalerm_operation_desk
 
         private void MainWindowNew_Loaded(object sender, RoutedEventArgs e)
         {
+            return;
             WorkSheetNo = ConfigurationManager.AppSettings["WorkSheetNo"] + "";
             WorkUnitId = ConfigurationManager.AppSettings["WorkUnitId"] + "";
             WeightCom = ConfigurationManager.AppSettings["WeightCom"] + "";
@@ -406,6 +407,32 @@ namespace kalerm_operation_desk
                     //    //aChild.UserInfo = UserInfo;
                     //    //aChild.ShowDialog();
                     //}
+
+                    if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandard") 
+                    {
+                        MessageBox.Show("ScanAndTestStandard");
+                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
+                        MainTabItemControl.UICode = "/ScanAndTestStandard.xaml";
+                        //MainTabItemControl.PropertyNodeItem = item;
+                        MainTabItemControl.HeaderText = "流程扫描";
+                        ControlTabItem TabItem = new ControlTabItem();
+                        TabItem.Margin = new Thickness(3, 0, 0, 0);
+                        TabItem.Header = "流程扫描";
+                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
+                        TabItem.Content = MainTabItemControl;
+                        MainTab.Items.Add(TabItem);
+
+                        TabItemControl.Add(TabItemControl.Count, "流程扫描");
+                        MainTab.SelectedIndex = TabItemControl.Count;
+                    }
+                    else if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandardGPT")
+                    {
+                        MessageBox.Show("ScanAndTestStandardGPT");
+                    }
+                    else if (expItem.Tag != null && expItem.Tag.ToString() == "GrindBeanStandard") 
+                    {
+                        MessageBox.Show("GrindBeanStandard");
+                    }
                 }
             }
             catch (Exception ex)
