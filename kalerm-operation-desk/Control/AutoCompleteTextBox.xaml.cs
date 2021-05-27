@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace kalerm_operation_desk.Control
 {
     /// <summary>
-    /// Interaction logic for AutoCompleteTextBox.xaml
+    /// AutoCompleteTextBox.xaml 的交互逻辑
     /// </summary>    
     public partial class AutoCompleteTextBox : Canvas
     {
