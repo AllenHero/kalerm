@@ -26,14 +26,14 @@ namespace kalerm_common
         /// <summary>
         /// 平均值 AVE
         /// </summary>
-        public decimal Mean { get; set; }
+        public decimal AVE { get; set; }
 
         public FunctionHelper(decimal[] Samples)
         {
             this.Samples = Samples;
             GetMax();
             GetMin();
-            GetMean();       
+            GetAVE();       
         }
 
         #region 最大值 MAX
@@ -78,14 +78,14 @@ namespace kalerm_common
         /// 平均值 AVE
         /// </summary>
         /// <returns></returns>
-        public void GetMean()
+        public void GetAVE()
         {
             decimal sumup = 0;
             for (int i = 0; i < this.Samples.Length; i++)
             {
                 sumup += this.Samples[i];
             }
-            this.Mean = (sumup / ((decimal)this.Samples.Length));
+            this.AVE = (sumup / ((decimal)this.Samples.Length));
         }
 
         #endregion
