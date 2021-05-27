@@ -18,7 +18,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="工单：" Margin="6,10,0,0"/>
+        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="工单号：" Margin="6,10,0,0"/>
         <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWorkSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeave="textWorkSheet_MouseLeave"/>
         <TextBlock Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="工作单元：" Margin="6,0,0,0"/>
         <ComboBox Grid.ColumnSpan="2" Grid.Row="1"  Name="cbbWorkUnit" DisplayMemberPath="wuname" SelectedValuePath="wuid" Grid.Column="1" VerticalAlignment="Center" Text="" Margin="6,0,10,0" ItemsSource="{Binding}"/>
