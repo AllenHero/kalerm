@@ -38,6 +38,12 @@ namespace kalerm_operation_desk
 
         public static string TotalPass;
 
+        string[] TagArrList = new string[] { "ScanAndTestStandard", "ScanAndTestStandardGPT", "GrindBeanStandard" };
+
+        string[] ValueArrList = new string[] { "流程扫描", "安规测试扫码", "磨豆数据采集" };
+
+        string[] UICodeArrList = new string[] { "/ScanAndTestStandard.xaml", "/ScanAndTestStandardGPT.xaml", "/GrindBeanStandard.xaml" };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -265,71 +271,30 @@ namespace kalerm_operation_desk
                 ExpanderItem expItem = sender as ExpanderItem;
                 if (expItem != null)
                 {
-                    if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandard")
+                    for (int i = 0; i < TagArrList.Length; i++)
                     {
-                        foreach (var row in TabItemControl)
+                        if (expItem.Tag != null && expItem.Tag.ToString() == TagArrList[i])
                         {
-                            if (row.Value + "" == "流程扫描")
+                            foreach (var row in TabItemControl)
                             {
-                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
-                                return;
+                                if (row.Value + "" == ValueArrList[i])
+                                {
+                                    MainTab.SelectedIndex = Convert.ToInt32(row.Key);
+                                    return;
+                                }
                             }
+                            MainTabItemControl MainTabItemControl = new MainTabItemControl();
+                            MainTabItemControl.UICode = UICodeArrList[i];
+                            MainTabItemControl.HeaderText = ValueArrList[i];
+                            ControlTabItem TabItem = new ControlTabItem();
+                            TabItem.Margin = new Thickness(3, 0, 0, 0);
+                            TabItem.Header = ValueArrList[i];
+                            MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
+                            TabItem.Content = MainTabItemControl;
+                            MainTab.Items.Add(TabItem);
+                            TabItemControl.Add(TabItemControl.Count, ValueArrList[i]);
+                            MainTab.SelectedIndex = TabItemControl.Count - 1;
                         }
-                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
-                        MainTabItemControl.UICode = "/ScanAndTestStandard.xaml";
-                        MainTabItemControl.HeaderText = "流程扫描";
-                        ControlTabItem TabItem = new ControlTabItem();
-                        TabItem.Margin = new Thickness(3, 0, 0, 0);
-                        TabItem.Header = "流程扫描";
-                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
-                        TabItem.Content = MainTabItemControl;
-                        MainTab.Items.Add(TabItem);
-                        TabItemControl.Add(TabItemControl.Count, "流程扫描");
-                        MainTab.SelectedIndex = TabItemControl.Count - 1;
-                    }
-                    else if (expItem.Tag != null && expItem.Tag.ToString() == "ScanAndTestStandardGPT")
-                    {
-                        foreach (var row in TabItemControl)
-                        {
-                            if (row.Value + "" == "安规测试扫码")
-                            {
-                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
-                                return;
-                            }
-                        }
-                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
-                        MainTabItemControl.UICode = "/ScanAndTestStandardGPT.xaml";
-                        MainTabItemControl.HeaderText = "安规测试扫码";
-                        ControlTabItem TabItem = new ControlTabItem();
-                        TabItem.Margin = new Thickness(3, 0, 0, 0);
-                        TabItem.Header = "安规测试扫码";
-                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
-                        TabItem.Content = MainTabItemControl;
-                        MainTab.Items.Add(TabItem);
-                        TabItemControl.Add(TabItemControl.Count, "安规测试扫码");
-                        MainTab.SelectedIndex = TabItemControl.Count - 1;
-                    }
-                    else if (expItem.Tag != null && expItem.Tag.ToString() == "GrindBeanStandard")
-                    {
-                        foreach (var row in TabItemControl)
-                        {
-                            if (row.Value + "" == "磨豆数据采集")
-                            {
-                                MainTab.SelectedIndex = Convert.ToInt32(row.Key);
-                                return;
-                            }
-                        }
-                        MainTabItemControl MainTabItemControl = new MainTabItemControl();
-                        MainTabItemControl.UICode = "/GrindBeanStandard.xaml";
-                        MainTabItemControl.HeaderText = "磨豆数据采集";
-                        ControlTabItem TabItem = new ControlTabItem();
-                        TabItem.Margin = new Thickness(3, 0, 0, 0);
-                        TabItem.Header = "磨豆数据采集";
-                        MainTabItemControl.Margin = new Thickness(-5, -5, -3, -3);
-                        TabItem.Content = MainTabItemControl;
-                        MainTab.Items.Add(TabItem);
-                        TabItemControl.Add(TabItemControl.Count, "磨豆数据采集");
-                        MainTab.SelectedIndex = TabItemControl.Count - 1;
                     }
                 }
             }
