@@ -106,7 +106,7 @@ namespace kalerm_operation_desk
                 //验证token是否有效
                 if (jtoken["code"].ToString() != "200")
                 {
-                    ReMessageBox.Show("登录失败，请联系管理员");
+                    ReMessageBox.Show("token无效，登录失败，请联系管理员");
                     textPassword.Focus();
                     return;
                 }
