@@ -104,6 +104,10 @@
     <Compile Include="Control\MainTabItemControl.xaml.cs">
       <DependentUpon>MainTabItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ReMessageBox.cs" />
     <Compile Include="GrindBeanStandard.xaml.cs">
       <DependentUpon>GrindBeanStandard.xaml</DependentUpon>
     </Compile>
@@ -113,11 +117,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MessageWindow.xaml.cs">
-      <DependentUpon>MessageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Port\PortOperator.cs" />
-    <Compile Include="ReMessageBox.cs" />
     <Compile Include="ScanAndTestStandard.xaml.cs">
       <DependentUpon>ScanAndTestStandard.xaml</DependentUpon>
     </Compile>
@@ -153,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GrindBeanStandard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,10 +170,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
