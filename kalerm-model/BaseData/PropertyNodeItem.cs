@@ -26,9 +26,7 @@ namespace kalerm_model.BaseData
         public string Menu { get; set; }
         public string AuNode { get; set; }
         public int MainID { get; set; }
-
         public PropertyNodeItem Parent { get; set; }
-
         public int SortCode { get; set; }
     }
 }

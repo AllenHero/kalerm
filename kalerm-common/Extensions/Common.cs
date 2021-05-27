@@ -134,7 +134,6 @@ namespace kalerm_common.Extensions
             return b;
         }
 
-
         /// <summary>
         /// 将DataSet转化成JSON数据
         /// </summary>
@@ -191,7 +190,6 @@ namespace kalerm_common.Extensions
                 return null;
             }
             DataTable dt = CreateData(modelList[0]);//创建表结构
-
             foreach (T model in modelList)
             {
                 DataRow dataRow = dt.NewRow();

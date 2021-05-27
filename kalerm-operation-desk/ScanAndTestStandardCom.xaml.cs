@@ -47,7 +47,6 @@ namespace kalerm_operation_desk
             txtTP.Text = TemperatureCom;
         }
 
-
         void btnOk_Click(object sender, RoutedEventArgs e)
         {
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

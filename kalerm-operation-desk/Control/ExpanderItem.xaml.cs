@@ -30,21 +30,25 @@ namespace kalerm_operation_desk.Control
             get { return headerTextBlock.Text; }
             set { headerTextBlock.Text = value; }
         }
+
         public double HeaderFontSize
         {
             get { return headerTextBlock.FontSize; }
             set { headerTextBlock.FontSize = value; }
         }
+
         public Brush HeaderForeground
         {
             get { return headerTextBlock.Foreground; }
             set { headerTextBlock.Foreground = value; }
         }
+
         public ImageSource ImageSource
         {
             get { return headerImage.Source; }
             set { headerImage.Source = value; }
         }
+
         public ImageSource BackgroundImage
         {
             get

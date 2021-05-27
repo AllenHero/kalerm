@@ -10,8 +10,11 @@ namespace kalerm_common
     public class Thermometer
     {
         private SerialPort ComDevice = new SerialPort();
+
         public decimal CurTemp = 0;//温度仪当前温度
+
         string content = "";
+
         public Thermometer(string Com)
         {
             ComDevice.PortName = Com;

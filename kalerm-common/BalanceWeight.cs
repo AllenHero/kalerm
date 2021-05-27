@@ -11,9 +11,13 @@ namespace kalerm_common
     public class BalanceWeight
     {
         private SerialPort ComDevice = new SerialPort();
+
         public decimal CurWeight = 0;//电子秤当前重量
+
         Thread thread;
+
         bool threadRun = true;
+
         string content = "";
 
         public BalanceWeight(string Com)

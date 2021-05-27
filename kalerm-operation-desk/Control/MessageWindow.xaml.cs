@@ -29,12 +29,14 @@ namespace kalerm_operation_desk.Control
                 dicImages.Add(i, "/Control/Icon/" + i.ToString() + ".png");
             }
         }
+
         public void Dispose()
         {
             GC.Collect();
         }
 
         private MessageWindowResult Result = MessageWindowResult.None;
+
         private Dictionary<int, string> dicImages = new Dictionary<int, string>();
 
         public MessageWindowResult ShowDialog(Window owner)
@@ -50,6 +52,7 @@ namespace kalerm_operation_desk.Control
         const int GapTriBtns = 100;
 
         #region 窗体出现效果
+
         private const Int32 AW_HOR_POSITIVE = 0x00000001;    //自左向右显示窗体
         private const Int32 AW_HOR_NEGATIVE = 0x00000002;    //自右向左显示窗体
         private const Int32 AW_VER_POSITIVE = 0x00000004;    //自上而下显示窗体
@@ -59,11 +62,14 @@ namespace kalerm_operation_desk.Control
         private const Int32 AW_ACTIVATE = 0x00020000;        //激活窗体
         private const Int32 AW_SLIDE = 0x00040000;           //使用滚动动画类型
         private const Int32 AW_BLEND = 0x00080000;           //使用淡入效果
+
         //声明AnimateWindow函数
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+
         private static extern bool AnimateWindow(IntPtr hwnd, int dwTime, int dwFlags);
 
         // private string sShowType = "自右向左滑动窗体动画效果";
+
         #endregion
 
         internal void SetIcon(MessageWindowIcons icon)
@@ -73,10 +79,12 @@ namespace kalerm_operation_desk.Control
                 this.image.Source = null;
             this.image.Source = new BitmapImage(new Uri(dicImages[(int)icon], UriKind.Relative));
         }
+
         internal void SetCaption(string caption)
         {
             this.Title = caption;
         }
+
         internal void SetMsg(string msg)
         {
             //msg = msg.Replace("\n", "").Replace("\r", "");
@@ -104,26 +112,6 @@ namespace kalerm_operation_desk.Control
                 txtMessage.Text = newmsg;
                 this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
             }
-            //int count = System.Text.Encoding.Default.GetByteCount(msg);
-
-            //int row = count / 24;
-            //row += count % 24 == 0 ? 0 : 1;
-            //if (row >= 4)
-            //{
-            //    double w = Math.Sqrt(count * 800);
-            //    double h = 0.66 * w;
-            //    this.Width = w > this.Width ? w : this.Width;
-            //    this.Height = h > this.Height ? h : this.Height;
-            //}
-            //this.Width = size.Width > this.Width ? size.Width : this.Width;
-            //this.Height = (size.Height + 100) > this.Height ? (size.Height + 100) : this.Height;
-
-
-            //double area = size.Height * size.Width;
-            //double h = Math.Sqrt(area / 1.2);
-            //double w = 1.4 * h;
-            //this.Width = (w + 90) > this.Width ? (w + 90) : this.Width;
-            //this.Height = (h + 120) > this.Height ? (h + 120) : this.Height;
         }
 
         private Size MeasureString(string candidate, TextBlock control)
@@ -138,6 +126,7 @@ namespace kalerm_operation_desk.Control
 
             return new Size(formattedText.Width, formattedText.Height);
         }
+
         // <summary>
         /// 设置按钮
         /// </summary>
@@ -187,7 +176,6 @@ namespace kalerm_operation_desk.Control
                         btn2.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn2.Margin = new Thickness((width - 158) / 2 + 75 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn2);
-
                     }
                     break;
                 case MessageWindowButtons.YesNo:
@@ -215,7 +203,6 @@ namespace kalerm_operation_desk.Control
                         btn2.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn2.Margin = new Thickness((width - 158) / 2 + 75 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn2);
-
                     }
                     break;
                 case MessageWindowButtons.YesNoCancel:
@@ -255,12 +242,10 @@ namespace kalerm_operation_desk.Control
                         btn3.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn3.Margin = new Thickness(83 + 75 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn3);
-
                     }
                     break;
                 case MessageWindowButtons.AbortRetryIgnore:
                     {
-
                         //“终止”按钮
                         Button btn1 = new Button();
                         btn1.Width = 75;
@@ -296,8 +281,6 @@ namespace kalerm_operation_desk.Control
                         btn3.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn2.Margin = new Thickness(75 + 75 + 8 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn3);
-
-
                     }
                     break;
                 case MessageWindowButtons.RetryCancel:
@@ -325,7 +308,6 @@ namespace kalerm_operation_desk.Control
                         btn2.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn2.Margin = new Thickness((width - 158) / 2 + 75 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn2);
-
                     }
                     break;
                 case MessageWindowButtons.OKCopy:
@@ -353,7 +335,6 @@ namespace kalerm_operation_desk.Control
                         btn2.SetResourceReference(Button.StyleProperty, "ButtonStlye");
                         btn2.Margin = new Thickness((width - 158) / 2 + 75 + 8, 0, 0, 0);
                         buttonPanel.Children.Add(btn2);
-
                     }
                     break;
                 default:
@@ -372,43 +353,6 @@ namespace kalerm_operation_desk.Control
                     }
                     break;
             }
-        }
-        private void SetAnimate()
-        {
-            //string sShowType = "淡入窗体动画效果";
-            //switch (sShowType)
-            //{
-            //    case "自左向右滚动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_HOR_POSITIVE);
-            //        break;
-            //    case "自左向右滑动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_POSITIVE);
-            //        break;
-            //    case "自右向左滚动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_HOR_NEGATIVE);
-            //        break;
-            //    case "自右向左滑动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_NEGATIVE);
-            //        break;
-            //    case "自上向下滚动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_VER_POSITIVE);
-            //        break;
-            //    case "自上向下滑动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_POSITIVE);
-            //        break;
-            //    case "自下向上滚动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_VER_NEGATIVE);
-            //        break;
-            //    case "自下向上滑动窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_NEGATIVE);
-            //        break;
-            //    case "向外扩展窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_SLIDE + AW_CENTER);
-            //        break;
-            //    case "淡入窗体动画效果":
-            //        AnimateWindow(this.Handle, 500, AW_BLEND);
-            //        break;
-            //}
         }
 
         internal static void DoBeep(MessageWindowIcons icon)
@@ -431,46 +375,55 @@ namespace kalerm_operation_desk.Control
                     break;
             }
         }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.OK;
             this.Close();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.Cancel;
             this.Close();
         }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.OK;
             this.Close();
         }
+
         private void btnYes_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.Yes;
             this.Close();
         }
+
         private void btnRetry_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.Retry;
             this.Close();
         }
+
         private void btnIgnore_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.Ignore;
             this.Close();
         }
+
         private void btnAbort_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.Abort;
             this.Close();
         }
+
         private void btnNo_Click(object sender, EventArgs e)
         {
             this.Result = MessageWindowResult.No;
             this.Close();
         }
+
         private void btnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txtMessage.Text);
@@ -497,14 +450,6 @@ namespace kalerm_operation_desk.Control
                 j++;
             }
             return result;
-        }
-
-        private void llb_Info_Click(object sender, EventArgs e)
-        {
-            //this.Height = pnl_InfoDetail.Visible ? this.Height - 80 : this.Height + 80;
-            //pnl_InfoDetail.Height = pnl_InfoDetail.Visible ? pnl_InfoDetail.Height - 40 : pnl_InfoDetail.Height + 40;
-            //pnl_InfoDetail.Visible = !pnl_InfoDetail.Visible;
-
         }
 
         private void BaseWindow_KeyDown(object sender, KeyEventArgs e)

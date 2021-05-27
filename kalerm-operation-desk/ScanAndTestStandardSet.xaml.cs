@@ -55,13 +55,11 @@ namespace kalerm_operation_desk
 
         private void ScanAndTestStandardSet_Loaded(object sender, RoutedEventArgs e)
         {
-
             WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in WorkSheet)
             {
                 textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
             }
-
         }
 
         void btnOk_Click(object sender, RoutedEventArgs e)
@@ -70,12 +68,10 @@ namespace kalerm_operation_desk
             cfa.AppSettings.Settings["WorkSheetNo"].Value = textWorkSheet.Text + "";
             cfa.AppSettings.Settings["WorkUnitId"].Value = cbbWorkUnit.SelectedValue + "";
             cfa.Save();
-
             MainWindow.WorkSheetNo = textWorkSheet.Text + "";
             MainWindow.WorkUnitId = cbbWorkUnit.SelectedValue + "";
             if (ScanAndTestStandardSetEvent != null)
                 ScanAndTestStandardSetEvent(this, new EventArgs());
-
             this.Close();
         }
 

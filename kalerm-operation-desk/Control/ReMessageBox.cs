@@ -209,12 +209,12 @@ namespace kalerm_operation_desk.Control
         //终止
         Abort
     }
+
     // 摘要:
     //     指定若干常数，用以定义 System.Windows.Windows.WTMessageBox 上将显示哪些按钮
     [ComVisible(true)]
     public enum MessageWindowButtons
     {
-
         // 摘要:
         //     消息框包含“确定”按钮。
         OK = 0,

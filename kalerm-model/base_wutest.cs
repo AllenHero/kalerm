@@ -23,6 +23,5 @@ namespace kalerm_model
         public decimal maxvalue { get; set; }
         public decimal minvalue { get; set; }
         public string value { get; set; }
-
     }
 }

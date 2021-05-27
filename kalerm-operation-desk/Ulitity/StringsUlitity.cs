@@ -49,6 +49,7 @@ namespace kalerm_operation_desk.Ulitity
             }
             return resultCommands;
         }
+
         public static string ToAsciiString(this string hexCommand)
         {
             return new string[] { hexCommand }.ToAsciiString()[0];

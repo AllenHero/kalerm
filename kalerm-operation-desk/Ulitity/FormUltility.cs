@@ -23,9 +23,10 @@ namespace kalerm_operation_desk.Ulitity
         }
 
         public Tvalue Value { set; get; } = default(Tvalue);
-        public Tdisplay Display { set; get; } = default(Tdisplay);
 
+        public Tdisplay Display { set; get; } = default(Tdisplay);
     }
+
     class PairCollection<Tvalue, Tdisplay>
     {
         public PairCollection()

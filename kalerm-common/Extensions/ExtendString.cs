@@ -63,7 +63,9 @@ namespace kalerm_common.Extensions
         #region API简繁体转换
 
         internal const int LOCALE_SYSTEM_DEFAULT = 0x0800;
+
         internal const int LCMAP_SIMPLIFIED_CHINESE = 0x02000000;
+
         internal const int LCMAP_TRADITIONAL_CHINESE = 0x04000000;
 
         /// <summary> 

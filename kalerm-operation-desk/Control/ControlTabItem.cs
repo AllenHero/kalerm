@@ -11,6 +11,7 @@ namespace kalerm_operation_desk.Control
     public class ControlTabItem : TabItem
     {
         public static readonly DependencyProperty CloseButtonVisibilityProperty = DependencyProperty.Register("CloseButtonVisibility", typeof(Visibility), typeof(ControlTabItem), new FrameworkPropertyMetadata(Visibility.Visible));
+
         public Visibility CloseButtonVisibility
         {
             get { return (Visibility)GetValue(CloseButtonVisibilityProperty); }

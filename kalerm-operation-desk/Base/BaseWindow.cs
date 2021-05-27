@@ -27,11 +27,8 @@ namespace kalerm_operation_desk.Base
     public class BaseWindow : Window
     {
         IntPtr ActiveWindowHandle;  //定义活动窗体的句柄  
-
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, ExactSpelling = true)]
-
         public static extern IntPtr GetActiveWindow();  //获得父窗体句柄  
-
         static BaseWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(BaseWindow), new FrameworkPropertyMetadata(typeof(BaseWindow)));

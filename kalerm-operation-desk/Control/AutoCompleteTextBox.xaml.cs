@@ -22,46 +22,50 @@ namespace kalerm_operation_desk.Control
     public partial class AutoCompleteTextBox : Canvas
     {
         #region Members
+
         private VisualCollection controls;
+
         private TextBox textBox;
+
         private ComboBox comboBox;
+
         private ObservableCollection<AutoCompleteEntry> autoCompletionList;
+
         private System.Timers.Timer keypressTimer;
+
         private delegate void TextChangedCallback();
+
         private bool insertText;
+
         private int delayTime;
+
         private int searchThreshold;
+
         #endregion
 
         #region Constructor
+
         public AutoCompleteTextBox()
         {
             controls = new VisualCollection(this);
-            //InitializeComponent();
-
             autoCompletionList = new ObservableCollection<AutoCompleteEntry>();
-            searchThreshold = 2;        // default threshold to 2 char
-
-            // set up the key press timer
+            searchThreshold = 2; 
             keypressTimer = new System.Timers.Timer();
             keypressTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
-
-            // set up the text box and the combo box
             comboBox = new ComboBox();
             comboBox.IsSynchronizedWithCurrentItem = true;
             comboBox.IsTabStop = false;
             comboBox.SelectionChanged += new SelectionChangedEventHandler(comboBox_SelectionChanged);
-
             textBox = new TextBox();
             textBox.TextChanged += new TextChangedEventHandler(textBox_TextChanged);
             textBox.VerticalContentAlignment = VerticalAlignment.Center;
-
             controls.Add(comboBox);
             controls.Add(textBox);
         }
         #endregion
 
         #region Methods
+
         public string Text
         {
             get { return textBox.Text; }
@@ -141,10 +145,7 @@ namespace kalerm_operation_desk.Control
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // text was not typed, do nothing and consume the flag
             if (insertText == true) insertText = false;
-            
-            // if the delay time is set, delay handling of text changed
             else
             {
                 if (delayTime > 0)
@@ -172,6 +173,7 @@ namespace kalerm_operation_desk.Control
         {
             get { return controls.Count; }
         }
+
         #endregion
     }
 }

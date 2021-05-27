@@ -1,5 +1,4 @@
-﻿
-using kalerm_bll.BaseData;
+﻿using kalerm_bll.BaseData;
 using kalerm_common;
 using kalerm_model;
 using kalerm_model.BaseData;
