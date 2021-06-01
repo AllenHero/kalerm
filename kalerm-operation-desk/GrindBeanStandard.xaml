@@ -60,8 +60,10 @@
         <Label Name="lbTotal" Grid.Row="1" Grid.Column="5" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Name="lbTest" Grid.Row="1" Grid.Column="6" Content="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <Grid Grid.ColumnSpan="8" Grid.Row="2" Margin="0,0,2,0">
+        <Grid Grid.ColumnSpan="10" Grid.Row="2" Margin="0,0,2,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
@@ -79,6 +81,8 @@
             <Label Grid.Column="5" Name="lbROUTING_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Grid.Column="6" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Label Grid.Column="7" Name="lbORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="8" Content="ERP工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="9" Name="lbERPWorkSheet_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.ColumnSpan="8" Grid.Row="3">
