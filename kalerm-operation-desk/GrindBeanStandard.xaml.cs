@@ -184,12 +184,10 @@ namespace kalerm_operation_desk
                     txtScan.Text = str;
                     if (txtScan.Text + "" == "Y")//完成
                     {
-                        CheckData();
                         SavaData();
                         txtScan.Text = "";
                         return;
                     }
-
                     string WorkSheetNo = textWorkSheet.Text + "";
                     //工单
                     worksheet worksheet = null;
