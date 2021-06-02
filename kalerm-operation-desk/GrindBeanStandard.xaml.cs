@@ -264,9 +264,16 @@ namespace kalerm_operation_desk
                     {
                         if (txtScan.Text + "" == "")
                         {
-                            lbMessage.Content = "输入格式不对";
+                            lbMessage.Content = "输入不能为空";
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             txtScan.IsEnabled = true;
+                        }
+                        else if (MathHelper.IsNumeric(txtScan.Text) == false) 
+                        {
+                            lbMessage.Content = "输入格式不正确";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                            txtScan.Clear();
                         }
                         else
                         {
