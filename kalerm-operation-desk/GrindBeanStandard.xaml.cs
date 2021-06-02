@@ -262,32 +262,41 @@ namespace kalerm_operation_desk
                     }
                     else if (isSCAN == false)//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
                     {
-                        if (TestCount < typeList.Count)//还有测试项目未完成
+                        if (txtScan.Text + "" == "")
                         {
-                            switch (typeList[TestCount].type)//当前测试项目
+                            lbMessage.Content = "输入格式不对";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                        }
+                        else
+                        {
+                            if (TestCount < typeList.Count)//还有测试项目未完成
                             {
-                                case "txtKMGL":
-                                    txtKMGL.Text = txtScan.Text;
-                                    txtScan.Clear();
-                                    break;
-                                case "txtGL":
-                                    txtGL.Text = txtScan.Text;
-                                    txtScan.Clear();
-                                    break;
-                                case "txtDW":
-                                    txtDW.Text = txtScan.Text;
-                                    txtScan.Clear();
-                                    break;
-                                case "txtSWZ_071":
-                                    txtSWZ_071.Text = txtScan.Text;
-                                    txtScan.Clear();
-                                    break;
-                                case "txtSWZ_03":
-                                    txtSWZ_03.Text = txtScan.Text;
-                                    txtScan.Clear();
-                                    break;
+                                switch (typeList[TestCount].type)//当前测试项目
+                                {
+                                    case "txtKMGL":
+                                        txtKMGL.Text = txtScan.Text;
+                                        txtScan.Clear();
+                                        break;
+                                    case "txtGL":
+                                        txtGL.Text = txtScan.Text;
+                                        txtScan.Clear();
+                                        break;
+                                    case "txtDW":
+                                        txtDW.Text = txtScan.Text;
+                                        txtScan.Clear();
+                                        break;
+                                    case "txtSWZ_071":
+                                        txtSWZ_071.Text = txtScan.Text;
+                                        txtScan.Clear();
+                                        break;
+                                    case "txtSWZ_03":
+                                        txtSWZ_03.Text = txtScan.Text;
+                                        txtScan.Clear();
+                                        break;
+                                }
+                                TestCount += 1;
                             }
-                            TestCount += 1;
                         }
                         if (typeList.Count == TestCount)
                         {
@@ -479,11 +488,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
         {
-            thread = new Thread(new ThreadStart(Weight));
-            thread.IsBackground = true;
-            thread.Start();
-            //dynamic txtFirstValue = lbData.Content;
-            //txtFirst.Text = txtFirstValue;
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            txtFirst.Text = Convert.ToString(value);
             txtSecond.Focus();
         }
 
@@ -494,11 +505,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtSecond_KeyUp(object sender, KeyEventArgs e)
         {
-            thread = new Thread(new ThreadStart(Weight));
-            thread.IsBackground = true;
-            thread.Start();
-            //dynamic txtSecondValue = lbData.Content;
-            //txtSecond.Text = txtSecondValue;
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            txtSecond.Text = Convert.ToString(value);
             txtThird.Focus();
         }
 
@@ -509,11 +522,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtThird_KeyUp(object sender, KeyEventArgs e)
         {
-            thread = new Thread(new ThreadStart(Weight));
-            thread.IsBackground = true;
-            thread.Start();
-            //dynamic txtThirdValue = lbData.Content;
-            //txtThird.Text = txtThirdValue;
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            txtThird.Text = Convert.ToString(value);
             GetFZMin();
             txtCSHZL_071.Focus();
         }
@@ -595,11 +610,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
         {
-            thread = new Thread(new ThreadStart(Weight));
-            thread.IsBackground = true;
-            thread.Start();
-            dynamic txtCSHZL_071Value = lbData.Content;
-            txtCSHZL_071.Text = txtCSHZL_071Value;
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            txtCSHZL_071.Text = Convert.ToString(value);
             GetFZ_071AndRate_071();
             txtCSHZL_03.Focus();
         }
@@ -641,11 +658,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
         {
-            thread = new Thread(new ThreadStart(Weight));
-            thread.IsBackground = true;
-            thread.Start();
-            dynamic txtCSHZL_03Value = lbData.Content;
-            txtCSHZL_03.Text = txtCSHZL_03Value;
+            Thread.Sleep(200);//停顿0.2秒再开始
+            threadWeightRun = true;
+            BalanceWeight.ReadWeight();
+            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            lbData.Content = value + "";
+            Thread.Sleep(100);
+            txtCSHZL_03.Text = Convert.ToString(value);
             GetFZ_03AndRate_03();
             txtBZ.Focus();
         }
