@@ -252,13 +252,7 @@ namespace kalerm_operation_desk
                         txtScan.Text = "";
                         return;
                     }
-                    string str1 = textWorkSheet.Text + "";
-                    string WorkSheetNo = "";
-                    if (str1.Contains('|'))
-                    {
-                        string[] sArray = str1.Split('|');
-                        WorkSheetNo = sArray[0];
-                    }
+                    string WorkSheetNo = textWorkSheet.Text + "";
                     //工单
                     worksheet worksheet = null;
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
