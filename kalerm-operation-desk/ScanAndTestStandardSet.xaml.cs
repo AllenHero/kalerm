@@ -58,7 +58,7 @@ namespace kalerm_operation_desk
             WorkSheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in WorkSheet)
             {
-                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
+                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
             }
         }
 
@@ -83,15 +83,18 @@ namespace kalerm_operation_desk
         private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e)
         {
             //根据工单获取工作单元
-            string str1 = textWorkSheet.Text + "";
+            string WorkSheetNo = textWorkSheet.Text + "";
             string ProductCode = "";
-
-            if (str1.Contains('|'))
+            worksheet worksheet = null;
+            if (!string.IsNullOrEmpty(WorkSheetNo))
             {
-                string[] sArray = str1.Split('|');
-                ProductCode = sArray[1];
+                worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId);
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+            if (worksheet!=null)
+            {
+                ProductCode = worksheet.ProductCode;
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+            }
             cbbWorkUnit.ItemsSource = base_wu;
         }
     }

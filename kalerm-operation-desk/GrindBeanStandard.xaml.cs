@@ -93,11 +93,12 @@ namespace kalerm_operation_desk
             worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
             foreach (var row in worksheet)
             {
-                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo + '|' + row.ProductCode, row.WorkSheetNo + '|' + row.ProductCode));
+                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
             }
             base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
             cbbWorkUnit.ItemsSource = base_wu;
             cbbWorkUnit.SelectedValue = WorkUnitId;
+            textWorkSheet.Text = WorkSheetNo;
             txtScan.Focus();
 
             txtSWZ_071.Text = ConfigurationManager.AppSettings["txtSWZ_071"].ToString();
@@ -116,14 +117,18 @@ namespace kalerm_operation_desk
         private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e)
         {
             //根据工单获取工作单元
-            string str1 = textWorkSheet.Text + "";
+            string WorkSheetNo = textWorkSheet.Text + "";
             string ProductCode = "";
-            if (str1.Contains('|'))
+            worksheet worksheet = null;
+            if (!string.IsNullOrEmpty(WorkSheetNo))
             {
-                string[] sArray = str1.Split('|');
-                ProductCode = sArray[1];
+                worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId);
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+            if (worksheet != null)
+            {
+                ProductCode = worksheet.ProductCode;
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+            }
             cbbWorkUnit.ItemsSource = base_wu;
         }
         private void BtnSet_Click(object sender, RoutedEventArgs e)
@@ -177,7 +182,7 @@ namespace kalerm_operation_desk
                     dt = DateTime.Now;
                     string str = (txtScan.Text + "").ToUpper();//转大写
                     txtScan.Text = str;
-                    if (txtScan.Text + "" == "OK")//完成
+                    if (txtScan.Text + "" == "Y")//完成
                     {
                         CheckData();
                         SavaData();
