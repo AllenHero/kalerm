@@ -311,22 +311,27 @@ namespace kalerm_operation_desk
                     //自动称重
                     else if (txtFirst.IsFocused == true)
                     {
+                        StopThread();
                         txtFirst.KeyUp += txtFirst_KeyUp;
                     }
                     else if (txtSecond.IsFocused==true) 
                     {
+                        StopThread();
                         txtSecond.KeyUp += txtSecond_KeyUp; 
                     }
                     else if (txtThird.IsFocused==true)
                     {
+                        StopThread();
                         txtThird.KeyUp += txtThird_KeyUp;    
                     }
                     else if (txtCSHZL_071.IsFocused==true)
                     {
+                        StopThread();
                         txtCSHZL_071.KeyUp += txtCSHZL_071_KeyUp;                      
                     }
                     else if (txtCSHZL_03.IsFocused==true)
                     {
+                        StopThread();
                         txtCSHZL_03.KeyUp += txtCSHZL_03_KeyUp;
                     }
                 }
@@ -334,6 +339,25 @@ namespace kalerm_operation_desk
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void StopThread()
+        {
+            threadWeightRun = false;
+        }
+
+        private void TestStandard()
+        {
+            try
+            {
+                thread = new Thread(new ThreadStart(Weight));
+                thread.IsBackground = true;
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
@@ -493,13 +517,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            txtFirst.Text = Convert.ToString(value);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            TestStandard();
+            txtFirst.Text =Convert.ToString(lbData.Content);
             txtSecond.Focus();
         }
 
@@ -510,13 +535,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtSecond_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            txtSecond.Text = Convert.ToString(value);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            TestStandard();
+            txtSecond.Text = Convert.ToString(lbData.Content);
             txtThird.Focus();
         }
 
@@ -527,13 +553,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtThird_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            txtThird.Text = Convert.ToString(value);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            TestStandard();
+            txtThird.Text = Convert.ToString(lbData.Content);
             GetFZMin();
             txtCSHZL_071.Focus();
         }
@@ -615,13 +642,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            txtCSHZL_071.Text = Convert.ToString(value);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            TestStandard();
+            txtCSHZL_071.Text = Convert.ToString(lbData.Content);
             GetFZ_071AndRate_071();
             txtCSHZL_03.Focus();
         }
@@ -663,13 +691,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            txtCSHZL_03.Text = Convert.ToString(value);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            TestStandard();
+            txtCSHZL_03.Text = Convert.ToString(lbData.Content);
             GetFZ_03AndRate_03();
             txtBZ.Focus();
         }
