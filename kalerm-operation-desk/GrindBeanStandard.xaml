@@ -139,8 +139,8 @@
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="85,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtRate_03"/>
                     <Label Content="总比率" HorizontalAlignment="Left" Margin="156,160,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="26" Width="54" Foreground="Blue"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="224,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="txtSumRate"/>
-                    <Label Content="" HorizontalAlignment="Left" Margin="72,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="57" FontSize="30" Height="50" Name="lbReasult"/>
-                    <Label Content="" HorizontalAlignment="Left" Margin="191,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" FontSize="30" Height="50" Name="lbData"/>
+                    <Label Content="测试结果" HorizontalAlignment="Left" Margin="31,200,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="135" FontSize="30" Height="50" Name="lbReasult"/>
+                    <Label Content="0" HorizontalAlignment="Left" Margin="228,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="76" FontSize="30" Height="50" Name="lbData"/>
 
                 </Grid>
             </Border>
