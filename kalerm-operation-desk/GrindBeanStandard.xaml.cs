@@ -260,7 +260,6 @@ namespace kalerm_operation_desk
                         txtScan.Text = "";
                         dataGrid.ItemsSource = grindbeandataList;
                     }
-
                     else if (isSCAN == false)//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
                     {
                         if (TestCount < typeList.Count)//还有测试项目未完成
@@ -480,17 +479,11 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
         {
-            //thread = new Thread(new ThreadStart(Weight));
-            //thread.IsBackground = true;
-            //thread.Start();
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            dynamic txtFirstValue = lbData.Content;
-            txtFirst.Text = txtFirstValue;
+            thread = new Thread(new ThreadStart(Weight));
+            thread.IsBackground = true;
+            thread.Start();
+            //dynamic txtFirstValue = lbData.Content;
+            //txtFirst.Text = txtFirstValue;
             txtSecond.Focus();
         }
 
@@ -501,17 +494,11 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtSecond_KeyUp(object sender, KeyEventArgs e)
         {
-            //thread = new Thread(new ThreadStart(Weight));
-            //thread.IsBackground = true;
-            //thread.Start();
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            dynamic txtSecondValue = lbData.Content;
-            txtSecond.Text = txtSecondValue;
+            thread = new Thread(new ThreadStart(Weight));
+            thread.IsBackground = true;
+            thread.Start();
+            //dynamic txtSecondValue = lbData.Content;
+            //txtSecond.Text = txtSecondValue;
             txtThird.Focus();
         }
 
@@ -522,17 +509,11 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtThird_KeyUp(object sender, KeyEventArgs e)
         {
-            //thread = new Thread(new ThreadStart(Weight));
-            //thread.IsBackground = true;
-            //thread.Start();
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            dynamic txtThirdValue = lbData.Content;
-            txtThird.Text = txtThirdValue;
+            thread = new Thread(new ThreadStart(Weight));
+            thread.IsBackground = true;
+            thread.Start();
+            //dynamic txtThirdValue = lbData.Content;
+            //txtThird.Text = txtThirdValue;
             GetFZMin();
             txtCSHZL_071.Focus();
         }
@@ -543,9 +524,24 @@ namespace kalerm_operation_desk
         public void GetFZMin() 
         {
             List<decimal> strList = new List<decimal>();
-            strList.Add(Convert.ToDecimal(txtFirst.Text));
-            strList.Add(Convert.ToDecimal(txtFirst.Text));
-            strList.Add(Convert.ToDecimal(txtThird.Text));
+            decimal txtFirstValue = 0;
+            decimal txtSecondValue = 0;
+            decimal txtThirdValue = 0;
+            if (!string.IsNullOrEmpty(txtFirst.Text))
+            {
+                txtFirstValue = Convert.ToDecimal(txtFirst.Text);
+            }    
+            if (!string.IsNullOrEmpty(txtSecond.Text))
+            {
+                txtSecondValue = Convert.ToDecimal(txtSecond.Text);
+            }
+            if (!string.IsNullOrEmpty(txtThird.Text))
+            {
+                txtThirdValue = Convert.ToDecimal(txtThird.Text);
+            }
+            strList.Add(txtFirstValue);
+            strList.Add(txtSecondValue);
+            strList.Add(txtThirdValue);
             decimal[] strArray = strList.ToArray();//list转数组
             FunctionHelper FunctionHelper = new FunctionHelper(strArray);
             decimal txtFZMinValue = Math.Round(FunctionHelper.Min, 2);
@@ -560,7 +556,11 @@ namespace kalerm_operation_desk
         private void txtBZ_KeyUp(object sender, KeyEventArgs e) 
         {
             string result = "";
-            decimal txtFZMinValue = Convert.ToDecimal(txtFZMin.Text);
+            decimal txtFZMinValue = 0;
+            if (!string.IsNullOrEmpty(txtFZMin.Text))
+            {
+                txtFZMinValue = Convert.ToDecimal(txtFZMin.Text);
+            }
             if (!string.IsNullOrEmpty(txtBZ.Text))
             {
                 decimal txtBZValue = Convert.ToDecimal(txtBZ.Text);
@@ -595,12 +595,9 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
+            thread = new Thread(new ThreadStart(Weight));
+            thread.IsBackground = true;
+            thread.Start();
             dynamic txtCSHZL_071Value = lbData.Content;
             txtCSHZL_071.Text = txtCSHZL_071Value;
             GetFZ_071AndRate_071();
@@ -644,15 +641,13 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
+            thread = new Thread(new ThreadStart(Weight));
+            thread.IsBackground = true;
+            thread.Start();
             dynamic txtCSHZL_03Value = lbData.Content;
             txtCSHZL_03.Text = txtCSHZL_03Value;
             GetFZ_03AndRate_03();
+            txtBZ.Focus();
         }
 
         /// <summary>
@@ -717,7 +712,7 @@ namespace kalerm_operation_desk
                 {
                     try
                     {
-                        lbData.Content = value + ""; 
+                        lbData.Content = value + "";
                     }
                     catch (Exception ex)
                     {
