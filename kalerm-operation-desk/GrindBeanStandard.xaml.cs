@@ -205,6 +205,8 @@ namespace kalerm_operation_desk
                         //指令单
                         lbORDER_NO.Content = worksheet.OrderNo + "";
                         ProcessId = worksheet.ProcessId;
+                        //ERP工单
+                        lbERPORDER_NO.Content = worksheet.ERPOrderNo + "";
                     }
                     string processname = "";
                     base_productionprocess productionprocess = null;

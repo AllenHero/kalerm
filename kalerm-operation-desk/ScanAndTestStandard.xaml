@@ -87,7 +87,7 @@
             <Label Grid.Column="6" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Label Grid.Column="7" Name="lbORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Grid.Column="8" Content="ERP工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="9" Name="lbERPWorkSheet_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="9" Name="lbERPORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
         
         <Grid Grid.ColumnSpan="8" Grid.Row="3">

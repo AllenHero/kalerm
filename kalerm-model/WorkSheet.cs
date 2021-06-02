@@ -9,9 +9,11 @@ namespace kalerm_model
     public class worksheet 
     {
         public string WorkSheetId { get; set; }
+        public string ERPOrderNo { get; set; }
         public string OrderNo { get; set; }
         public int Sort { get; set; }
         public string WorkSheetNo { get; set; }
+        public string ParentWorkSheetNo { get; set; }
         public int PlanCount { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -73,5 +75,8 @@ namespace kalerm_model
         public string ParentOrganizeCode { get; set; }
         public string ParentOrganizeName { get; set; }
         public string TotalHoursCount { get; set; }
+        public string SaleOrderNo { get; set; }
+        public string SourceId { get; set; }
+        public string SourceModel { get; set; }
     }
 }
