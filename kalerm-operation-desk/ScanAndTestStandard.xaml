@@ -30,9 +30,9 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0" Content="工单号：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWorkSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeave="textWorkSheet_MouseLeave"/>
+        <control:AutoCompleteTextBox Grid.Row="0"  x:Name="textWorkSheet" Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,0" Height="23" DelayTime="500" Threshold="1" MouseLeave="textWorkSheet_MouseLeave" IsEnabled="False"/>
         <Label Grid.Column="2"  Content="工作单元：" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="wuname" SelectedValuePath="wuid"  Name="cbbWorkUnit" IsEnabled="True"  VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding}"/>
+        <ComboBox Grid.Column="3" Width="140" DisplayMemberPath="wuname" SelectedValuePath="wuid"  Name="cbbWorkUnit" IsEnabled="False"  VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding}"/>
         
         <Grid Grid.Column="4">
             <Grid.RowDefinitions>
@@ -56,7 +56,7 @@
             <Label Grid.Row="2" Grid.Column="2" Name="lbAG" Content="打开失败" FontSize="8" HorizontalAlignment="Left" />
         </Grid>
         
-        <Button Style="{StaticResource ButtonStlye}" Grid.Column="4"  Name="btnSet" Content="设置工序" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
+        <Button Style="{StaticResource ButtonStlye}" Grid.Column="4"  Name="btnSet" Content="设置工作单元" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
         <Button Style="{StaticResource ButtonStlye}" Grid.Column="4" Grid.ColumnSpan="3"   Name="btnCom" Content="设置串口" Width="75" Height="23" HorizontalAlignment="Right"   Margin="0,5,15,0"   VerticalAlignment="Center" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="条码扫描：" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
