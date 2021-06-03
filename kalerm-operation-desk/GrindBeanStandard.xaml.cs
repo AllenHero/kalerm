@@ -67,8 +67,6 @@ namespace kalerm_operation_desk
 
         Thread thread;
 
-        public delegate void MyDelegate();
-
         public GrindBeanStandard()
         {
             InitializeComponent();
@@ -357,13 +355,11 @@ namespace kalerm_operation_desk
             threadWeightRun = false;
         }
 
-        private void TestStandard()
+        private void TestStandard(MyDelegate myDelegate)
         {
             try
-            {
-                thread = new Thread(new ThreadStart(Weight));
-                thread.IsBackground = true;
-                thread.Start();
+            { 
+                Task.Run(() => Weight(myDelegate)); 
             }
             catch (Exception ex)
             {
@@ -520,11 +516,6 @@ namespace kalerm_operation_desk
             ConfigHelper.UpdateSettingString("txtSWZ_03", txtSWZ_03.Text);
         }
 
-        public void ProcessDelegate(MyDelegate myDelegate)
-        {
-            myDelegate();
-        }
-
         /// <summary>
         /// 第一杯粉重
         /// </summary>
@@ -532,15 +523,7 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
         {
-            //Thread.Sleep(200);//停顿0.2秒再开始
-            //threadWeightRun = true;
-            //BalanceWeight.ReadWeight();
-            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            //lbData.Content = value + "";
-            //Thread.Sleep(100);
-            Test test = new Test();
-            test.ProcessDelegate(TestStandard);
-            txtFirst.Text =Convert.ToString(lbData.Content);
+            TestStandard(val => { txtFirst.Text = Convert.ToString(lbData.Content);});           
             txtSecond.Focus();
         }
 
@@ -551,14 +534,7 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtSecond_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            //TestStandard();
-            txtSecond.Text = Convert.ToString(lbData.Content);
+            TestStandard(val => { txtSecond.Text = Convert.ToString(lbData.Content);});           
             txtThird.Focus();
         }
 
@@ -569,14 +545,7 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtThird_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            //TestStandard();
-            txtThird.Text = Convert.ToString(lbData.Content);
+            TestStandard(val => { txtThird.Text = Convert.ToString(lbData.Content);});   
             GetFZMin();
             txtCSHZL_071.Focus();
         }
@@ -658,14 +627,7 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            //TestStandard();
-            txtCSHZL_071.Text = Convert.ToString(lbData.Content);
+            TestStandard(val => { txtCSHZL_071.Text = Convert.ToString(lbData.Content);});   
             GetFZ_071AndRate_071();
             txtCSHZL_03.Focus();
         }
@@ -707,14 +669,7 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            //TestStandard();
-            txtCSHZL_03.Text = Convert.ToString(lbData.Content);
+            TestStandard(val => { txtCSHZL_03.Text = Convert.ToString(lbData.Content);});
             GetFZ_03AndRate_03();
             txtBZ.Focus();
         }
@@ -768,8 +723,14 @@ namespace kalerm_operation_desk
             decimal txtSumRateValue = txtRate_071Value + txtRate_03Value;
             txtSumRate.Text = Convert.ToString(txtSumRateValue);
         }
+        
+        public delegate void MyDelegate(decimal value);
 
-        private void Weight()
+        /// <summary>
+        /// 称重
+        /// </summary>
+        /// <param name="myDelegate"></param>
+        private void Weight(MyDelegate myDelegate)
         {
             Thread.Sleep(200);//停顿0.2秒再开始
             threadWeightRun = true;
@@ -782,6 +743,7 @@ namespace kalerm_operation_desk
                     try
                     {
                         lbData.Content = value + "";
+                        myDelegate(value);
                     }
                     catch (Exception ex)
                     {
@@ -790,36 +752,6 @@ namespace kalerm_operation_desk
                 }));
                 Thread.Sleep(100);
             }
-        }
-
-        //public class TestMain
-        //{
-        //    public static void Main()
-        //    {
-        //        Test test = new Test();
-        //        test.ProcessDelegate(SayA);
-        //        test.ProcessDelegate(SayB);
-        //    }
-
-        //    public static void SayA()
-        //    { 
-        //        Console.WriteLine("A"); 
-        //    }
-
-        //    public static void SayB()
-        //    {
-        //        Console.WriteLine("B");
-        //    }
-        //}
-    }
-
-    public class Test
-    {
-        public delegate void MyDelegate();
-
-        public void ProcessDelegate(MyDelegate myDelegate)
-        {
-            myDelegate();
         }
     }
 }
