@@ -532,14 +532,14 @@ namespace kalerm_operation_desk
         /// <param name="e"></param>
         private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
         {
-            Thread.Sleep(200);//停顿0.2秒再开始
-            threadWeightRun = true;
-            BalanceWeight.ReadWeight();
-            decimal value = Math.Round(BalanceWeight.CurWeight, 1);
-            lbData.Content = value + "";
-            Thread.Sleep(100);
-            //Test test = new Test();
-            //test.ProcessDelegate(TestStandard);
+            //Thread.Sleep(200);//停顿0.2秒再开始
+            //threadWeightRun = true;
+            //BalanceWeight.ReadWeight();
+            //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
+            //lbData.Content = value + "";
+            //Thread.Sleep(100);
+            Test test = new Test();
+            test.ProcessDelegate(TestStandard);
             txtFirst.Text =Convert.ToString(lbData.Content);
             txtSecond.Focus();
         }
