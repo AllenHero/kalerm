@@ -133,32 +133,39 @@ namespace kalerm_operation_desk
 
         private void ScanAndTestStandard_Loaded(object sender, RoutedEventArgs e)
         {
-            dt = DateTime.Now;
-            if (BalanceWeight.Open())
-                lbWT.Content = "打开串口成功";
-            else
-                lbWT.Content = "打开串口失败";
-            if (Thermometer.Open())
-                lbTP.Content = "打开串口成功";
-            else
-                lbTP.Content = "打开串口失败";
-            string WorkSheetNo = MainWindow.WorkSheetNo + "";
-            string WorkUnitId = MainWindow.WorkUnitId + "";
-            TotalPass = Convert.ToInt32(MainWindow.TotalPass);
-            lbWTCOM.Content = MainWindow.WeightCom + "";
-            lbTPCOM.Content = MainWindow.TemperatureCom + "";
-            lbTotal.Content = TotalPass + "";
-            this.Loaded -= ScanAndTestStandard_Loaded;
-            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
-            foreach (var row in worksheet)
+            try
             {
-                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+                dt = DateTime.Now;
+                if (BalanceWeight.Open())
+                    lbWT.Content = "打开串口成功";
+                else
+                    lbWT.Content = "打开串口失败";
+                if (Thermometer.Open())
+                    lbTP.Content = "打开串口成功";
+                else
+                    lbTP.Content = "打开串口失败";
+                string WorkSheetNo = MainWindow.WorkSheetNo + "";
+                string WorkUnitId = MainWindow.WorkUnitId + "";
+                TotalPass = Convert.ToInt32(MainWindow.TotalPass);
+                lbWTCOM.Content = MainWindow.WeightCom + "";
+                lbTPCOM.Content = MainWindow.TemperatureCom + "";
+                lbTotal.Content = TotalPass + "";
+                this.Loaded -= ScanAndTestStandard_Loaded;
+                worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
+                foreach (var row in worksheet)
+                {
+                    textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+                }
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
+                cbbWorkUnit.ItemsSource = base_wu;
+                cbbWorkUnit.SelectedValue = WorkUnitId;
+                textWorkSheet.Text = WorkSheetNo;
+                txtScan.Focus();
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
-            cbbWorkUnit.ItemsSource = base_wu;
-            cbbWorkUnit.SelectedValue = WorkUnitId;
-            textWorkSheet.Text = WorkSheetNo;
-            txtScan.Focus();
+            catch (Exception ex)
+            {
+                Logger.Info(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex.Message);
+            }     
         }
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)

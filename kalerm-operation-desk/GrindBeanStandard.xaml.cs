@@ -67,6 +67,8 @@ namespace kalerm_operation_desk
 
         Thread thread;
 
+        public delegate void MyDelegate();
+
         public GrindBeanStandard()
         {
             InitializeComponent();
@@ -79,39 +81,46 @@ namespace kalerm_operation_desk
 
         private void GrindBeanStandard_Loaded(object sender, RoutedEventArgs e)
         {
-            dt = DateTime.Now;
-            if (BalanceWeight.Open())
-                lbWT.Content = "打开串口成功";
-            else
-                lbWT.Content = "打开串口失败";
-            string WorkSheetNo = MainWindow.WorkSheetNo + "";
-            string WorkUnitId = MainWindow.WorkUnitId + "";
-            TotalPass = Convert.ToInt32(MainWindow.TotalPass);
-            lbWTCOM.Content = MainWindow.WeightCom + "";
-            lbTotal.Content = TotalPass + "";
-            this.Loaded -= GrindBeanStandard_Loaded;
-            worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
-            foreach (var row in worksheet)
+            try
             {
-                textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+                dt = DateTime.Now;
+                if (BalanceWeight.Open())
+                    lbWT.Content = "打开串口成功";
+                else
+                    lbWT.Content = "打开串口失败";
+                string WorkSheetNo = MainWindow.WorkSheetNo + "";
+                string WorkUnitId = MainWindow.WorkUnitId + "";
+                TotalPass = Convert.ToInt32(MainWindow.TotalPass);
+                lbWTCOM.Content = MainWindow.WeightCom + "";
+                lbTotal.Content = TotalPass + "";
+                this.Loaded -= GrindBeanStandard_Loaded;
+                worksheet = new ObservableCollection<worksheet>(bllBaseData.GetWorkSheetList(TenantId));
+                foreach (var row in worksheet)
+                {
+                    textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
+                }
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
+                cbbWorkUnit.ItemsSource = base_wu;
+                cbbWorkUnit.SelectedValue = WorkUnitId;
+                textWorkSheet.Text = WorkSheetNo;
+                txtScan.Focus();
+
+                txtSWZ_071.Text = ConfigurationManager.AppSettings["txtSWZ_071"].ToString();
+
+                txtSWZ_03.Text = ConfigurationManager.AppSettings["txtSWZ_03"].ToString();
+
+                string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03" };
+                foreach (var item in arr)
+                {
+                    dynamic obj = new ExpandoObject();
+                    obj.type = item;
+                    typeList.Add(obj);
+                }
             }
-            base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
-            cbbWorkUnit.ItemsSource = base_wu;
-            cbbWorkUnit.SelectedValue = WorkUnitId;
-            textWorkSheet.Text = WorkSheetNo;
-            txtScan.Focus();
-
-            txtSWZ_071.Text = ConfigurationManager.AppSettings["txtSWZ_071"].ToString();
-
-            txtSWZ_03.Text = ConfigurationManager.AppSettings["txtSWZ_03"].ToString();
-
-            string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03" };
-            foreach (var item in arr)
+            catch (Exception ex)
             {
-                dynamic obj = new ExpandoObject();
-                obj.type = item;
-                typeList.Add(obj);
-            }
+                Logger.Info(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex.Message);
+            }           
         }
 
         private void textWorkSheet_MouseLeave(object sender, MouseEventArgs e)
@@ -131,6 +140,7 @@ namespace kalerm_operation_desk
             }
             cbbWorkUnit.ItemsSource = base_wu;
         }
+
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
             ScanAndTestStandardSet page = new ScanAndTestStandardSet();
@@ -510,6 +520,11 @@ namespace kalerm_operation_desk
             ConfigHelper.UpdateSettingString("txtSWZ_03", txtSWZ_03.Text);
         }
 
+        public void ProcessDelegate(MyDelegate myDelegate)
+        {
+            myDelegate();
+        }
+
         /// <summary>
         /// 第一杯粉重
         /// </summary>
@@ -523,7 +538,8 @@ namespace kalerm_operation_desk
             //decimal value = Math.Round(BalanceWeight.CurWeight, 1);
             //lbData.Content = value + "";
             //Thread.Sleep(100);
-            TestStandard();
+            Test test = new Test();
+            test.ProcessDelegate(TestStandard);
             txtFirst.Text =Convert.ToString(lbData.Content);
             txtSecond.Focus();
         }
@@ -774,6 +790,35 @@ namespace kalerm_operation_desk
                 }));
                 Thread.Sleep(100);
             }
+        }
+        //public class TestMain
+        //{
+        //    public static void Main()
+        //    {
+        //        Test test = new Test();
+        //        test.ProcessDelegate(SayA);
+        //        test.ProcessDelegate(SayB);
+        //    }
+
+        //    public static void SayA()
+        //    { 
+        //        Console.WriteLine("A"); 
+        //    }
+
+        //    public static void SayB()
+        //    {
+        //        Console.WriteLine("B");
+        //    }
+        //}
+    }
+
+    public class Test
+    {
+        public delegate void MyDelegate();
+
+        public void ProcessDelegate(MyDelegate myDelegate)
+        {
+            myDelegate();
         }
     }
 }
