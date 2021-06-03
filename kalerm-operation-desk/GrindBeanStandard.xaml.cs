@@ -50,6 +50,9 @@ namespace kalerm_operation_desk
         //是否扫码
         bool isSCAN = true;
 
+        //HAND测试
+        bool HANDRUN = false;
+
         //主条码
         string SCAN_BARCODE = "";
 
@@ -107,11 +110,16 @@ namespace kalerm_operation_desk
 
                 txtSWZ_03.Text = ConfigurationManager.AppSettings["txtSWZ_03"].ToString();
 
-                string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03" };
-                foreach (var item in arr)
+                //定义
+                string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03", "txtFirst", "txtSecond", "txtThird", "txtCSHZL_071", "txtCSHZL_03" };
+                string[] arr1 = new string[] { "空磨功率", "功率<=135w", "档位", "0.71筛网重", "0.3筛网重", "粉重第一杯", "粉重第二杯", "粉重第三杯", "0.71测试后", "0.3测试后" };
+                string[] arr2 = new string[] { "HAND", "HAND", "HAND", "HAND", "HAND", "WT", "WT", "WT", "WT", "WT" };
+                for (int i = 0; i < arr.Length; i++)
                 {
                     dynamic obj = new ExpandoObject();
-                    obj.type = item;
+                    obj.name = arr[i];
+                    obj.text = arr1[i];
+                    obj.type = arr2[i];
                     typeList.Add(obj);
                 }
             }
@@ -180,6 +188,10 @@ namespace kalerm_operation_desk
         {
             try
             {
+                if (HANDRUN)
+                {
+                    //TODO:
+                }
                 //Logger.Info(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,txtScan.Text);
                 if (e.Key == Key.Enter)
                 {
@@ -265,82 +277,112 @@ namespace kalerm_operation_desk
                         txtScan.Focus();
                         txtScan.Text = "";
                         dataGrid.ItemsSource = grindbeandataList;
+                        lbReasult.Content = typeList[0].text + "";
+                        TestStandard(0);//开始测试
                     }
-                    else if (isSCAN == false)//手动输入空磨功率，功率，档位，0.71筛网重，0.3筛网重
+                    else 
                     {
-                        if (txtScan.Text + "" == "")
+                        if (txtScan.Text == "000")//000测试回退
+                        {
+                            if (TestCount == 0)//测试没开始，不需要回退
+                                return;
+                            StopThread();
+                            TestCount = TestCount - 1;
+                            txtScan.Text = "";
+                            TestStandard(TestCount);//开始上一项测试
+                            return;
+                        }
+                        if (txtScan.Text + "" == "" && typeList[TestCount].type == "HAND")
                         {
                             lbMessage.Content = "输入不能为空";
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             txtScan.IsEnabled = true;
+                            return;
                         }
-                        else if (MathHelper.IsNumeric(txtScan.Text) == false) 
+                        if (MathHelper.IsNumeric(txtScan.Text) == false && typeList[TestCount].type == "HAND")
                         {
                             lbMessage.Content = "输入格式不正确";
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             txtScan.IsEnabled = true;
                             txtScan.Clear();
+                            return;
+                        }
+                        if (TestCount < typeList.Count)//还有测试项目未完成
+                        {
+                            if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtKMGL")
+                            {
+                                StopThread();
+                                txtKMGL.Text = txtScan.Text;
+                                txtScan.Text = "";
+                            }
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtGL")
+                            {
+                                StopThread();
+                                txtGL.Text = txtScan.Text;
+                                txtScan.Text = "";
+                            }
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtDW")
+                            {
+                                StopThread();
+                                txtDW.Text = txtScan.Text;
+                                txtScan.Text = "";
+                            }
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_071")
+                            {
+                                StopThread();
+                                txtSWZ_071.Text = txtScan.Text;
+                                txtScan.Text = "";
+                            }
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_03")
+                            {
+                                StopThread();
+                                txtSWZ_03.Text = txtScan.Text;
+                                txtScan.Text = "";
+                            }
+                            else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtFirst")
+                            {
+                                StopThread();
+                                txtFirst.Text = Convert.ToString(lbData.Content);
+                            }
+                            else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtSecond")
+                            {
+                                StopThread();
+                                txtSecond.Text = Convert.ToString(lbData.Content);
+                            }
+                            else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtThird")
+                            {
+                                StopThread();
+                                txtThird.Text = Convert.ToString(lbData.Content);
+                                GetFZMin();
+                            }
+                            else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtCSHZL_071")
+                            {
+                                StopThread();
+                                txtCSHZL_071.Text = Convert.ToString(lbData.Content);
+                                GetFZ_071AndRate_071();
+                            }
+                            else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtCSHZL_03")
+                            {
+                                StopThread();
+                                txtCSHZL_03.Text = Convert.ToString(lbData.Content);
+                                GetFZ_03AndRate_03();
+                            }
+                            TestCount += 1;
+                            if (TestCount < typeList.Count)//还有测试项目未完成
+                            {
+                                TestStandard(TestCount);//开始下一项测试
+                            }
+                            else//全部测试完成
+                            {
+                                StopThread();
+                            }
                         }
                         else
                         {
-                            if (TestCount < typeList.Count)//还有测试项目未完成
-                            {
-                                switch (typeList[TestCount].type)//当前测试项目
-                                {
-                                    case "txtKMGL":
-                                        txtKMGL.Text = txtScan.Text;
-                                        txtScan.Clear();
-                                        break;
-                                    case "txtGL":
-                                        txtGL.Text = txtScan.Text;
-                                        txtScan.Clear();
-                                        break;
-                                    case "txtDW":
-                                        txtDW.Text = txtScan.Text;
-                                        txtScan.Clear();
-                                        break;
-                                    case "txtSWZ_071":
-                                        txtSWZ_071.Text = txtScan.Text;
-                                        txtScan.Clear();
-                                        break;
-                                    case "txtSWZ_03":
-                                        txtSWZ_03.Text = txtScan.Text;
-                                        txtScan.Clear();
-                                        break;
-                                }
-                                TestCount += 1;
-                            }
+                            TestCount += 1;
+                            lbTest.Content = TestCount;
+                            StopThread();
                         }
-                        if (typeList.Count == TestCount)
-                        {
-                            txtFirst.Focus();
-                        }
-                    }
-                    //自动称重
-                    else if (txtFirst.IsFocused == true)
-                    {
-                        StopThread();
-                        txtFirst.KeyUp += txtFirst_KeyUp;
-                    }
-                    else if (txtSecond.IsFocused==true) 
-                    {
-                        StopThread();
-                        txtSecond.KeyUp += txtSecond_KeyUp; 
-                    }
-                    else if (txtThird.IsFocused==true)
-                    {
-                        StopThread();
-                        txtThird.KeyUp += txtThird_KeyUp;    
-                    }
-                    else if (txtCSHZL_071.IsFocused==true)
-                    {
-                        StopThread();
-                        txtCSHZL_071.KeyUp += txtCSHZL_071_KeyUp;                      
-                    }
-                    else if (txtCSHZL_03.IsFocused==true)
-                    {
-                        StopThread();
-                        txtCSHZL_03.KeyUp += txtCSHZL_03_KeyUp;
                     }
                 }
             }
@@ -352,14 +394,27 @@ namespace kalerm_operation_desk
 
         private void StopThread()
         {
+            HANDRUN = false;
             threadWeightRun = false;
         }
 
-        private void TestStandard(MyDelegate myDelegate)
+        private void TestStandard(int count)
         {
             try
-            { 
-                Task.Run(() => Weight(myDelegate)); 
+            {
+                lbData.Content = "0";
+                lbReasult.Content = typeList[count].text + "";
+                switch (typeList[count].type)
+                {
+                    case "HAND":
+                        HANDRUN = true;
+                        break;
+                    case "WT":
+                        thread = new Thread(new ThreadStart(Weight));
+                        thread.IsBackground = true;
+                        thread.Start();
+                        break;
+                }
             }
             catch (Exception ex)
             {
@@ -517,40 +572,6 @@ namespace kalerm_operation_desk
         }
 
         /// <summary>
-        /// 第一杯粉重
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtFirst_KeyUp(object sender, KeyEventArgs e) 
-        {
-            TestStandard(val => { txtFirst.Text = Convert.ToString(lbData.Content);});           
-            txtSecond.Focus();
-        }
-
-        /// <summary>
-        /// 第二杯粉重
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtSecond_KeyUp(object sender, KeyEventArgs e)
-        {
-            TestStandard(val => { txtSecond.Text = Convert.ToString(lbData.Content);});           
-            txtThird.Focus();
-        }
-
-        /// <summary>
-        /// 第三杯粉重
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtThird_KeyUp(object sender, KeyEventArgs e)
-        {
-            TestStandard(val => { txtThird.Text = Convert.ToString(lbData.Content);});   
-            GetFZMin();
-            txtCSHZL_071.Focus();
-        }
-
-        /// <summary>
         /// 获取最小粉重
         /// </summary>
         public void GetFZMin() 
@@ -611,6 +632,7 @@ namespace kalerm_operation_desk
                     result = "C";
                 }
                 lbReasult.Content = result;
+                threadWeightRun = false;
             }
             else
             {
@@ -618,18 +640,6 @@ namespace kalerm_operation_desk
                 lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                 txtBZ.Focus();
             }
-        }
-
-        /// <summary>
-        /// 0.71测试后重量
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtCSHZL_071_KeyUp(object sender, KeyEventArgs e) 
-        {
-            TestStandard(val => { txtCSHZL_071.Text = Convert.ToString(lbData.Content);});   
-            GetFZ_071AndRate_071();
-            txtCSHZL_03.Focus();
         }
 
         /// <summary>
@@ -660,18 +670,6 @@ namespace kalerm_operation_desk
                 txtRate_071Value = txtFZ_071Value / txtFZMinValue;
             }
             txtRate_071.Text = Convert.ToString(txtRate_071Value);
-        }
-
-        /// <summary>
-        /// 0.3测试后重量
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtCSHZL_03_KeyUp(object sender, KeyEventArgs e)
-        {
-            TestStandard(val => { txtCSHZL_03.Text = Convert.ToString(lbData.Content);});
-            GetFZ_03AndRate_03();
-            txtBZ.Focus();
         }
 
         /// <summary>
@@ -723,19 +721,16 @@ namespace kalerm_operation_desk
             decimal txtSumRateValue = txtRate_071Value + txtRate_03Value;
             txtSumRate.Text = Convert.ToString(txtSumRateValue);
         }
-        
-        public delegate void MyDelegate(decimal value);
 
         /// <summary>
         /// 称重
         /// </summary>
-        /// <param name="myDelegate"></param>
-        private void Weight(MyDelegate myDelegate)
+        private void Weight()
         {
             Thread.Sleep(200);//停顿0.2秒再开始
             threadWeightRun = true;
             BalanceWeight.ReadWeight();
-            while (threadWeightRun)
+            while (threadWeightRun == true)
             {
                 decimal value = Math.Round(BalanceWeight.CurWeight, 1);
                 this.Dispatcher.Invoke(new Action(() =>
@@ -743,7 +738,6 @@ namespace kalerm_operation_desk
                     try
                     {
                         lbData.Content = value + "";
-                        myDelegate(value);
                     }
                     catch (Exception ex)
                     {
