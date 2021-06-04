@@ -364,6 +364,7 @@ namespace kalerm_operation_desk
                                 GetFZ_03AndRate_03();
                             }
                             TestCount += 1;
+                            lbTest.Content = TestCount;
                             if (TestCount < typeList.Count)//还有测试项目未完成
                             {
                                 TestStandard(TestCount);//开始下一项测试
