@@ -292,23 +292,23 @@ namespace kalerm_operation_desk
                             TestStandard(TestCount);//开始上一项测试
                             return;
                         }
-                        if (txtScan.Text + "" == "" && typeList[TestCount].type == "HAND")
-                        {
-                            lbMessage.Content = "输入不能为空";
-                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
-                            txtScan.IsEnabled = true;
-                            return;
-                        }
-                        if (MathHelper.IsNumeric(txtScan.Text) == false && typeList[TestCount].type == "HAND")
-                        {
-                            lbMessage.Content = "输入格式不正确";
-                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
-                            txtScan.IsEnabled = true;
-                            txtScan.Clear();
-                            return;
-                        }
                         if (TestCount < typeList.Count)//还有测试项目未完成
                         {
+                            if (txtScan.Text + "" == "" && typeList[TestCount].type == "HAND")
+                            {
+                                lbMessage.Content = "输入不能为空";
+                                lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                                txtScan.IsEnabled = true;
+                                return;
+                            }
+                            if (MathHelper.IsNumeric(txtScan.Text) == false && typeList[TestCount].type == "HAND")
+                            {
+                                lbMessage.Content = "输入格式不正确";
+                                lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                                txtScan.IsEnabled = true;
+                                txtScan.Clear();
+                                return;
+                            }
                             if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtKMGL")
                             {
                                 StopThread();
@@ -327,13 +327,13 @@ namespace kalerm_operation_desk
                                 txtDW.Text = txtScan.Text;
                                 txtScan.Text = "";
                             }
-                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_071")
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_071" && !string.IsNullOrEmpty(txtSWZ_071.Text))
                             {
                                 StopThread();
                                 txtSWZ_071.Text = txtScan.Text;
                                 txtScan.Text = "";
                             }
-                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_03")
+                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_03" && !string.IsNullOrEmpty(txtSWZ_03.Text))
                             {
                                 StopThread();
                                 txtSWZ_03.Text = txtScan.Text;

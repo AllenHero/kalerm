@@ -113,18 +113,18 @@
                     <Label Content="档位" HorizontalAlignment="Left" Margin="5,40,0,0" VerticalAlignment="Top" Width="38" Height="30" Grid.RowSpan="2"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="84,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"  Grid.RowSpan="2" Name="txtDW"/>
                     <Label Content="粉重第一杯" HorizontalAlignment="Left" Margin="162,40,0,0" VerticalAlignment="Top" Width="72" Height="33" Grid.RowSpan="2" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="250,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.RowSpan="2" Name="txtFirst"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="250,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.RowSpan="2" Name="txtFirst" IsEnabled="False"/>
                     <Label Content="粉重第二杯" HorizontalAlignment="Left" Margin="-1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" Height="29" Foreground="Green"></Label>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Name="txtSecond"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Name="txtSecond" IsEnabled="False"/>
                     <Label Content="粉重第三杯" HorizontalAlignment="Left" Margin="164,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" Height="28" Foreground="Green"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="250,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtThird"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="250,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtThird" IsEnabled="False"/>
                     <Label Content="粉重最小值" HorizontalAlignment="Left" Margin="-2,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="28" Foreground="Green"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="86,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" Name="txtFZMin" IsEnabled="False"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="124,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="34" Name="txtBZ" KeyUp="txtBZ_KeyUp"/>
                     <Label Content="0.71筛网重" HorizontalAlignment="Left" Margin="166,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Foreground="Orange"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="250,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtSWZ_071" TextChanged="txtSWZ_071_TextChanged"/>
                     <Label Content="0.71测试后" HorizontalAlignment="Left" Margin="-4,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="29" Foreground="Orange"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtCSHZL_071"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtCSHZL_071" IsEnabled="False"/>
                     <Label Content="0.71粉重" HorizontalAlignment="Left" Margin="174,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="26" Foreground="Orange"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="250,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtFZ_071" IsEnabled="False"/>
                     <Label Content="0.71比率" HorizontalAlignment="Left" Margin="2,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Height="23" Foreground="Orange"/>
@@ -132,7 +132,7 @@
                     <Label Content="0.3筛网重" HorizontalAlignment="Left" Margin="178,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" Foreground="Blue"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="250,100,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtSWZ_03" TextChanged="txtSWZ_03_TextChanged"/>
                     <Label Content="0.3测试后" HorizontalAlignment="Left" Margin="0,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="69" Height="29" Foreground="Blue"/>
-                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtCSHZL_03"/>
+                    <TextBox HorizontalAlignment="Left" Height="20" Margin="86,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtCSHZL_03" IsEnabled="False"/>
                     <Label Content="0.3粉重" HorizontalAlignment="Left" Margin="186,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="54" Height="26" Foreground="Blue"/>
                     <TextBox HorizontalAlignment="Left" Height="20" Margin="250,130,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Name="txtFZ_03" IsEnabled="False"/>
                     <Label Content="0.3比率" HorizontalAlignment="Left" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Foreground="Blue"/>
