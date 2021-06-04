@@ -111,9 +111,9 @@ namespace kalerm_operation_desk
                 txtSWZ_03.Text = ConfigurationManager.AppSettings["txtSWZ_03"].ToString();
 
                 //定义
-                string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtSWZ_071", "txtSWZ_03", "txtFirst", "txtSecond", "txtThird", "txtCSHZL_071", "txtCSHZL_03" };
-                string[] arr1 = new string[] { "空磨功率", "功率<=135w", "档位", "0.71筛网重", "0.3筛网重", "粉重第一杯", "粉重第二杯", "粉重第三杯", "0.71测试后", "0.3测试后" };
-                string[] arr2 = new string[] { "HAND", "HAND", "HAND", "HAND", "HAND", "WT", "WT", "WT", "WT", "WT" };
+                string[] arr = new string[] { "txtKMGL", "txtGL", "txtDW", "txtFirst", "txtSecond", "txtThird", "txtCSHZL_071", "txtCSHZL_03" };
+                string[] arr1 = new string[] { "空磨功率", "功率<=135w", "档位", "粉重第一杯", "粉重第二杯", "粉重第三杯", "0.71测试后", "0.3测试后" };
+                string[] arr2 = new string[] { "HAND", "HAND", "HAND", "WT", "WT", "WT", "WT", "WT" };
                 for (int i = 0; i < arr.Length; i++)
                 {
                     dynamic obj = new ExpandoObject();
@@ -288,6 +288,9 @@ namespace kalerm_operation_desk
                                 return;
                             StopThread();
                             TestCount = TestCount - 1;
+                            //回退清空值
+                            string Type = typeList[TestCount].name;
+                            ClearValue(Type);
                             txtScan.Text = "";
                             TestStandard(TestCount);//开始上一项测试
                             return;
@@ -327,44 +330,37 @@ namespace kalerm_operation_desk
                                 txtDW.Text = txtScan.Text;
                                 txtScan.Text = "";
                             }
-                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_071" && !string.IsNullOrEmpty(txtSWZ_071.Text))
-                            {
-                                StopThread();
-                                txtSWZ_071.Text = txtScan.Text;
-                                txtScan.Text = "";
-                            }
-                            else if (typeList[TestCount].type == "HAND" && typeList[TestCount].name == "txtSWZ_03" && !string.IsNullOrEmpty(txtSWZ_03.Text))
-                            {
-                                StopThread();
-                                txtSWZ_03.Text = txtScan.Text;
-                                txtScan.Text = "";
-                            }
                             else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtFirst")
                             {
                                 StopThread();
                                 txtFirst.Text = Convert.ToString(lbData.Content);
+                                txtScan.Text = "";
                             }
                             else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtSecond")
                             {
                                 StopThread();
                                 txtSecond.Text = Convert.ToString(lbData.Content);
+                                txtScan.Text = "";
                             }
                             else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtThird")
                             {
                                 StopThread();
                                 txtThird.Text = Convert.ToString(lbData.Content);
+                                txtScan.Text = "";
                                 GetFZMin();
                             }
                             else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtCSHZL_071")
                             {
                                 StopThread();
                                 txtCSHZL_071.Text = Convert.ToString(lbData.Content);
+                                txtScan.Text = "";
                                 GetFZ_071AndRate_071();
                             }
                             else if (typeList[TestCount].type == "WT" && typeList[TestCount].name == "txtCSHZL_03")
                             {
                                 StopThread();
                                 txtCSHZL_03.Text = Convert.ToString(lbData.Content);
+                                txtScan.Text = "";
                                 GetFZ_03AndRate_03();
                             }
                             TestCount += 1;
@@ -549,6 +545,8 @@ namespace kalerm_operation_desk
                     txt[i].Clear();
                 }
             }
+            lbReasult.Content = "测试结果";
+            lbData.Content = "0";
         }
 
         /// <summary>
@@ -745,6 +743,37 @@ namespace kalerm_operation_desk
                     }
                 }));
                 Thread.Sleep(100);
+            }
+        }
+
+        /// <summary>
+        /// 回退清空值
+        /// </summary>
+        /// <param name="Type"></param>
+        public void ClearValue(string Type) 
+        {
+            TextBox[] txt = new TextBox[] { txtKMGL, txtGL, txtDW, txtFirst, txtSecond, txtThird, txtFZMin, txtBZ, txtCSHZL_071, txtFZ_071, txtRate_071, txtCSHZL_03, txtFZ_03, txtRate_03, txtSumRate, };
+            for (int i = 0; i < txt.Length; i++)
+            {
+                if (txt[i].Name == Type)
+                {
+                    txt[i].Clear();
+                }
+                if (Type == "txtThird")
+                {
+                    txtFZMin.Clear();
+                }
+                if (Type == "txtCSHZL_071")
+                {
+                    txtFZ_071.Clear();
+                    txtRate_071.Clear();
+                }
+                if (Type == "txtCSHZL_03")
+                {
+                    txtFZ_03.Clear();
+                    txtRate_03.Clear();
+                    txtSumRate.Clear();
+                }
             }
         }
     }
