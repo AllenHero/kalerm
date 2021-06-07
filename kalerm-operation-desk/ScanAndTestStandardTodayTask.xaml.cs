@@ -97,15 +97,5 @@ namespace kalerm_operation_desk
         {
             this.Close();
         }
-
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
-        {
-            var item = dataGrid.SelectedItem as console_wuarrange;
-            CheckBox ckb = sender as CheckBox;
-            if (ckb.IsChecked == true)
-                item.isCheck = true;
-            else
-                item.isCheck = false;
-        }
     }
 }

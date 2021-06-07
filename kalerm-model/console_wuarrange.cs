@@ -26,6 +26,5 @@ namespace kalerm_model
         public DateTime? CreateDate { get; set; }
         public string UpdatePerson { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public bool isCheck { get; set; }
     }
 }

@@ -5,10 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kalerm_operation_desk"
       xmlns:base="clr-namespace:kalerm_operation_desk.Base"
-      Title="今日任务" Height="500" Width="610" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-
-    <Window.Resources>
-    </Window.Resources>
+      Title="今日任务" Height="300" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5" />
