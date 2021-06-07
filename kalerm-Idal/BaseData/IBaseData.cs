@@ -12,7 +12,7 @@ namespace kalerm_Idal.BaseData
     {
         List<worksheet> GetWorkSheetList(string TenantId);
 
-        List<base_wu> GetBaseWuList(string ProductCode, string TenantId);
+        List<base_wu> GetBaseWuList(string TenantId);
 
         List<base_wutest> GetBaseWuTestList(string WuId, string TenantId, out bool isOK);
 

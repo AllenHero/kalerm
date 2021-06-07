@@ -5,6 +5,7 @@ using kalerm_operation_desk.Control;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,19 +74,22 @@ namespace kalerm_operation_desk
         {
             try
             {
+                console_wuarrange mySelectedElement = (console_wuarrange)dataGrid.SelectedItem;
+                string WorkSheetNo = mySelectedElement.WorkSheetNo;
+                string wuid = mySelectedElement.wuid;
                 Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                cfa.AppSettings.Settings["WorkSheetNo"].Value = console_wuarrange[0].WorkSheetNo + "";
-                cfa.AppSettings.Settings["WorkUnitId"].Value = console_wuarrange[0].wuid + "";
+                cfa.AppSettings.Settings["WorkSheetNo"].Value = WorkSheetNo + "";
+                cfa.AppSettings.Settings["WorkUnitId"].Value = wuid + "";
                 cfa.Save();
-                MainWindow.WorkSheetNo = console_wuarrange[0].WorkSheetNo + "";
-                MainWindow.WorkUnitId = console_wuarrange[0].wuid + "";
+                MainWindow.WorkSheetNo = WorkSheetNo + "";
+                MainWindow.WorkUnitId = wuid + "";
                 if (ScanAndTestStandardTodayTaskEvent != null)
                     ScanAndTestStandardTodayTaskEvent(this, new EventArgs());
                 this.Close();
             }
-            catch
+            catch(Exception ex)
             {
-                ReMessageBox.Show("更新数据失败，请检查网络后重试");
+                ReMessageBox.Show("更新数据失败，请检查网络后重试"+ ex);
                 return;
             }
             this.Close();

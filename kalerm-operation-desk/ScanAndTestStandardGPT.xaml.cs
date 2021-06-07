@@ -197,7 +197,7 @@ namespace kalerm_operation_desk
                 {
                     textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
                 }
-                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(TenantId));
                 cbbWorkUnit.ItemsSource = base_wu;
                 cbbWorkUnit.SelectedValue = WorkUnitId;
                 textWorkSheet.Text = WorkSheetNo;
@@ -925,7 +925,7 @@ namespace kalerm_operation_desk
             if (worksheet != null)
             {
                 ProductCode = worksheet.ProductCode;
-                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(TenantId));
             }
             cbbWorkUnit.ItemsSource = base_wu;
         }

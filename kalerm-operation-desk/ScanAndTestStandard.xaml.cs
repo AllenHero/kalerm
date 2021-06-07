@@ -158,7 +158,7 @@ namespace kalerm_operation_desk
                 {
                     textWorkSheet.AddItem(new AutoCompleteEntry(row.WorkSheetNo, row.WorkSheetNo));
                 }
-                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList("", TenantId));
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(TenantId));
                 cbbWorkUnit.ItemsSource = base_wu;
                 cbbWorkUnit.SelectedValue = WorkUnitId;
                 textWorkSheet.Text = WorkSheetNo;
@@ -188,9 +188,13 @@ namespace kalerm_operation_desk
 
         private void Page_ScanAndTestStandardTodayTaskEvent(object sender, EventArgs e)
         {
-            var item = ((ScanAndTestStandardTodayTask)sender).console_wuarrange_model;
-            console_wuarrange.Insert(0, item);
-            dataGrid.SelectedIndex = 0;
+            //var item = ((ScanAndTestStandardTodayTask)sender).console_wuarrange_model;
+            //console_wuarrange.Insert(0, item);
+            //dataGrid.SelectedIndex = 0;
+            string WorkSheetNo = MainWindow.WorkSheetNo + "";
+            string WorkUnitId = MainWindow.WorkUnitId + "";
+            textWorkSheet.Text = WorkSheetNo;
+            cbbWorkUnit.SelectedValue = WorkUnitId;
         }
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)
@@ -829,7 +833,7 @@ namespace kalerm_operation_desk
             if (worksheet != null)
             {
                 ProductCode = worksheet.ProductCode;
-                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(TenantId));
             }
             cbbWorkUnit.ItemsSource = base_wu;
         }

@@ -41,15 +41,11 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
-        public List<base_wu> GetBaseWuList(string ProductCode, string TenantId)
+        public List<base_wu> GetBaseWuList(string TenantId)
         {
             List<base_wu> list = new List<base_wu>();
-            string sql = string.Format(@"select c.* from `kalerm-base-model`.`base_productionprocess` a left join `kalerm-base-model`.`mes_processwu` b on a.processid=b.processid left join `kalerm-base-model`.`base_wu` c on c.wuid=b.wuid where 1=1");
-            if (!string.IsNullOrEmpty(ProductCode))
-            {
-                sql += " and a.productcode='" + ProductCode + "'";
-            }
-            if (!string.IsNullOrEmpty(ProductCode))
+            string sql = string.Format(@"select a.* from `kalerm-base-model`.`base_wu` a where 1=1");
+            if (!string.IsNullOrEmpty(TenantId))
             {
                 sql += " and a.TenantId='" + TenantId + "'";
             }
@@ -256,6 +252,20 @@ namespace kalerm_sqldal.BaseData
                 dt = GetDataTable(sql, ConnectionType.mes);
                 if (dt != null && dt.Rows.Count > 0)
                     list = Common.DataTableConvertList<console_wuarrange>(dt);
+                foreach (var item in list)
+                {
+                    if (!string.IsNullOrEmpty(Convert.ToString(item.PlanStartDate)))
+                    {
+                        string PlanStartDate = Convert.ToDateTime(item.PlanStartDate).ToString("yyyy-MM-dd");
+                        item.PlanStartDate = Convert.ToDateTime(PlanStartDate);
+                    }
+                    if (!string.IsNullOrEmpty(Convert.ToString(item.PlanEndDate)))
+                    {
+                        string PlanEndDate = Convert.ToDateTime(item.PlanEndDate).ToString("yyyy-MM-dd");
+                        item.PlanEndDate = Convert.ToDateTime(PlanEndDate);
+                    }
+
+                }
                 return list;
             }
             catch (Exception ex)

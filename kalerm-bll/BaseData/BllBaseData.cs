@@ -24,12 +24,12 @@ namespace kalerm_bll.BaseData
             return result;
         }
 
-        public List<base_wu> GetBaseWuList(string ProductCode,string TenantId)
+        public List<base_wu> GetBaseWuList(string TenantId)
         {
             List<base_wu> result = new List<base_wu>();
             try
             {
-                result = Context.BaseData.GetBaseWuList(ProductCode, TenantId);
+                result = Context.BaseData.GetBaseWuList(TenantId);
             }
             catch (Exception ex)
             {

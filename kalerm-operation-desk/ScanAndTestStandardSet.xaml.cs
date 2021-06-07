@@ -93,7 +93,7 @@ namespace kalerm_operation_desk
             if (worksheet!=null)
             {
                 ProductCode = worksheet.ProductCode;
-                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(ProductCode, TenantId));
+                base_wu = new ObservableCollection<base_wu>(bllBaseData.GetBaseWuList(TenantId));
             }
             cbbWorkUnit.ItemsSource = base_wu;
         }

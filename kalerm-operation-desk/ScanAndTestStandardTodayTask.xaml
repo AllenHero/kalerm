@@ -8,9 +8,6 @@
       Title="今日任务" Height="500" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <DataTemplate x:Key="Checkstate">
-            <CheckBox IsChecked="{Binding isCheck,Mode=TwoWay}" Click="CheckBox_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,2,0"></CheckBox>
-        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -28,14 +25,13 @@
 
         <DataGrid Name="dataGrid" SelectionMode="Single" CanUserReorderColumns="False" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,0,0">
             <DataGrid.Columns>
-                <DataGridTemplateColumn    Header="选择" IsReadOnly="True" CellTemplate="{StaticResource Checkstate}" MinWidth="40"  />
                 <DataGridTextColumn  Binding="{Binding Path=WorkSheetNo }" Header="工单编号" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=ProductName }" Header="产品名称" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=PlanCount }" Header="计划数量" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=wuname }" Header="工作单元" MinWidth="100" IsReadOnly="True"   />
-                <DataGridTextColumn Binding="{Binding Path=PlanStartDate }" Header="计划开工时间" MinWidth="100" IsReadOnly="True"   />
-                <DataGridTextColumn Binding="{Binding Path=PlanEndDate }" Header="计划完工时间" MinWidth="100" IsReadOnly="True"   />
-
+                <DataGridTextColumn Binding="{Binding Path=PlanStartDate,StringFormat='yyyy-MM-dd' }" Header="计划开工时间" MinWidth="100" IsReadOnly="True"   />
+                <DataGridTextColumn Binding="{Binding Path=PlanEndDate,StringFormat='yyyy-MM-dd' }" Header="计划完工时间" MinWidth="100" IsReadOnly="True"   />
+                <DataGridTextColumn Binding="{Binding Path=wuid }" Header="工作单元id" MinWidth="100" IsReadOnly="False"   />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center"  Grid.ColumnSpan="4" VerticalAlignment="Top">
