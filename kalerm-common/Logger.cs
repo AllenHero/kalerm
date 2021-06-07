@@ -36,7 +36,7 @@ namespace kalerm_common
         /// <param name="info">日志记录</param>
         public static void Error(string className, string info)
         {
-            WriteLog("ERROE", className, info);
+            WriteLog("ERROR", className, info);
         }
 
         /// <summary>
