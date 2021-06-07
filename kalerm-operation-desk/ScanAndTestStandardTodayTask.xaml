@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kalerm_operation_desk"
       xmlns:base="clr-namespace:kalerm_operation_desk.Base"
-      Title="今日任务" Height="500" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+      Title="今日任务" Height="500" Width="610" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
     </Window.Resources>
@@ -30,8 +30,8 @@
                 <DataGridTextColumn Binding="{Binding Path=PlanCount }" Header="计划数量" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=wuname }" Header="工作单元" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=PlanStartDate,StringFormat='yyyy-MM-dd' }" Header="计划开工时间" MinWidth="100" IsReadOnly="True"   />
-                <DataGridTextColumn Binding="{Binding Path=PlanEndDate,StringFormat='yyyy-MM-dd' }" Header="计划完工时间" MinWidth="100" IsReadOnly="True"   />
-                <DataGridTextColumn Binding="{Binding Path=wuid }" Header="工作单元id" MinWidth="100" IsReadOnly="False"   />
+                <DataGridTextColumn Binding="{Binding Path=PlanEndDate,StringFormat='yyyy-MM-dd' }" Header="计划完工时间" MinWidth="100"    IsReadOnly="True"   />
+                <DataGridTextColumn Binding="{Binding Path=wuid }" Header="工作单元id" MinWidth="100" IsReadOnly="False" Visibility="Hidden"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center"  Grid.ColumnSpan="4" VerticalAlignment="Top">

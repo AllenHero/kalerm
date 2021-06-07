@@ -178,19 +178,8 @@ namespace kalerm_operation_desk
             page.Show();
         }
 
-        private void Page_ScanAndTestStandardSetEvent(object sender, EventArgs e)
-        {
-            //string WorkSheetNo = MainWindow.WorkSheetNo + "";
-            //string WorkUnitId = MainWindow.WorkUnitId + "";
-            //textWorkSheet.Text= WorkSheetNo;
-            //cbbWorkUnit.SelectedValue = WorkUnitId;
-        }
-
         private void Page_ScanAndTestStandardTodayTaskEvent(object sender, EventArgs e)
         {
-            //var item = ((ScanAndTestStandardTodayTask)sender).console_wuarrange_model;
-            //console_wuarrange.Insert(0, item);
-            //dataGrid.SelectedIndex = 0;
             string WorkSheetNo = MainWindow.WorkSheetNo + "";
             string WorkUnitId = MainWindow.WorkUnitId + "";
             textWorkSheet.Text = WorkSheetNo;
