@@ -83,8 +83,6 @@ namespace kalerm_operation_desk
 
         string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
 
-        ObservableCollection<console_wuarrange> console_wuarrange = new ObservableCollection<console_wuarrange>();
-
         public ScanAndTestStandard()
         {
             InitializeComponent();
