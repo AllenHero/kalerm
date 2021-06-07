@@ -34,8 +34,6 @@ namespace kalerm_operation_desk
 
         string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
 
-        public console_wuarrange console_wuarrange_model = new console_wuarrange();
-
         public ScanAndTestStandardTodayTask()
         {
             InitializeComponent();
