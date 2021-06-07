@@ -173,7 +173,6 @@ namespace kalerm_operation_desk
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
             ScanAndTestStandardTodayTask page = new ScanAndTestStandardTodayTask();
-            page.IsAdd = true;
             page.ScanAndTestStandardTodayTaskEvent += new EventHandler(Page_ScanAndTestStandardTodayTaskEvent);
             page.Show();
         }

@@ -28,8 +28,6 @@ namespace kalerm_operation_desk
     {
         public event EventHandler ScanAndTestStandardTodayTaskEvent = null;
 
-        public bool IsAdd;
-
         private BllBaseData bllBaseData = new BllBaseData();
 
         List<console_wuarrange> console_wuarrange = new List<console_wuarrange>();
