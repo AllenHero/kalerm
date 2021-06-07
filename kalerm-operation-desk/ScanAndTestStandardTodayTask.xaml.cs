@@ -23,21 +23,19 @@ namespace kalerm_operation_desk
     /// <summary>
     /// ScanAndTestStandardTodayTask.xaml 的交互逻辑
     /// </summary>
-    public partial class ScanAndTestStandardTodayTask : BaseWindow, IDisposable
+    public partial class ScanAndTestStandardTodayTask :  IDisposable
     {
         public event EventHandler ScanAndTestStandardTodayTaskEvent = null;
 
         public bool IsAdd;
-
-        public event EventHandler AddMachineEvent = null;
-
-        public event EventHandler UpdateMachineEvent = null;
 
         private BllBaseData bllBaseData = new BllBaseData();
 
         List<console_wuarrange> console_wuarrange = new List<console_wuarrange>();
 
         string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
+
+        public console_wuarrange console_wuarrange_model = new console_wuarrange();
 
         public ScanAndTestStandardTodayTask()
         {
@@ -50,10 +48,6 @@ namespace kalerm_operation_desk
         private void ScanAndTestStandardTodayTask_Loaded(object sender, RoutedEventArgs e)
         {
             this.Loaded -= new RoutedEventHandler(ScanAndTestStandardTodayTask_Loaded);
-            if (!IsAdd)
-            {
-                
-            }
             try
             {
                 string UserId = MainWindow.UserInfo.userId;
@@ -75,20 +69,19 @@ namespace kalerm_operation_desk
             btnCel.Click -= new RoutedEventHandler(btnCel_Click);
         }
 
-
         void btnOk_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                if (IsAdd)
-                {
-                    
-                }
-                else
-                {
-
-                }
+                Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                cfa.AppSettings.Settings["WorkSheetNo"].Value = console_wuarrange[0].WorkSheetNo + "";
+                cfa.AppSettings.Settings["WorkUnitId"].Value = console_wuarrange[0].wuid + "";
+                cfa.Save();
+                MainWindow.WorkSheetNo = console_wuarrange[0].WorkSheetNo + "";
+                MainWindow.WorkUnitId = console_wuarrange[0].wuid + "";
+                if (ScanAndTestStandardTodayTaskEvent != null)
+                    ScanAndTestStandardTodayTaskEvent(this, new EventArgs());
+                this.Close();
             }
             catch
             {
@@ -111,29 +104,6 @@ namespace kalerm_operation_desk
                 item.isCheck = true;
             else
                 item.isCheck = false;
-        }
-
-
-        /// <summary>
-        /// 验证字符串中是否包含特殊字符
-        /// </summary>
-        /// <param name="str">待判定字符串</param>
-        /// <returns>是否为特殊字符（true：包含，false：不包含）</returns>
-        public bool FilterSpecial(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return true;
-            }
-            string[] aryReg = { "'", "'delete", "?", "<", ">", "%", "\"\"", ",", ".", ">=", "=<", "_", ";", "||", "[", "]", "&", "/", "-", "|", " ", "''" };
-            for (int i = 0; i < aryReg.Length; i++)
-            {
-                if (str.Contains(aryReg[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

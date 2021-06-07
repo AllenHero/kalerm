@@ -241,11 +241,12 @@ namespace kalerm_common.Extensions
         /// <returns></returns>
         public static List<T> DataTableConvertList<T>(DataTable mTable)
         {
+            string mTempName = string.Empty;
             try
             {
                 List<T> mList = new List<T>();
                 var mT = default(T);
-                string mTempName = string.Empty;
+                
                 foreach (DataRow mRow in mTable.Rows)
                 {
                     mT = Activator.CreateInstance<T>();
@@ -266,17 +267,17 @@ namespace kalerm_common.Extensions
             }
             catch (Exception Ex)
             {
-                throw new Exception(Ex.Message);
+                throw new Exception(Ex.Message + mTempName);
             }
         }
 
         public static List<dynamic> DataTableConvertDynamicList<dynamic>(DataTable mTable)
         {
+            string mTempName = string.Empty;
             try
             {
                 List<dynamic> mList = new List<dynamic>();
                 var mT = default(dynamic);
-                string mTempName = string.Empty;
                 foreach (DataRow mRow in mTable.Rows)
                 {
                     mT = Activator.CreateInstance<dynamic>();
@@ -297,7 +298,7 @@ namespace kalerm_common.Extensions
             }
             catch (Exception Ex)
             {
-                throw new Exception(Ex.Message);
+                throw new Exception(Ex.Message + mTempName);
             }
         }
 

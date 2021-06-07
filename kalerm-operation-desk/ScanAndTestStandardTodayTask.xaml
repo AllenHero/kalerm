@@ -1,12 +1,10 @@
-﻿<base:BaseWindow x:Class="kalerm_operation_desk.ScanAndTestStandardTodayTask"
+﻿<Window x:Class="kalerm_operation_desk.ScanAndTestStandardTodayTask"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kalerm_operation_desk"
       xmlns:base="clr-namespace:kalerm_operation_desk.Base"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="今日任务" Height="500" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -31,7 +29,7 @@
         <DataGrid Name="dataGrid" SelectionMode="Single" CanUserReorderColumns="False" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,0,0">
             <DataGrid.Columns>
                 <DataGridTemplateColumn    Header="选择" IsReadOnly="True" CellTemplate="{StaticResource Checkstate}" MinWidth="40"  />
-                <DataGridTextColumn  Binding="{Binding Path=SkillName }" Header="工单编号" MinWidth="100" IsReadOnly="True"   />
+                <DataGridTextColumn  Binding="{Binding Path=WorkSheetNo }" Header="工单编号" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=ProductName }" Header="产品名称" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=PlanCount }" Header="计划数量" MinWidth="100" IsReadOnly="True"   />
                 <DataGridTextColumn Binding="{Binding Path=wuname }" Header="工作单元" MinWidth="100" IsReadOnly="True"   />
@@ -45,4 +43,4 @@
             <Button Style="{StaticResource ButtonStlye}" Name="btnCel" Height="22" Margin="6,8,0,8" MinWidth="50" Content="取消"/>
         </StackPanel>
     </Grid>
-</base:BaseWindow>
+</Window>

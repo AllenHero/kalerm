@@ -83,6 +83,8 @@ namespace kalerm_operation_desk
 
         string TenantId = ConfigurationManager.AppSettings["TenantId"].ToString();
 
+        ObservableCollection<console_wuarrange> console_wuarrange = new ObservableCollection<console_wuarrange>();
+
         public ScanAndTestStandard()
         {
             InitializeComponent();
@@ -170,17 +172,10 @@ namespace kalerm_operation_desk
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
-            //ScanAndTestStandardSet page = new ScanAndTestStandardSet();
-            //page.WorkSheetNo = textWorkSheet.Text + "";
-            //page.WorkUnitId = cbbWorkUnit.SelectedValue + "";
-            //page.ScanAndTestStandardSetEvent += Page_ScanAndTestStandardSetEvent;
-            //page.ShowDialog();
-            //txtScan.Focus();
-
             ScanAndTestStandardTodayTask page = new ScanAndTestStandardTodayTask();
-            page.ScanAndTestStandardTodayTaskEvent += Page_ScanAndTestStandardTodayTaskEvent;
+            page.IsAdd = true;
+            page.ScanAndTestStandardTodayTaskEvent += new EventHandler(Page_ScanAndTestStandardTodayTaskEvent);
             page.Show();
-            txtScan.Focus();
         }
 
         private void Page_ScanAndTestStandardSetEvent(object sender, EventArgs e)
@@ -193,10 +188,9 @@ namespace kalerm_operation_desk
 
         private void Page_ScanAndTestStandardTodayTaskEvent(object sender, EventArgs e)
         {
-            //string WorkSheetNo = MainWindow.WorkSheetNo + "";
-            //string WorkUnitId = MainWindow.WorkUnitId + "";
-            //textWorkSheet.Text= WorkSheetNo;
-            //cbbWorkUnit.SelectedValue = WorkUnitId;
+            var item = ((ScanAndTestStandardTodayTask)sender).console_wuarrange_model;
+            console_wuarrange.Insert(0, item);
+            dataGrid.SelectedIndex = 0;
         }
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)

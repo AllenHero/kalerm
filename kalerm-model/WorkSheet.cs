@@ -68,15 +68,16 @@ namespace kalerm_model
         public int Dispatching { get; set; }
         public string Customer { get; set; }
         public int Seq { get; set; }
+
         public string OrganizeId { get; set; }
         public string OrganizeCode { get; set; }
         public string OrganizeName { get; set; }
+
         public string ParentOrganizeId { get; set; }
         public string ParentOrganizeCode { get; set; }
         public string ParentOrganizeName { get; set; }
-        public string TotalHoursCount { get; set; }
-        public string SaleOrderNo { get; set; }
-        public string SourceId { get; set; }
-        public string SourceModel { get; set; }
+
+        //public int TotalHoursCount { get; set; }
+        public string ShiftName { get; set; }
     }
 }
