@@ -233,6 +233,37 @@ namespace kalerm_sqldal.BaseData
             }
         }
 
+        public List<console_wuarrange> GetConsoleWuArrangeList(string UserId, string TenantId, string NowDate)
+        {
+            List<console_wuarrange> list = new List<console_wuarrange>();
+            string sql = string.Format(@"select distinct t.WuArrangeId,t.WorkSheetNo,t1.wuid,t3.ProductName,t3.PlanCount,t2.wuname,t3.PlanStartDate,t3.PlanEndDate,t.CreateDate from `kalerm-app-mes`.`console_wuarrange` t  left join `kalerm-base-model`.`mes_processwu` t1 on t.ProcessWuId=t1.ProcessWuId left join `kalerm-base-model`.`base_wu` t2 on t1.wuid=t2.wuid left join `kalerm-app-aps`.`worksheet` t3 on t.WorkSheetNo=t3.WorkSheetNo  where 1=1 ");
+            if (!string.IsNullOrEmpty(UserId))
+            {
+                sql += " and t.UserId='" + UserId + "'";
+            }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                sql += " and t.TenantId='" + TenantId + "'";
+            }
+            if (!string.IsNullOrEmpty(NowDate))
+            {
+                sql += " and t.Date='" + NowDate + "'";
+            }
+            sql += " order by t3.PlanStartDate desc";
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = GetDataTable(sql, ConnectionType.mes);
+                if (dt != null && dt.Rows.Count > 0)
+                    list = Common.DataTableConvertList<console_wuarrange>(dt);
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #region sql语句
 
         /// <summary>

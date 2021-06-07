@@ -25,5 +25,7 @@ namespace kalerm_Idal.BaseData
         int SaveGrindBeanData(List<mes_grindbeandata> mes_grindbeandata);
 
         List<mes_grindbeandata> GetGrindBeanDataList(string WuId, string WorkSheetNo, string TenantId);
+
+        List<console_wuarrange> GetConsoleWuArrangeList(string UserId, string TenantId, string NowDate);
     }
 }

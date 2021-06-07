@@ -170,20 +170,33 @@ namespace kalerm_operation_desk
 
         private void BtnSet_Click(object sender, RoutedEventArgs e)
         {
-            ScanAndTestStandardSet page = new ScanAndTestStandardSet();
-            page.WorkSheetNo = textWorkSheet.Text + "";
-            page.WorkUnitId = cbbWorkUnit.SelectedValue + "";
-            page.ScanAndTestStandardSetEvent += Page_ScanAndTestStandardSetEvent;
-            page.ShowDialog();
+            //ScanAndTestStandardSet page = new ScanAndTestStandardSet();
+            //page.WorkSheetNo = textWorkSheet.Text + "";
+            //page.WorkUnitId = cbbWorkUnit.SelectedValue + "";
+            //page.ScanAndTestStandardSetEvent += Page_ScanAndTestStandardSetEvent;
+            //page.ShowDialog();
+            //txtScan.Focus();
+
+            ScanAndTestStandardTodayTask page = new ScanAndTestStandardTodayTask();
+            page.ScanAndTestStandardTodayTaskEvent += Page_ScanAndTestStandardTodayTaskEvent;
+            page.Show();
             txtScan.Focus();
         }
 
         private void Page_ScanAndTestStandardSetEvent(object sender, EventArgs e)
         {
-            string WorkSheetNo = MainWindow.WorkSheetNo + "";
-            string WorkUnitId = MainWindow.WorkUnitId + "";
-            textWorkSheet.Text= WorkSheetNo;
-            cbbWorkUnit.SelectedValue = WorkUnitId;
+            //string WorkSheetNo = MainWindow.WorkSheetNo + "";
+            //string WorkUnitId = MainWindow.WorkUnitId + "";
+            //textWorkSheet.Text= WorkSheetNo;
+            //cbbWorkUnit.SelectedValue = WorkUnitId;
+        }
+
+        private void Page_ScanAndTestStandardTodayTaskEvent(object sender, EventArgs e)
+        {
+            //string WorkSheetNo = MainWindow.WorkSheetNo + "";
+            //string WorkUnitId = MainWindow.WorkUnitId + "";
+            //textWorkSheet.Text= WorkSheetNo;
+            //cbbWorkUnit.SelectedValue = WorkUnitId;
         }
 
         private void BtnCom_Click(object sender, RoutedEventArgs e)

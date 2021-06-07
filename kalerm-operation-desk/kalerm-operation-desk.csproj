@@ -30,6 +30,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -161,6 +162,9 @@
     <Compile Include="ScanAndTestStandardTestError.xaml.cs">
       <DependentUpon>ScanAndTestStandardTestError.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScanAndTestStandardTodayTask.xaml.cs">
+      <DependentUpon>ScanAndTestStandardTodayTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ulitity\FormUltility.cs" />
     <Compile Include="Ulitity\PortUlitity.cs" />
     <Compile Include="Ulitity\RegexUtility.cs" />
@@ -218,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScanAndTestStandardTestError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScanAndTestStandardTodayTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

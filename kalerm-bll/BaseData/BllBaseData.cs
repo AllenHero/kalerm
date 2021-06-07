@@ -124,5 +124,19 @@ namespace kalerm_bll.BaseData
             }
             return result;
         }
+
+        public List<console_wuarrange> GetConsoleWuArrangeList(string UserId, string TenantId, string NowDate)
+        {
+            List<console_wuarrange> result = new List<console_wuarrange>();
+            try
+            {
+                result = Context.BaseData.GetConsoleWuArrangeList(UserId, TenantId, NowDate);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }
