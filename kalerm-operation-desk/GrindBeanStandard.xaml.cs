@@ -495,33 +495,45 @@ namespace kalerm_operation_desk
             {
                 //TODO:
                 int savecount = bllBaseData.SaveGrindBeanData(mes_grindbeandata);
+                //过站扫描
+                dynamic data = new
+                {
+                    WorkSheetNo = mes_grindbeandata[0].WorkSheetNo,
+                    WuId = mes_grindbeandata[0].WuId,
+                    WorkSheetBarcode = SCAN_BARCODE
+                };
+                var dataInfo = ApiDataSource.EditScanSave(data);
                 if (savecount < 1)
                 {
                     lbMessage.Content = "保存失败";
                     lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                     return;
-                }//测试数据保存
-                string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
-                string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
-                if (!string.IsNullOrEmpty(WuId) && !string.IsNullOrEmpty(WorkSheetNo))
-                {
-                    grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
                 }
-                int index = 0;
-                foreach (var item in grindbeandataList)
+                if (dataInfo.status == true)
                 {
-                    index = index + 1;
-                    item.Id = Convert.ToString(index);
+                    //测试数据保存
+                    string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
+                    string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
+                    if (!string.IsNullOrEmpty(WuId) && !string.IsNullOrEmpty(WorkSheetNo))
+                    {
+                        grindbeandataList = bllBaseData.GetGrindBeanDataList(WuId, WorkSheetNo, TenantId);
+                    }
+                    int index = 0;
+                    foreach (var item in grindbeandataList)
+                    {
+                        index = index + 1;
+                        item.Id = Convert.ToString(index);
+                    }
+                    dataGrid.ItemsSource = grindbeandataList;
+                    ClearData();
+                    isSCAN = true;
+                    string MachineName = Environment.MachineName;
+                    lbMessage.Content = "成功过站";
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Black);
+                    //过站数量+1
+                    TotalPass += 1;
+                    SetTotalPass(TotalPass);
                 }
-                dataGrid.ItemsSource = grindbeandataList;
-                ClearData();
-                isSCAN = true;
-                string MachineName = Environment.MachineName;
-                lbMessage.Content = "成功过站";
-                lbMessage.Foreground = new SolidColorBrush(Colors.Black);
-                //过站数量+1
-                TotalPass += 1;
-                SetTotalPass(TotalPass);
             }
             else
             {

@@ -16,6 +16,8 @@ namespace kalerm_common
     {
         static string leancAuthServer = ConfigurationManager.AppSettings["bladeAuthServer"].ToString();
 
+        static string MESURL = ConfigurationManager.AppSettings["MESURL"].ToString();
+
         static string code = ConfigurationManager.AppSettings["bladeAuthCode"].ToString();
 
         public static dynamic GetBladeUserDetail(string tenantId, string id = "", string account = "", string phone = "", string userCode = "", string wechatCode = "", string realName = "", string email = "")
@@ -49,6 +51,24 @@ namespace kalerm_common
                 return data.ToObject<List<dynamic>>();
             }
             return null;
+        }
+
+        /// <summary>
+        /// 过站扫描
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static dynamic EditScanSave(dynamic data)
+        {
+            ParamApi api = new ParamApi();
+            api.url = MESURL + "Production/KalermConsoleTemplate/EditScanSave";
+            api.method = "Post";
+            api.tokenid = code;
+            api.data = data;
+            api.authorKey = "Blade-Auth";
+            api.authorzation = "bearer " + GetToken();
+            dynamic responseResult = WebApi(api);
+            return responseResult;
         }
 
         public static dynamic WebApi(ParamApi paramapi)
