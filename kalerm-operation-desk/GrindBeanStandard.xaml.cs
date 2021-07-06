@@ -502,15 +502,15 @@ namespace kalerm_operation_desk
                     WuId = mes_grindbeandata[0].WuId,
                     WorkSheetBarcode = SCAN_BARCODE
                 };
-                var dataInfo = ApiDataSource.EditScanSave(data);
+                //var dataInfo = ApiDataSource.EditScanSave(data);
                 if (savecount < 1)
                 {
                     lbMessage.Content = "保存失败";
                     lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                     return;
                 }
-                if (dataInfo.status == true)
-                {
+                //if (dataInfo.status == true)
+                //{
                     //测试数据保存
                     string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
                     string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
@@ -533,7 +533,7 @@ namespace kalerm_operation_desk
                     //过站数量+1
                     TotalPass += 1;
                     SetTotalPass(TotalPass);
-                }
+                //}
             }
             else
             {

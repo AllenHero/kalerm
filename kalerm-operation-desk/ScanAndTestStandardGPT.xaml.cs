@@ -811,15 +811,15 @@ namespace kalerm_operation_desk
                     WuId = mes_testdata[0].WuId,
                     WorkSheetBarcode = SCAN_BARCODE
                 };
-                var dataInfo = ApiDataSource.EditScanSave(data);
+                //var dataInfo = ApiDataSource.EditScanSave(data);
                 if (savecount < 1)
                 {
                     lbMessage.Content = mes_testdata.Count + "|" + mes_testdata.Count + "|" + savecount + "保存测试数据失败，请重新扫Y保存过站";
                     lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                     return;
                 }
-                if (dataInfo.status == true)
-                { 
+                //if (dataInfo.status == true)
+                //{ 
                     //测试数据保存
                     lbITEM_VALUE.Content = "OK";
                     //isTestEnd = false;
@@ -830,7 +830,7 @@ namespace kalerm_operation_desk
                     //过站数量+1
                     TotalPass += 1;
                     SetTotalPass(TotalPass);
-                }
+                //}
             }
             else
             {
