@@ -208,10 +208,12 @@ namespace kalerm_operation_desk
                     string WorkSheetNo = textWorkSheet.Text + "";
                     //工单
                     worksheet worksheet = null;
+                    //产品编号
+                    string ProductCode = "";
                     lbWorkSheet_NO.Content = WorkSheetNo + "";
                     if (!string.IsNullOrEmpty(WorkSheetNo))
                     {
-                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId);
+                        worksheet = bllBaseData.GetWorkSheet(WorkSheetNo, TenantId); 
                     }
                     string ProcessId = "";
                     if (worksheet != null)
@@ -221,6 +223,7 @@ namespace kalerm_operation_desk
                         ProcessId = worksheet.ProcessId;
                         //ERP工单
                         lbERPORDER_NO.Content = worksheet.ERPOrderNo + "";
+                        ProductCode = worksheet.ProcessCode;
                     }
                     string processname = "";
                     base_productionprocess productionprocess = null;
@@ -245,6 +248,15 @@ namespace kalerm_operation_desk
                         if (txtScan.Text + "" == "")
                         {
                             lbMessage.Content = "条码号不能为空";
+                            lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                            txtScan.IsEnabled = true;
+                            return;
+                        }
+                        //校验条码
+                        var dataInfo = ApiDataSource.GetCheckProcessScan(WorkSheetNo, ProductCode, Convert.ToString(cbbWorkUnit.SelectedValue), txtScan.Text);
+                        if (dataInfo.status == false)
+                        {
+                            lbMessage.Content = dataInfo.message;
                             lbMessage.Foreground = new SolidColorBrush(Colors.Red);
                             txtScan.IsEnabled = true;
                             return;
@@ -493,8 +505,6 @@ namespace kalerm_operation_desk
             bool isPass = CheckData();//检测测试数据
             if (isPass)
             {
-                //TODO:
-                int savecount = bllBaseData.SaveGrindBeanData(mes_grindbeandata);
                 //过站扫描
                 dynamic data = new
                 {
@@ -502,15 +512,17 @@ namespace kalerm_operation_desk
                     WuId = mes_grindbeandata[0].WuId,
                     WorkSheetBarcode = SCAN_BARCODE
                 };
-                //var dataInfo = ApiDataSource.EditScanSave(data);
-                if (savecount < 1)
+                var dataInfo = ApiDataSource.EditScanSave(data);
+                if (dataInfo.status == true)
                 {
-                    lbMessage.Content = "保存失败";
-                    lbMessage.Foreground = new SolidColorBrush(Colors.Red);
-                    return;
-                }
-                //if (dataInfo.status == true)
-                //{
+                    //TODO:
+                    int savecount = bllBaseData.SaveGrindBeanData(mes_grindbeandata);
+                    if (savecount < 1)
+                    {
+                        lbMessage.Content = "保存失败";
+                        lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                        return;
+                    }
                     //测试数据保存
                     string WuId = Convert.ToString(cbbWorkUnit.SelectedValue);
                     string WorkSheetNo = Convert.ToString(lbWorkSheet_NO.Content);
@@ -528,12 +540,17 @@ namespace kalerm_operation_desk
                     ClearData();
                     isSCAN = true;
                     string MachineName = Environment.MachineName;
-                    lbMessage.Content = "成功过站";
+                    lbMessage.Content = dataInfo.message;
                     lbMessage.Foreground = new SolidColorBrush(Colors.Black);
                     //过站数量+1
                     TotalPass += 1;
                     SetTotalPass(TotalPass);
-                //}
+                }
+                else
+                {
+                    lbMessage.Content = dataInfo.message;
+                    lbMessage.Foreground = new SolidColorBrush(Colors.Red);
+                }
             }
             else
             {

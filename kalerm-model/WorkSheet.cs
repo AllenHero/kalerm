@@ -33,7 +33,7 @@ namespace kalerm_model
         public string LineId { get; set; }
         public string LineCode { get; set; }
         public string LineName { get; set; }
-        public int? StandardUph { get; set; }
+        public decimal? StandardUph { get; set; }
         public DateTime SchedulingDate { get; set; }
         public DateTime SubmitDate { get; set; }
         public DateTime? DeliveryDate { get; set; }

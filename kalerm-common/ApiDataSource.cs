@@ -71,6 +71,26 @@ namespace kalerm_common
             return responseResult;
         }
 
+        /// <summary>
+        /// 校验条码
+        /// </summary>
+        /// <param name="WorkSheetNo"></param>
+        /// <param name="ProductCode"></param>
+        /// <param name="WuId"></param>
+        /// <param name="WorkSheetBarcode"></param>
+        /// <returns></returns>
+        public static dynamic GetCheckProcessScan(string WorkSheetNo, string ProductCode, string WuId, string WorkSheetBarcode)
+        {
+            ParamApi api = new ParamApi();
+            api.url = MESURL + "Production/KalermConsoleTemplate/GetCheckProcessScan?WorkSheetNo="+ WorkSheetNo+ "&ProductCode="+ ProductCode+ "&WuId="+ WuId+ "&WorkSheetBarcode="+ WorkSheetBarcode;
+            api.method = "Get";
+            api.tokenid = code;
+            api.authorKey = "Blade-Auth";
+            api.authorzation = "bearer " + GetToken();
+            dynamic responseResult = WebApi(api);
+            return responseResult;
+        }
+
         public static dynamic WebApi(ParamApi paramapi)
         {
             var isCheck = HttpHelper.Check(paramapi);
