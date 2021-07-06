@@ -223,7 +223,7 @@ namespace kalerm_operation_desk
                         ProcessId = worksheet.ProcessId;
                         //ERP工单
                         lbERPORDER_NO.Content = worksheet.ERPOrderNo + "";
-                        ProductCode = worksheet.ProcessCode;
+                        ProductCode = worksheet.ProductCode;
                     }
                     string processname = "";
                     base_productionprocess productionprocess = null;
