@@ -509,7 +509,7 @@ namespace kalerm_operation_desk
                 dynamic data = new
                 {
                     WorkSheetNo = mes_grindbeandata[0].WorkSheetNo,
-                    WuId = mes_grindbeandata[0].WuId,
+                    Wuid = mes_grindbeandata[0].WuId,
                     WorkSheetBarcode = SCAN_BARCODE
                 };
                 var dataInfo = ApiDataSource.EditScanSave(data);
