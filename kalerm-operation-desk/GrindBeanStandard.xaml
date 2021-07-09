@@ -16,6 +16,7 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
@@ -68,24 +69,31 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="条码：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Name="lbSCAN_BARCODE" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Content="工艺路线：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" Name="lbROUTING_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.ColumnSpan="10" Grid.Row="3" Margin="0,0,2,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="条码：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="1" Name="lbSCAN_BARCODE" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="2" Content="工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="3" Name="lbWorkSheet_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="4" Content="工艺路线：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="5" Name="lbROUTING_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="6" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="7" Name="lbORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Grid.Column="8" Content="ERP工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label Grid.Column="9" Name="lbERPORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="0" Content="工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Name="lbWorkSheet_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Content="制令单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" Name="lbORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="4" Content="ERP工单号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Column="5" Name="lbERPORDER_NO" Content="" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.ColumnSpan="8" Grid.Row="3">
+        <Grid Grid.ColumnSpan="8" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="231*"/>
@@ -95,7 +103,7 @@
             <Label Grid.Column="1" Name="lbMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,2" />
         </Grid>
 
-        <Grid Grid.ColumnSpan="8" Grid.Row="4" Grid.RowSpan="2">
+        <Grid Grid.ColumnSpan="8" Grid.Row="5" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="13*"/>
